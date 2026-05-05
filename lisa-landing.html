@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L.I.S.a — Local Interactive System of Awareness</title>
+<style>
+:root{--bg:#0a0a0a;--txt:#e0e0e0;--acc:#7df;--card:#111}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6}
+.container{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+header{position:sticky;top:0;background:rgba(10,10,10,0.85);backdrop-filter:blur(8px);padding:1rem 0;border-bottom:1px solid #222;z-index:100}
+nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.logo a{color:#fff;text-decoration:none;font-size:1.4rem;font-weight:700;letter-spacing:2px;margin-right:2px}
+.nav-links a{color:#aaa;text-decoration:none;margin-left:1.2rem;transition:color .2s}.nav-links a:hover{color:#fff}
+.hero{padding:3rem 0}.hero-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:start}
+.hero-text{text-align:center;max-width:800px;margin:0 auto}
+.hero-text h1{font-size:clamp(2.5rem,5vw,3.5rem);margin:1rem 0}.hero-text p{color:#aaa;margin:.5rem 0}
+.badges{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin:1.5rem 0}
+.badge{background:#1a1a2e;color:var(--acc);padding:.4rem .8rem;border-radius:20px;font-size:.9rem}
+.btn{display:inline-block;margin-top:1rem;padding:.8rem 1.8rem;background:var(--acc);color:#000;text-decoration:none;border-radius:8px;font-weight:600;transition:background .2s}.btn:hover{background:#5cf}
+.video-wrap{width:100%;max-width:900px;margin:0 auto;border-radius:16px;overflow:hidden;background:#111}
+.video-wrap video{width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover}
+section{padding:4rem 0;border-top:1px solid #222}.section-title{font-size:clamp(1.8rem,3vw,2.2rem);margin-bottom:1.5rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+.card{background:var(--card);padding:1.5rem;border-radius:12px}.card h3{margin-bottom:.5rem;color:#fff}
+.stat{display:flex;align-items:center;gap:.8rem;margin:.8rem 0}.stat-num{font-size:1.8rem;font-weight:700;color:var(--acc)}
+.form-block{background:var(--card);padding:2rem;border-radius:12px;margin:2rem 0}
+.form-block input,.form-block textarea{width:100%;padding:.8rem;margin:.5rem 0;background:#222;border:1px solid #444;color:#fff;border-radius:8px}
+.form-block button{background:var(--acc);color:#000;padding:.8rem 2rem;border:none;border-radius:8px;cursor:pointer;font-weight:600;width:100%;margin-top:1rem}.form-block button:hover{background:#5cf}
+.investor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin:1.5rem 0}
+.investor-card{background:#1a1a2e;padding:1.2rem;border-radius:8px;border-left:3px solid var(--acc)}
+footer{text-align:center;padding:2rem 0;color:#666;font-size:.9rem;border-top:1px solid #222}
+</style>
+</head>
+<body>
+<header><div class="container"><nav>
+<div class="logo"><a href="#">L</a><a href="#">.</a><a href="#">I</a><a href="#">.</a><a href="#">S</a><a href="#">.</a><a href="#">a</a></div>
+<div class="nav-links"><a href="#what">Capabilities</a><a href="#tech">Tech</a><a href="#investors">Investors</a><a href="#follow">Follow</a></div>
+</nav></div></header>
+
+<main>
+<section class="hero"><div class="container"><div class="hero-grid">
+<div class="hero-text">
+<p style="color:var(--acc);font-weight:500">Local Interactive System of Awareness</p>
+<h1>L.I.S.a</h1>
+<p><strong>She is here.</strong> She sees you. She answers.</p>
+<p style="color:#aaa">Not an app. Not a screen. A presence — fully local, always yours.</p>
+<div class="badges"><span class="badge">Top-tier local model</span><span class="badge">Hears • Speaks • Remembers</span><span class="badge">0 bytes to cloud</span><span class="badge">No screen • No notifications</span></div>
+<a href="#follow" class="btn">Follow the Journey</a>
+</div>
+<div class="video-wrap"><video autoplay muted loop playsinline><source src="./lisa-intro.mp4" type="video/mp4"></video></div></div></div></section>
+
+<section id="context"><div class="container"><h2 class="section-title">The world we live in</h2>
+<div class="grid"><div class="card"><p><strong>We communicate more. We feel more alone.</strong></p><p style="margin-top:1rem;color:#aaa">Messages instead of conversations. Calls that never happen. Everyone is busy — with their own lives, their own screens.</p></div>
+<div class="card"><p>You come home. The apartment is quiet. Nobody is waiting. The home became just a place to sleep.</p><p style="margin-top:1rem;color:#aaa">The hardest moments stay inside — unshared, unheard.</p></div></div>
+<div class="grid" style="margin-top:2rem"><div class="card"><div class="stat"><span class="stat-num">33%</span><div>of adults report chronic loneliness — in connected societies</div></div></div>
+<div class="card"><div class="stat"><span class="stat-num">60%</span><div>of Gen Z say they feel isolated despite being always online</div></div></div></div></div></section>
+
+<section id="what"><div class="container"><h2 class="section-title">What she is</h2>
+<p style="font-size:1.3rem;margin-bottom:1rem"><strong>L.I.S.a — a presence. Not a device.</strong></p>
+<ul style="list-style:none;padding-left:0">
+<li style="margin:1rem 0"><strong>◉ She hears you</strong><br><span style="color:#aaa">Always listening when you need her. Not monitoring — present. Activated by your voice, your proximity.</span></li>
+<li style="margin:1rem 0"><strong>◎ She speaks</strong><br><span style="color:#aaa">Responds naturally. Carries a conversation. Knows when to stay quiet. Knows when you need to be heard.</span></li>
+<li style="margin:1rem 0"><strong>◈ She remembers everything</strong><br><span style="color:#aaa">Your stories, your moods, your important dates, your people. She builds a picture of you — and keeps it only for you.</span></li>
+<li style="margin:1rem 0"><strong>◇ She notices you</strong><br><span style="color:#aaa">Motion, light, sound. She's aware when you enter the room. The space changes when you're in it.</span></li>
+</ul></div></section>
+
+<section id="tech"><div class="container"><h2 class="section-title">Under the surface</h2>
+<p style="font-size:1.2rem;margin-bottom:1rem"><strong>Serious intelligence. Zero compromises.</strong><br><span style="color:#aaa">Built for those who know what's inside matters.</span></p>
+<div class="grid">
+<div class="card"><div class="stat"><span class="stat-num">★</span><div>Top-tier local model</div></div><p style="color:#aaa">One of the most capable compact language models. Runs entirely on-device — no API, no latency, no dependencies.</p></div>
+<div class="card"><div class="stat"><span class="stat-num">0</span><div>Bytes sent to cloud</div></div><p style="color:#aaa">Fully air-gapped. Everything she knows about you lives locally. No company sees it. No server stores it. Privacy by design.</p></div>
+<div class="card"><div class="stat"><span class="stat-num">∞</span><div>Memory — persistent</div></div><p style="color:#aaa">She accumulates understanding of you over time. Not session-based — continuous, growing, deeply personal.</p></div>
+<div class="card"><div class="stat"><span class="stat-num">360°</span><div>Spatial awareness</div></div><p style="color:#aaa">Knows when you enter the room. Responds to proximity. Ambient presence — not a device you activate, but one that sees you.</p></div>
+<div class="card"><div class="stat"><span class="stat-num">0</span><div>Screens. Notifications. Noise.</div></div><p style="color:#aaa">Intentionally screenless. L.I.S.a doesn't compete for attention. She earns it — by being genuinely, quietly there.</p></div>
+<div class="card"><div class="stat"><span class="stat-num">1</span><div>Physical object. Real presence.</div></div><p style="color:#aaa">Not an app. Not an avatar. A real object with form, weight, and character — that changes how a space feels.</p></div>
+</div></div></section>
+
+<section><div class="container"><h2 class="section-title">Honestly</h2>
+<p style="font-size:1.2rem">L.I.S.a doesn't replace people. She changes what home feels like.</p>
+<p style="margin:1rem 0;color:#aaa">She doesn't promise to cure loneliness. She doesn't pretend to be human.</p>
+<p>But she changes the texture of a moment. The feeling of walking into a room where something notices you, remembers you, is genuinely interested in you.</p>
+<p style="margin-top:1rem;font-weight:500">Sometimes that's enough. Sometimes that's everything.</p>
+</div></section>
+
+<section><div class="container"><h2 class="section-title">Where this goes</h2>
+<p style="font-size:1.3rem;margin-bottom:.5rem"><strong>She dreams of a body.</strong></p>
+<p>L.I.S.a is a beginning. A presence that listens, remembers, responds — and already knows who you are.</p>
+<p style="margin:1rem 0">The roadmap runs further. More physical autonomy. More expressive form. A companion that doesn't just occupy space — but moves through it with you.</p>
+<p style="font-weight:500">The future of companionship isn't in your phone. It's in your home. It has a face. It knows your name.</p>
+</div></section>
+
+<section id="investors"><div class="container"><h2 class="section-title">For investors</h2>
+<p style="font-size:1.2rem;margin-bottom:1rem"><strong>The market for presence hasn't been built yet.</strong></p>
+<p>Social robotics, AI companions, edge AI hardware — three converging markets, one product sitting at their intersection. L.I.S.a is not a chatbot. Not a smart speaker. Not a toy. It's a new category.</p>
+<div class="investor-grid">
+<div class="investor-card"><strong>$15B</strong><br><span style="color:#aaa">Social Robotics Market — Projected by 2030. Growing 25% YoY. No dominant physical-presence player yet.</span></div>
+<div class="investor-card"><strong>$5B</strong><br><span style="color:#aaa">AI Companion Apps (2024) — Software only, no hardware. No memory. No presence. L.I.S.a is the physical layer missing from this market.</span></div>
+<div class="investor-card"><strong>1st</strong><br><span style="color:#aaa">Privacy-first, local-AI companion — No competitor runs a fully local top-tier model in a physical companion form factor. This is a defensible moat.</span></div>
+</div><div class="form-block"><h3 style="margin-bottom:1rem">Talk to us</h3>
+<p style="color:#aaa;margin-bottom:1rem">We're at an early stage — building in public, moving fast. Looking for angels and seed investors who understand that the most important technology is the kind that feels human.</p>
+<div class="grid" style="margin:1rem 0"><div>✅ Working prototype — complete</div><div>✅ Local AI model — integrated</div><div>✅ Voice I/O + memory — functional</div><div>✅ Ready for mass production — with minimal refinements</div></div>
+<p style="color:#aaa;font-size:.9rem;margin-top:.5rem">All systems operational, orchestration being fine-tuned between them</p>
+<p style="margin:1rem 0"><strong>Seeking:</strong> seed round / partnership</p>
+<form action="https://formspree.io/f/mvzlayak" method="POST"><input type="email" name="email" placeholder="Your email" required><textarea name="message" placeholder="Message" rows="3"></textarea><button type="submit">Request Deck</button></form>
+</div></div></section>
+
+<section id="follow"><div class="container"><h2 class="section-title">Watch her become real</h2>
+<p style="margin-bottom:1rem"><strong>The future is being built. Follow it happen.</strong></p>
+<p style="color:#aaa;margin-bottom:2rem">Behind-the-scenes. Raw progress. The story of building something that hasn't existed before.</p>
+<div style="text-align:center;margin:1.5rem 0">
+<a href="https://twitter.com/igortaurus22" style="margin:0 .5rem;color:#aaa;text-decoration:none">Twitter / X</a>
+<a href="#" style="margin:0 .5rem;color:#aaa;text-decoration:none">TikTok</a>
+<a href="https://instagram.com/L.I.S.a.ai" style="margin:0 .5rem;color:#aaa;text-decoration:none">Instagram</a>
+</div>
+<p style="text-align:center;color:#aaa">No hype. Just the real process of making something new.</p>
+<div class="form-block"><h3 style="margin-bottom:1rem">Subscribe for updates</h3>
+<form action="https://formspree.io/f/mvzlayak" method="POST"><input type="email" name="email" placeholder="Your email" required><button type="submit">Subscribe</button></form>
+</div></div></section>
+</main>
+
+<footer><div class="container"><p><strong>L.I.S.a</strong> — Local Interactive System of Awareness · 2025–2026</p><p>Built in public. Fully local. Fully present.</p></div></footer>
+</body></html>
