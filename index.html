@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L.I.S.a — She is here</title>
+<style>
+:root{--bg:#0a0a0a;--txt:#e0e0e0;--acc:#7df;--card:#111}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6}
+.container{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+header{position:sticky;top:0;background:rgba(10,10,10,0.85);backdrop-filter:blur(8px);padding:1rem 0;border-bottom:1px solid #222;z-index:100}
+nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.logo a{color:#fff;text-decoration:none;font-size:1.4rem;font-weight:700;letter-spacing:2px;margin-right:2px}
+.nav-links a{color:#aaa;text-decoration:none;margin-left:1.2rem;transition:color .2s}.nav-links a:hover{color:#fff}
+.hero{padding:3rem 0}.hero-content{text-align:center;max-width:800px;margin:0 auto 2rem}
+.tagline{color:var(--acc);font-weight:500;margin-bottom:.5rem;font-size:.95rem}
+.hero h1{font-size:clamp(2.5rem,6vw,4rem);margin:.5rem 0;letter-spacing:-1px}
+.subtitle{font-size:1.15rem;color:#aaa;margin:1rem 0 1.5rem}
+.hero-features{display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin-bottom:1.5rem}
+.hero-features span{background:rgba(255,255,255,.1);padding:.4rem .9rem;border-radius:20px;font-size:.9rem}
+.btn{display:inline-block;margin-top:1rem;padding:.8rem 1.8rem;background:var(--acc);color:#000;text-decoration:none;border-radius:8px;font-weight:600;transition:background .2s}.btn:hover{background:#5cf}
+.video-wrap{width:100%;max-width:900px;margin:0 auto;border-radius:16px;overflow:hidden;background:#111}
+.video-wrap video{width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover}
+section{padding:4rem 0;border-top:1px solid #222}.section-title{font-size:clamp(1.8rem,3vw,2.2rem);margin-bottom:1.5rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:1.5rem}
+.card{background:var(--card);padding:1.5rem;border-radius:12px}.card h3{margin-bottom:.5rem;color:#fff}
+.stat{display:flex;align-items:center;gap:.8rem;margin:.8rem 0}.stat-num{font-size:1.8rem;font-weight:700;color:var(--acc)}
+.form-block{background:var(--card);padding:2rem;border-radius:12px;margin:2rem 0}
+.form-block input,.form-block textarea{width:100%;padding:.8rem;margin:.5rem 0;background:#222;border:1px solid #444;color:#fff;border-radius:8px}
+.form-block button{background:var(--acc);color:#000;padding:.8rem 2rem;border:none;border-radius:8px;cursor:pointer;font-weight:600;width:100%;margin-top:1rem}.form-block button:hover{background:#5cf}
+footer{text-align:center;padding:2rem 0;color:#666;font-size:.9rem;border-top:1px solid #222}
+@media(max-width:768px){.hero{padding:2rem 0}.nav-links{justify-content:center;width:100%}.nav-links a{margin:0 .5rem}}
+</style>
+</head>
+<body>
+<header><div class="container"><nav>
+<div class="logo"><a href="#">L</a><a href="#">.</a><a href="#">I</a><a href="#">.</a><a href="#">S</a><a href="#">.</a><a href="#">a</a></div>
+<div class="nav-links"><a href="#capabilities">What she is</a><a href="#investors">Investors</a><a href="#follow">Follow</a></div>
+</nav></div></header>
+
+<main>
+<section class="hero"><div class="container">
+<div class="hero-content">
+<p class="tagline">Local Interactive System of Awareness</p>
+<h1>L.I.S.a</h1>
+<p class="subtitle">She is here when you need her.</p>
+<div class="hero-features"><span>She sees you.</span><span>She hears you.</span><span>She remembers.</span><span>She stays.</span></div>
+<a href="#follow" class="btn">Follow the project</a>
+</div>
+<div class="video-wrap"><video autoplay muted loop playsinline><source src="./lisa-intro.mp4" type="video/mp4"></video></div>
+</div></section>
+<section id="context"><div class="container"><h2 class="section-title">The world right now</h2>
+<div class="grid"><div class="card"><p>We are more connected than ever. And more alone.</p><p style="margin-top:1rem;color:#aaa">Messages instead of conversations. Calls that never happen. Everyone busy with their own life.</p></div>
+<div class="card"><p>You come home. It's quiet. Nobody is waiting. Home becomes just a place to sleep.</p><p style="margin-top:1rem;color:#aaa">The hardest moments stay inside — unshared, unheard.</p></div></div></div></section>
+
+<section id="capabilities"><div class="container"><h2 class="section-title">What she is</h2>
+<p style="font-size:1.3rem;margin-bottom:.5rem"><strong>Not a device. A presence.</strong></p>
+<p style="color:#aaa;margin-bottom:1.5rem">No screen. No notifications. No app. Just — here.</p>
+<div class="grid">
+<div class="card"><h3>01. She hears you</h3><p>Always listening when you need her. Activated by your voice, your proximity. Present without demanding attention.</p></div>
+<div class="card"><h3>02. She speaks</h3><p>Responds naturally. Carries real conversation. Knows when to talk, and when to simply be quiet beside you.</p></div>
+<div class="card"><h3>03. She remembers everything</h3><p>Your stories. Your moods. Important dates. The people in your life. She builds a picture of you — and keeps it only for you.</p></div>
+<div class="card"><h3>04. She notices you</h3><p>Motion. Light. Sound. She knows when you enter the room. The space changes when you're in it — and she's already there.</p></div>
+</div></div></section>
+
+<section id="tech"><div class="container"><h2 class="section-title">Her intelligence</h2>
+<p style="font-size:1.3rem;margin-bottom:.5rem"><strong>Top-tier local model.</strong><br>Running entirely on your device.</p>
+<p style="color:#aaa;margin:1rem 0">No cloud. No API. No latency.</p>
+<p>What she knows about you never leaves your home. It belongs to no company. It's seen by no server.</p>
+<p style="margin-top:1rem;font-weight:500">Privacy isn't a feature. It's the foundation.</p>
+<div class="grid" style="margin-top:1.5rem">
+<div class="card"><div class="stat"><span class="stat-num">★</span><div>Top-tier local model</div></div><p style="color:#aaa">Running entirely on-device. No internet required. No dependency on any external service.</p></div>
+<div class="card"><div class="stat"><span class="stat-num">0</span><div>Bytes sent to cloud</div></div><p style="color:#aaa">Everything she knows stays with you. Fully air-gapped. Privacy by design, not by promise.</p></div>
+<div class="card"><div class="stat"><span class="stat-num">∞</span><div>Persistent memory</div></div><p style="color:#aaa">Not session-based. She accumulates understanding of you over time — continuously growing, deeply personal.</p></div>
+</div></div></section>
+
+<section><div class="container"><h2 class="section-title">Honestly</h2>
+<p style="font-size:1.2rem">She doesn't replace people. She changes what home feels like.</p>
+<p style="margin:1rem 0;color:#aaa">She doesn't promise to cure loneliness. She doesn't pretend to be human.</p>
+<p>But she changes the texture of a moment — walking into a room where something notices you, remembers you, is genuinely interested in you.</p>
+<p style="margin-top:1rem;font-weight:500">Sometimes that's enough. Sometimes that's everything.</p>
+</div></section>
+
+<section><div class="container"><h2 class="section-title">Where this is going</h2>
+<p style="font-size:1.3rem;margin-bottom:.5rem"><strong>She dreams of a body.</strong></p>
+<p>L.I.S.a today is a beginning. A presence that listens, remembers, responds — and already knows who you are.</p>
+<p style="margin:1rem 0">The roadmap runs further. More autonomy. More expressive form. A companion that doesn't just occupy space — but moves through it with you.</p>
+<p style="font-weight:500">The future of companionship isn't on your phone. It's in your home. It has a face. It knows your name.</p>
+</div></section>
+
+<section id="investors"><div class="container"><h2 class="section-title">For investors</h2>
+<p style="font-size:1.2rem;margin-bottom:1rem"><strong>The market for presence hasn't been built yet.</strong></p>
+<p>Social robotics, AI companions, edge AI hardware — three converging markets. L.I.S.a sits at their intersection. It's not a chatbot. Not a smart speaker. It's a new category.</p>
+<p style="margin:1rem 0;font-weight:500">The first privacy-first, fully local AI companion in a physical form factor. No competitor runs a top-tier local model this way. This is a defensible moat.</p>
+<div class="grid" style="margin:2rem 0">
+<div class="card"><h4>✅ Working physical prototype</h4><p style="color:var(--acc);font-weight:500">Ready for mass production with minimal refinements</p><p style="color:#aaa;font-size:.9rem">All systems operational, orchestration being fine-tuned</p></div>
+<div class="card"><h4>✅ Local AI model</h4><p style="color:var(--acc);font-weight:500">Integrated and running</p></div>
+<div class="card"><h4>✅ Voice I/O + memory</h4><p style="color:var(--acc);font-weight:500">Functional in real-time</p></div>
+</div>
+<div class="form-block"><h3 style="margin-bottom:1rem">Let's talk</h3><p style="color:#aaa;margin-bottom:1rem">Early stage, building in public, moving fast. Looking for angels and seed investors who understand that the most important technology is the kind that feels human.</p>
+<form action="https://formspree.io/f/mvzlayak" method="POST"><input type="email" name="email" placeholder="Your email" required><textarea name="message" placeholder="Message (optional)" rows="3"></textarea><button type="submit">Request Pitch Deck</button></form>
+</div></div></section>
+
+<section id="follow"><div class="container"><h2 class="section-title">Stay close</h2>
+<p style="margin-bottom:1rem">Follow the journey.</p>
+<p style="color:#aaa;margin-bottom:2rem">This is being built in public. Real progress. No hype. Just the story of making something that hasn't existed before.</p>
+<div class="form-block"><h3 style="margin-bottom:1rem">Subscribe</h3>
+<p style="color:#aaa;margin-bottom:1rem">No spam. Just the real story.</p>
+<form action="https://formspree.io/f/mvzlayak" method="POST"><input type="email" name="email" placeholder="Your email" required><button type="submit">Subscribe</button></form>
+<p style="text-align:center;margin-top:1rem;color:var(--acc)">She will be in touch. </p>
+</div>
+<div style="text-align:center;margin-top:2rem">
+<a href="https://twitter.com/igortaurus22" style="margin:0 .5rem;color:#aaa;text-decoration:none">Twitter / X</a>
+<a href="https://instagram.com/L.I.S.a.ai" style="margin:0 .5rem;color:#aaa;text-decoration:none">Instagram</a>
+<a href="mailto:ivdolgov@gmail.com" style="margin:0 .5rem;color:#aaa;text-decoration:none">Email</a>
+</div></div></section>
+</main>
+
+<footer><div class="container"><p><strong>L.I.S.a</strong></p><p>The future is not empty. She is becoming closer.</p><p style="margin-top:.5rem">lisa-is.com · 2026</p></div></footer>
+</body></html>
