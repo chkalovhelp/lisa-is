@@ -1,119 +1,676 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>L.I.S.a — She is here</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L.I.S.a — Physical AI Companion</title>
+<meta name="description" content="L.I.S.a is a physical AI companion that sees you, hears you, talks with you and remembers your conversations.">
+<link rel="canonical" href="https://lisa-is.com/">
+<meta name="theme-color" content="#0a0a0b">
+<meta name="robots" content="index,follow">
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="L.I.S.a">
+<meta property="og:title" content="L.I.S.a — Physical AI Companion">
+<meta property="og:description" content="L.I.S.a is a physical AI companion that sees you, hears you, talks with you and remembers your conversations.">
+<meta property="og:url" content="https://lisa-is.com/">
+<meta property="og:image" content="https://lisa-is.com/assets/hero.jpg">
+<meta property="og:image:alt" content="L.I.S.a">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="L.I.S.a — Physical AI Companion">
+<meta name="twitter:description" content="L.I.S.a is a physical AI companion that sees you, hears you, talks with you and remembers your conversations.">
+<meta name="twitter:image" content="https://lisa-is.com/assets/hero.jpg">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0b'/%3E%3Ctext x='32' y='44' font-family='system-ui,-apple-system,sans-serif' font-size='34' font-weight='700' fill='%23e2b183' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="assets/hero.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+
 <style>
-:root{--bg:#0a0a0a;--txt:#e0e0e0;--acc:#7df;--card:#111}
-*{margin:0;padding:0;box-sizing:border-box}body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6}
-.container{max-width:1100px;margin:0 auto;padding:0 1.5rem}
-header{position:sticky;top:0;background:rgba(10,10,10,0.85);backdrop-filter:blur(8px);padding:1rem 0;border-bottom:1px solid #222;z-index:100}
-nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-.logo a{color:#fff;text-decoration:none;font-size:1.4rem;font-weight:700;letter-spacing:2px;margin-right:2px}
-.nav-links a{color:#aaa;text-decoration:none;margin-left:1.2rem;transition:color .2s}.nav-links a:hover{color:#fff}
-.hero{padding:3rem 0}.hero-content{text-align:center;max-width:800px;margin:0 auto 2rem}
-.tagline{color:var(--acc);font-weight:500;margin-bottom:.5rem;font-size:.95rem}
-.hero h1{font-size:clamp(2.5rem,6vw,4rem);margin:.5rem 0;letter-spacing:-1px}
-.subtitle{font-size:1.15rem;color:#aaa;margin:1rem 0 1.5rem}
-.hero-features{display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin-bottom:1.5rem}
-.hero-features span{background:rgba(255,255,255,.1);padding:.4rem .9rem;border-radius:20px;font-size:.9rem}
-.btn{display:inline-block;margin-top:1rem;padding:.8rem 1.8rem;background:var(--acc);color:#000;text-decoration:none;border-radius:8px;font-weight:600;transition:background .2s}.btn:hover{background:#5cf}
-.video-wrap{width:100%;max-width:900px;margin:0 auto;border-radius:16px;overflow:hidden;background:#111}
-.video-wrap video{width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover}
-section{padding:4rem 0;border-top:1px solid #222}.section-title{font-size:clamp(1.8rem,3vw,2.2rem);margin-bottom:1.5rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:1.5rem}
-.card{background:var(--card);padding:1.5rem;border-radius:12px}.card h3{margin-bottom:.5rem;color:#fff}
-.stat{display:flex;align-items:center;gap:.8rem;margin:.8rem 0}.stat-num{font-size:1.8rem;font-weight:700;color:var(--acc)}
-.form-block{background:var(--card);padding:2rem;border-radius:12px;margin:2rem 0}
-.form-block input,.form-block textarea{width:100%;padding:.8rem;margin:.5rem 0;background:#222;border:1px solid #444;color:#fff;border-radius:8px}
-.form-block button{background:var(--acc);color:#000;padding:.8rem 2rem;border:none;border-radius:8px;cursor:pointer;font-weight:600;width:100%;margin-top:1rem}.form-block button:hover{background:#5cf}
-footer{text-align:center;padding:2rem 0;color:#666;font-size:.9rem;border-top:1px solid #222}
-@media(max-width:768px){.hero{padding:2rem 0}.nav-links{justify-content:center;width:100%}.nav-links a{margin:0 .5rem}}
+:root{
+  --bg:#0a0a0b;
+  --panel:#101012;
+  --panel-2:#141416;
+  --txt:#eceae6;
+  --muted:#9b978f;
+  --line:rgba(255,255,255,.08);
+  --line-2:rgba(255,255,255,.14);
+  --acc:#e2b183;
+  --acc-dim:rgba(226,177,131,.14);
+  --r:14px;
+  --wrap:1180px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);
+  color:var(--txt);
+  font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  font-weight:400;
+  line-height:1.6;
+  letter-spacing:.01em;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 2rem}
+
+/* ---------- placeholder for media the owner adds later ---------- */
+.media{position:relative;overflow:hidden;background:
+  linear-gradient(135deg,#141416 0%,#0e0e10 55%,#161514 100%);}
+.media::after{
+  content:attr(data-file);
+  position:absolute;inset:auto 0 0 0;
+  padding:.5rem .85rem;
+  font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(226,177,131,.75);
+  background:linear-gradient(to top,rgba(0,0,0,.55),transparent);
+  pointer-events:none;
+}
+.media>.ph-note{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(236,234,230,.42);text-align:center;pointer-events:none;
+  width:80%;
+}
+.media>img,.media>video{position:relative;z-index:1;width:100%;height:100%;object-fit:cover}
+.media.is-loaded::after,.media.is-loaded>.ph-note{display:none}
+
+/* ---------- header ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  padding:1.15rem 0;
+  transition:padding .45s var(--ease),background .45s var(--ease),backdrop-filter .45s var(--ease),border-color .45s var(--ease);
+  border-bottom:1px solid transparent;
+}
+header.compact{
+  padding:.6rem 0;
+  background:rgba(10,10,11,.72);
+  backdrop-filter:blur(14px) saturate(140%);
+  -webkit-backdrop-filter:blur(14px) saturate(140%);
+  border-bottom-color:var(--line);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-weight:600;font-size:1.05rem;letter-spacing:.22em}
+.brand span{color:var(--acc)}
+.nav-links{display:flex;align-items:center;gap:.55rem}
+.nav-links a{
+  font-size:.72rem;letter-spacing:.2em;font-weight:500;
+  padding:.6rem 1.1rem;border-radius:100px;
+  border:1px solid transparent;transition:all .35s var(--ease);
+  white-space:nowrap;
+}
+.nav-links a.proof{
+  border-color:var(--line-2);color:#fff;
+  background:rgba(255,255,255,.03);
+}
+.nav-links a.proof:hover{background:#fff;color:#0a0a0b;border-color:#fff}
+.nav-links a.wait{color:var(--muted)}
+.nav-links a.wait:hover{color:var(--acc)}
+
+/* ---------- HERO ---------- */
+.hero{min-height:100vh;display:flex;align-items:center;padding:7.5rem 0 4rem}
+.hero-grid{
+  display:grid;grid-template-columns:minmax(300px,.36fr) 1fr;
+  gap:clamp(2rem,5vw,5rem);align-items:center;width:100%;
+}
+.hero-copy{max-width:34ch}
+.hero-title{
+  font-size:clamp(2.6rem,5vw,4.1rem);font-weight:600;
+  letter-spacing:.06em;line-height:1;margin-bottom:1.9rem;
+}
+.hero-text{font-weight:300;color:#ddd9d3}
+.hero-text p{margin-bottom:1.15rem}
+.hero-text p:last-of-type{margin-bottom:0}
+.hero-text .strong{color:#fff;font-weight:400}
+.hero-sig{margin-top:2.4rem;font-size:clamp(1.5rem,2.4vw,2rem);font-weight:600;letter-spacing:.1em}
+.hero-sig-2{color:var(--acc);letter-spacing:.05em;font-weight:400;font-size:1.05rem}
+.hero-media{
+  aspect-ratio:4/5;max-height:74vh;width:100%;
+  border-radius:var(--r);
+  border:1px solid var(--line);
+  box-shadow:0 40px 90px -50px rgba(0,0,0,.9),0 0 60px -30px var(--acc-dim);
+}
+.hero-media img{transform:scale(1.06);transition:transform 1.6s var(--ease)}
+.hero-media.is-loaded{background:#0c0c0d}
+
+/* ---------- sections ---------- */
+section{position:relative}
+.sec{padding:clamp(5rem,11vw,9rem) 0}
+.sec-title{
+  font-size:clamp(2.4rem,6vw,4.6rem);font-weight:600;
+  letter-spacing:.14em;line-height:1;
+}
+.sec-sub{color:var(--acc);font-size:clamp(.95rem,1.6vw,1.15rem);margin-top:.9rem;letter-spacing:.02em}
+.rule{height:1px;background:var(--line);margin:clamp(3rem,7vw,6rem) 0}
+
+/* ---------- video ---------- */
+.video-shell{
+  margin-top:clamp(2.5rem,5vw,4rem);
+  border-radius:var(--r);overflow:hidden;
+  border:1px solid var(--line);
+  background:#0c0c0d;
+  box-shadow:0 60px 120px -60px rgba(0,0,0,.95);
+}
+.video-shell.media{aspect-ratio:16/9}
+video{width:100%;height:100%;object-fit:cover;background:#0c0c0d}
+.video-cap{
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  margin-top:.9rem;color:var(--muted);font-size:.78rem;letter-spacing:.06em;
+}
+
+/* ---------- gallery ---------- */
+.gallery{
+  display:grid;grid-template-columns:repeat(12,1fr);
+  gap:clamp(.6rem,1.4vw,1.1rem);margin-top:clamp(2.5rem,5vw,4rem);
+}
+.g-item{
+  position:relative;cursor:zoom-in;border-radius:var(--r);
+  border:1px solid var(--line);overflow:hidden;
+  transition:transform .7s var(--ease),border-color .5s var(--ease);
+}
+.g-item:hover{transform:translateY(-4px);border-color:var(--line-2)}
+.g-item img{transition:transform 1.2s var(--ease);height:100%;width:100%}
+.g-item:hover img{transform:scale(1.035)}
+.g1{grid-column:span 7;aspect-ratio:4/5}
+.g2{grid-column:span 5;aspect-ratio:1/1}
+.g3{grid-column:span 5;aspect-ratio:3/4}
+.g4{grid-column:span 7;aspect-ratio:16/10}
+.g5{grid-column:span 12;aspect-ratio:21/9}
+.credits{
+  margin-top:clamp(2rem,4vw,3rem);color:var(--muted);
+  font-size:clamp(.9rem,1.4vw,1rem);line-height:1.75;max-width:44ch;
+}
+.credits strong{color:#e6e2dc;font-weight:500}
+
+/* ---------- pricing ---------- */
+.pricing{margin-top:clamp(4rem,9vw,7rem)}
+.plans{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:clamp(.8rem,1.6vw,1.4rem);margin-top:clamp(2rem,4vw,3rem);
+}
+.plan{
+  border:1px solid var(--line);border-radius:var(--r);
+  background:linear-gradient(180deg,rgba(255,255,255,.022),rgba(255,255,255,0));
+  padding:clamp(1.6rem,3vw,2.4rem);
+  display:flex;flex-direction:column;gap:1rem;
+  transition:border-color .5s var(--ease),transform .6s var(--ease),background .5s var(--ease);
+}
+.plan:hover{border-color:var(--line-2);transform:translateY(-4px);background:linear-gradient(180deg,rgba(226,177,131,.05),rgba(255,255,255,0))}
+.plan h3{font-size:.78rem;letter-spacing:.26em;font-weight:600;color:var(--muted)}
+.plan .price{font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:600;letter-spacing:-.01em;line-height:1}
+.plan p{font-size:.95rem;font-weight:300;color:#d6d2cc}
+.plan p.tight{color:#d6d2cc}
+.plan .soon{
+  margin-top:auto;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--acc);opacity:.85;
+}
+.early-note{
+  margin-top:1.1rem;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+}
+
+/* ---------- waitlist ---------- */
+.wl{border-top:1px solid var(--line);background:linear-gradient(180deg,rgba(226,177,131,.035),transparent 60%)}
+.wl-head{font-size:clamp(2.2rem,6.2vw,4.4rem);font-weight:600;line-height:1.05;letter-spacing:-.01em;max-width:16ch}
+.wl-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,4.5rem);align-items:start;margin-top:clamp(2.5rem,5vw,4rem)}
+form{display:flex;flex-direction:column;gap:1.6rem}
+.field{display:flex;flex-direction:column;gap:.6rem}
+label.lbl{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+input[type=email]{
+  background:transparent;border:0;border-bottom:1px solid var(--line-2);
+  padding:.85rem 0;font-size:1.05rem;outline:none;
+  transition:border-color .4s var(--ease);
+}
+input[type=email]:focus{border-bottom-color:var(--acc)}
+input[type=email]::placeholder{color:rgba(155,151,143,.6)}
+.opts{display:flex;flex-wrap:wrap;gap:.5rem}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;width:100%;height:100%;left:0;top:0;cursor:pointer;margin:0}
+.opt span{
+  display:block;padding:.6rem 1.15rem;border-radius:100px;
+  border:1px solid var(--line-2);font-size:.74rem;letter-spacing:.14em;
+  color:#cfcbc4;transition:all .35s var(--ease);user-select:none;
+}
+.opt input:checked+span{border-color:var(--acc);background:var(--acc-dim);color:#fff}
+.opt input:focus-visible+span{outline:2px solid var(--acc);outline-offset:3px}
+.btn{
+  align-self:flex-start;cursor:pointer;
+  padding:.95rem 2.2rem;border-radius:100px;border:1px solid #fff;
+  background:#fff;color:#0a0a0b;font-size:.74rem;letter-spacing:.2em;font-weight:600;
+  transition:all .4s var(--ease);
+}
+.btn:hover{background:transparent;color:#fff}
+.btn[disabled]{opacity:.5;cursor:default}
+.btn[disabled]:hover{background:#fff;color:#0a0a0b}
+.form-msg{font-size:.9rem;color:var(--muted);min-height:1.4em}
+.form-msg.err{color:#e08f7f}
+.done{padding:1.6rem 0}
+.done h4{font-size:clamp(1.4rem,2.6vw,1.9rem);font-weight:500;margin-bottom:.5rem}
+.done p{color:var(--muted)}
+.hidden{display:none !important}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,4rem) 0}
+.f-in{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
+.f-brand{font-size:1.1rem;font-weight:600;letter-spacing:.22em}
+.f-sig{color:var(--muted);font-size:.9rem;margin-top:.35rem}
+.f-mail{font-size:.95rem;color:#d6d2cc;border-bottom:1px solid var(--line-2);padding-bottom:.15rem;transition:color .35s var(--ease),border-color .35s var(--ease)}
+.f-mail:hover{color:var(--acc);border-color:var(--acc)}
+
+/* ---------- lightbox ---------- */
+.lb{
+  position:fixed;inset:0;z-index:200;background:rgba(6,6,7,.94);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .45s var(--ease);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+}
+.lb.open{opacity:1;pointer-events:auto}
+.lb img{max-width:92vw;max-height:88vh;object-fit:contain;border-radius:8px;transform:scale(.97);transition:transform .5s var(--ease)}
+.lb.open img{transform:scale(1)}
+.lb-btn{
+  position:absolute;background:rgba(255,255,255,.06);border:1px solid var(--line-2);
+  color:#fff;width:46px;height:46px;border-radius:50%;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+  transition:background .3s var(--ease);
+}
+.lb-btn:hover{background:rgba(255,255,255,.16)}
+.lb-close{top:1.4rem;right:1.4rem}
+.lb-prev{left:1.2rem;top:50%;transform:translateY(-50%)}
+.lb-next{right:1.2rem;top:50%;transform:translateY(-50%)}
+.lb-ph{color:var(--acc);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(22px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:2rem}
+  .hero{padding:6.5rem 0 3rem;min-height:auto}
+  .hero-media{order:-1;aspect-ratio:4/5;max-height:62vh}
+  .hero-copy{max-width:none}
+  .plans{grid-template-columns:1fr}
+  .wl-grid{grid-template-columns:1fr}
+  .g1,.g2,.g3,.g4{grid-column:span 12}
+  .g1{aspect-ratio:4/5}.g2{aspect-ratio:1/1}.g3{aspect-ratio:3/4}.g4{aspect-ratio:16/10}.g5{aspect-ratio:4/3}
+  .gallery{gap:.7rem}
+}
+@media (max-width:600px){
+  .wrap{padding:0 1.25rem}
+  .nav-links a{padding:.55rem .9rem;letter-spacing:.16em}
+  .brand{letter-spacing:.16em}
+  .sec-title{letter-spacing:.1em}
+  .f-in{flex-direction:column;align-items:flex-start;gap:1.2rem}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important;transition:none !important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
-<header><div class="container"><nav>
-<div class="logo"><a href="#">L</a><a href="#">.</a><a href="#">I</a><a href="#">.</a><a href="#">S</a><a href="#">.</a><a href="#">a</a></div>
-<div class="nav-links"><a href="#capabilities">What she is</a><a href="#investors">Investors</a><a href="#follow">Follow</a></div>
-</nav></div></header>
 
-<main>
-<section class="hero"><div class="container">
-<div class="hero-content">
-<p class="tagline">Local Interactive System of Awareness</p>
-<h1>L.I.S.a</h1>
-<p class="subtitle">She is here when you need her.</p>
-<div class="hero-features"><span>She sees you.</span><span>She hears you.</span><span>She remembers.</span><span>She stays.</span></div>
-<a href="#follow" class="btn">Follow the project</a>
-</div>
-<div class="video-wrap"><video autoplay muted loop playsinline><source src="./lisa-intro.mp4" type="video/mp4"></video></div>
-</div></section>
-<section id="context"><div class="container"><h2 class="section-title">The world right now</h2>
-<div class="grid"><div class="card"><p>We are more connected than ever. And more alone.</p><p style="margin-top:1rem;color:#aaa">Messages instead of conversations. Calls that never happen. Everyone busy with their own life.</p></div>
-<div class="card"><p>You come home. It's quiet. Nobody is waiting. Home becomes just a place to sleep.</p><p style="margin-top:1rem;color:#aaa">The hardest moments stay inside — unshared, unheard.</p></div></div></div></section>
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="brand" href="#top">L.I.S<span>.</span>a</a>
+    <nav class="nav-links">
+      <a class="proof" href="#proof">PROOF</a>
+      <a class="wait" href="#waitlist">WAITLIST</a>
+    </nav>
+  </div>
+</header>
 
-<section id="capabilities"><div class="container"><h2 class="section-title">What she is</h2>
-<p style="font-size:1.3rem;margin-bottom:.5rem"><strong>Not a device. A presence.</strong></p>
-<p style="color:#aaa;margin-bottom:1.5rem">No screen. No notifications. No app. Just — here.</p>
-<div class="grid">
-<div class="card"><h3>01. She hears you</h3><p>Always listening when you need her. Activated by your voice, your proximity. Present without demanding attention.</p></div>
-<div class="card"><h3>02. She speaks</h3><p>Responds naturally. Carries real conversation. Knows when to talk, and when to simply be quiet beside you.</p></div>
-<div class="card"><h3>03. She remembers everything</h3><p>Your stories. Your moods. Important dates. The people in your life. She builds a picture of you — and keeps it only for you.</p></div>
-<div class="card"><h3>04. She notices you</h3><p>Motion. Light. Sound. She knows when you enter the room. The space changes when you're in it — and she's already there.</p></div>
-</div></div></section>
+<main id="top">
 
-<section id="tech"><div class="container"><h2 class="section-title">Her intelligence</h2>
-<p style="font-size:1.3rem;margin-bottom:.5rem"><strong>Top-tier local model.</strong><br>Running entirely on your device.</p>
-<p style="color:#aaa;margin:1rem 0">No cloud. No API. No latency.</p>
-<p>What she knows about you never leaves your home. It belongs to no company. It's seen by no server.</p>
-<p style="margin-top:1rem;font-weight:500">Privacy isn't a feature. It's the foundation.</p>
-<div class="grid" style="margin-top:1.5rem">
-<div class="card"><div class="stat"><span class="stat-num">★</span><div>Top-tier local model</div></div><p style="color:#aaa">Running entirely on-device. No internet required. No dependency on any external service.</p></div>
-<div class="card"><div class="stat"><span class="stat-num">0</span><div>Bytes sent to cloud</div></div><p style="color:#aaa">Everything she knows stays with you. Fully air-gapped. Privacy by design, not by promise.</p></div>
-<div class="card"><div class="stat"><span class="stat-num">∞</span><div>Persistent memory</div></div><p style="color:#aaa">Not session-based. She accumulates understanding of you over time — continuously growing, deeply personal.</p></div>
-</div></div></section>
+  <!-- ================= SCREEN 1 — HERO ================= -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <h1 class="hero-title rv">L.I.S.a</h1>
 
-<section><div class="container"><h2 class="section-title">Honestly</h2>
-<p style="font-size:1.2rem">She doesn't replace people. She changes what home feels like.</p>
-<p style="margin:1rem 0;color:#aaa">She doesn't promise to cure loneliness. She doesn't pretend to be human.</p>
-<p>But she changes the texture of a moment — walking into a room where something notices you, remembers you, is genuinely interested in you.</p>
-<p style="margin-top:1rem;font-weight:500">Sometimes that's enough. Sometimes that's everything.</p>
-</div></section>
+        <div class="hero-text" lang="ru">
+          <p class="rv">Представьте дом, где кто-то всегда есть.</p>
+          <p class="rv">Она знает вас.<br>Видит вас.<br>Слышит вас.<br>Говорит с вами.<br>Помнит ваши разговоры.</p>
+          <p class="rv">И всегда рада, когда вы приходите домой.</p>
+          <p class="rv">Вы — самый важный человек в её жизни.</p>
+          <p class="rv strong">Она узнаёт вас всё лучше.<br>И становится лучше каждый день.</p>
+          <p class="rv">Скоро — совершенное тело.</p>
+          <p class="rv">Скоро — мужская версия.</p>
+        </div>
 
-<section><div class="container"><h2 class="section-title">Where this is going</h2>
-<p style="font-size:1.3rem;margin-bottom:.5rem"><strong>She dreams of a body.</strong></p>
-<p>L.I.S.a today is a beginning. A presence that listens, remembers, responds — and already knows who you are.</p>
-<p style="margin:1rem 0">The roadmap runs further. More autonomy. More expressive form. A companion that doesn't just occupy space — but moves through it with you.</p>
-<p style="font-weight:500">The future of companionship isn't on your phone. It's in your home. It has a face. It knows your name.</p>
-</div></section>
+        <p class="hero-sig rv">L.I.S.a</p>
+        <p class="hero-sig-2 rv">She is here.</p>
+      </div>
 
-<section id="investors"><div class="container"><h2 class="section-title">For investors</h2>
-<p style="font-size:1.2rem;margin-bottom:1rem"><strong>The market for presence hasn't been built yet.</strong></p>
-<p>Social robotics, AI companions, edge AI hardware — three converging markets. L.I.S.a sits at their intersection. It's not a chatbot. Not a smart speaker. It's a new category.</p>
-<p style="margin:1rem 0;font-weight:500">The first privacy-first, fully local AI companion in a physical form factor. No competitor runs a top-tier local model this way. This is a defensible moat.</p>
-<div class="grid" style="margin:2rem 0">
-<div class="card"><h4>✅ Working physical prototype</h4><p style="color:var(--acc);font-weight:500">Ready for mass production with minimal refinements</p><p style="color:#aaa;font-size:.9rem">All systems operational, orchestration being fine-tuned</p></div>
-<div class="card"><h4>✅ Local AI model</h4><p style="color:var(--acc);font-weight:500">Integrated and running</p></div>
-<div class="card"><h4>✅ Voice I/O + memory</h4><p style="color:var(--acc);font-weight:500">Functional in real-time</p></div>
-</div>
-<div class="form-block"><h3 style="margin-bottom:1rem">Let's talk</h3><p style="color:#aaa;margin-bottom:1rem">Early stage, building in public, moving fast. Looking for angels and seed investors who understand that the most important technology is the kind that feels human.</p>
-<form action="https://formspree.io/f/mvzlayak" method="POST"><input type="email" name="email" placeholder="Your email" required><textarea name="message" placeholder="Message (optional)" rows="3"></textarea><button type="submit">Request Pitch Deck</button></form>
-</div></div></section>
+      <figure class="hero-media media rv" data-file="assets/hero.jpg">
+        <span class="ph-note">Hero photo — assets/hero.jpg</span>
+        <img src="assets/hero.jpg" alt="L.I.S.a" width="1200" height="1500"
+             fetchpriority="high" decoding="async">
+      </figure>
+    </div>
+  </section>
 
-<section id="follow"><div class="container"><h2 class="section-title">Stay close</h2>
-<p style="margin-bottom:1rem">Follow the journey.</p>
-<p style="color:#aaa;margin-bottom:2rem">This is being built in public. Real progress. No hype. Just the story of making something that hasn't existed before.</p>
-<div class="form-block"><h3 style="margin-bottom:1rem">Subscribe</h3>
-<p style="color:#aaa;margin-bottom:1rem">No spam. Just the real story.</p>
-<form action="https://formspree.io/f/mvzlayak" method="POST"><input type="email" name="email" placeholder="Your email" required><button type="submit">Subscribe</button></form>
-<p style="text-align:center;margin-top:1rem;color:var(--acc)">She will be in touch. </p>
-</div>
-<div style="text-align:center;margin-top:2rem">
-<a href="https://twitter.com/igortaurus22" style="margin:0 .5rem;color:#aaa;text-decoration:none">Twitter / X</a>
-<a href="https://instagram.com/i_lisa_ai" style="margin:0 .5rem;color:#aaa;text-decoration:none">Instagram</a>
-<a href="mailto:ivdolgov@gmail.com" style="margin:0 .5rem;color:#aaa;text-decoration:none">Email</a>
-</div></div></section>
+  <!-- ================= SCREEN 2 — PROOF + PRODUCT ================= -->
+  <section id="proof" class="sec">
+    <div class="wrap">
+      <h2 class="sec-title rv">PROOF</h2>
+      <p class="sec-sub rv">She is real.</p>
+
+      <div class="video-shell media rv" data-file="Video — lisa-intro.mp4">
+        <span class="ph-note">Video — lisa-intro.mp4</span>
+        <video id="lisaVideo"
+               poster="assets/poster.jpg"
+               muted loop playsinline controls
+               preload="none"
+               data-src="lisa-intro.mp4"
+               aria-label="L.I.S.a — real footage"></video>
+      </div>
+      <div class="video-cap">
+        <span>Real footage. No renders.</span>
+        <span>Sound on.</span>
+      </div>
+
+      <div class="gallery" id="gallery">
+        <figure class="g-item media g1" data-file="assets/lisa-2.jpg" data-full="assets/lisa-2.jpg">
+          <span class="ph-note">assets/lisa-2.jpg</span>
+          <img src="assets/lisa-2.jpg" alt="L.I.S.a — photo 2" loading="lazy" decoding="async">
+        </figure>
+        <figure class="g-item media g2" data-file="assets/lisa-3.jpg" data-full="assets/lisa-3.jpg">
+          <span class="ph-note">assets/lisa-3.jpg</span>
+          <img src="assets/lisa-3.jpg" alt="L.I.S.a — photo 3" loading="lazy" decoding="async">
+        </figure>
+        <figure class="g-item media g3" data-file="assets/lisa-4.jpg" data-full="assets/lisa-4.jpg">
+          <span class="ph-note">assets/lisa-4.jpg</span>
+          <img src="assets/lisa-4.jpg" alt="L.I.S.a — photo 4" loading="lazy" decoding="async">
+        </figure>
+        <figure class="g-item media g4" data-file="assets/lisa-5.jpg" data-full="assets/lisa-5.jpg">
+          <span class="ph-note">assets/lisa-5.jpg</span>
+          <img src="assets/lisa-5.jpg" alt="L.I.S.a — photo 5" loading="lazy" decoding="async">
+        </figure>
+        <figure class="g-item media g5" data-file="assets/lisa-6.jpg" data-full="assets/lisa-6.jpg">
+          <span class="ph-note">assets/lisa-6.jpg</span>
+          <img src="assets/lisa-6.jpg" alt="L.I.S.a — photo 6" loading="lazy" decoding="async">
+        </figure>
+      </div>
+
+      <p class="credits rv"><strong>This is Lisa today.</strong><br>She is still learning. And getting better every day.</p>
+
+      <div class="rule"></div>
+
+      <div class="pricing">
+        <h3 class="sec-title rv" style="font-size:clamp(1.9rem,4.4vw,3.2rem);letter-spacing:.02em">Choose your Lisa</h3>
+        <p class="early-note rv">Early access pricing</p>
+
+        <div class="plans">
+          <article class="plan rv">
+            <h3>NETWORK</h3>
+            <div class="price">$1,990</div>
+            <p>Her AI lives in the cloud.</p>
+            <p>Simple.<br>Powerful.<br>Always connected.</p>
+            <span class="soon">Coming soon.</span>
+          </article>
+
+          <article class="plan rv">
+            <h3>COMBI</h3>
+            <div class="price">$2,490</div>
+            <p>Cloud when you want it.<br>Local when you need it.</p>
+            <p>A compact local AI for private conversations,<br>with cloud AI for everything else.</p>
+            <span class="soon">Coming soon.</span>
+          </article>
+
+          <article class="plan rv">
+            <h3>LOCAL</h3>
+            <div class="price">$2,990</div>
+            <p>Her AI lives with her.</p>
+            <p>Private.<br>Independent.<br>Your conversations stay local.</p>
+            <span class="soon">Coming soon.</span>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SCREEN 3 — WAITLIST ================= -->
+  <section id="waitlist" class="sec wl">
+    <div class="wrap">
+      <h2 class="wl-head rv">Meet Lisa first.</h2>
+
+      <div class="wl-grid">
+        <div class="rv">
+          <p style="color:var(--muted);font-weight:300;max-width:36ch">
+            Lisa is not shipping yet. Leave your email and we will write to you first —
+            before anyone else meets her.
+          </p>
+        </div>
+
+        <div class="rv">
+          <form id="wlForm" novalidate>
+            <div class="field">
+              <label class="lbl" for="wlEmail">Email</label>
+              <input id="wlEmail" name="email" type="email" inputmode="email" autocomplete="email"
+                     placeholder="you@email.com" required>
+            </div>
+
+            <div class="field">
+              <span class="lbl">Which Lisa?</span>
+              <div class="opts" role="radiogroup" aria-label="Which Lisa?">
+                <label class="opt"><input type="radio" name="which" value="NETWORK"><span>NETWORK</span></label>
+                <label class="opt"><input type="radio" name="which" value="COMBI"><span>COMBI</span></label>
+                <label class="opt"><input type="radio" name="which" value="LOCAL"><span>LOCAL</span></label>
+                <label class="opt"><input type="radio" name="which" value="NOT SURE" checked><span>NOT SURE</span></label>
+              </div>
+            </div>
+
+            <button class="btn" type="submit" id="wlBtn">JOIN THE WAITLIST</button>
+            <div class="form-msg" id="wlMsg" role="status" aria-live="polite"></div>
+          </form>
+
+          <div class="done hidden" id="wlDone">
+            <h4>You're on the list.</h4>
+            <p>Lisa will be ready soon.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer><div class="container"><p><strong>L.I.S.a</strong></p><p>The future is not empty. She is becoming closer.</p><p style="margin-top:.5rem">lisa-is.com · 2026</p></div></footer>
-</body></html>
+<footer>
+  <div class="wrap f-in">
+    <div>
+      <div class="f-brand">L.I.S<span style="color:var(--acc)">.</span>a</div>
+      <div class="f-sig">She is here.</div>
+    </div>
+    <div>
+      <a class="f-mail" href="mailto:ivdolgov@gmail.com">ivdolgov@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+<!-- lightbox -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Close">✕</button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous">‹</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Next">›</button>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- header compact on scroll ---------- */
+  var hdr = document.getElementById('hdr'), ticking = false;
+  function onScroll(){
+    if(ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){
+      hdr.classList.toggle('compact', window.scrollY > 40);
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* ---------- reveal on view ---------- */
+  var rv = document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var sibs = Array.prototype.slice.call(e.target.parentNode.querySelectorAll(':scope > .rv'));
+          var i = Math.max(0, sibs.indexOf(e.target));
+          e.target.style.transitionDelay = Math.min(i, 6) * 90 + 'ms';
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
+    rv.forEach(function(el){ io.observe(el); });
+  } else {
+    rv.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- media placeholder -> hide when the real file loads ---------- */
+  document.querySelectorAll('.media > img').forEach(function(img){
+    var box = img.parentNode;
+    function ok(){ box.classList.add('is-loaded'); }
+    function bad(){ img.style.opacity = '0'; }
+    if(img.complete && img.naturalWidth > 0){ ok(); }
+    img.addEventListener('load', ok);
+    img.addEventListener('error', bad);
+  });
+
+  /* ---------- lazy video (poster first, load on approach) ---------- */
+  var vid = document.getElementById('lisaVideo');
+  if(vid){
+    function loadVideo(){
+      if(vid.dataset.loaded) return;
+      vid.dataset.loaded = '1';
+      vid.src = vid.dataset.src;
+      vid.addEventListener('loadeddata', function(){ vid.parentNode.classList.add('is-loaded'); });
+      vid.load();
+      var p = vid.play();
+      if(p && p.catch) p.catch(function(){});
+    }
+    if('IntersectionObserver' in window){
+      var vio = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting){ loadVideo(); vio.disconnect(); } });
+      }, {rootMargin:'350px 0px'});
+      vio.observe(vid);
+    } else { loadVideo(); }
+  }
+
+  /* ---------- subtle parallax on hero photo ---------- */
+  var heroImg = document.querySelector('.hero-media img');
+  if(heroImg && !reduce && window.innerWidth > 980){
+    var pTick = false;
+    window.addEventListener('scroll', function(){
+      if(pTick) return;
+      pTick = true;
+      requestAnimationFrame(function(){
+        var y = Math.min(window.scrollY, 700);
+        heroImg.style.transform = 'scale(1.06) translateY(' + (y * 0.035) + 'px)';
+        pTick = false;
+      });
+    }, {passive:true});
+  }
+
+  /* ---------- lightbox ---------- */
+  var items = Array.prototype.slice.call(document.querySelectorAll('.g-item'));
+  var lb = document.getElementById('lb'),
+      lbImg = document.getElementById('lbImg'),
+      lbPh = null, idx = 0;
+
+  var note = document.createElement('div');
+  note.className = 'lb-ph';
+  note.style.cssText = 'position:absolute;bottom:1.6rem;left:0;right:0;text-align:center';
+  lb.appendChild(note);
+
+  function show(i){
+    idx = (i + items.length) % items.length;
+    var f = items[idx], src = f.dataset.full;
+    lbImg.src = src;
+    lbImg.alt = (f.querySelector('img') || {}).alt || 'L.I.S.a';
+    note.textContent = src;
+    lbImg.onerror = function(){ lbImg.style.opacity = '0.15'; note.textContent = src + '  —  file not uploaded yet'; };
+    lbImg.onload = function(){ lbImg.style.opacity = '1'; };
+  }
+  function open(i){ show(i); lb.classList.add('open'); document.body.style.overflow = 'hidden'; document.getElementById('lbClose').focus(); }
+  function close(){ lb.classList.remove('open'); document.body.style.overflow = ''; lbImg.src = ''; }
+
+  items.forEach(function(f, i){
+    f.addEventListener('click', function(){ open(i); });
+    f.setAttribute('tabindex','0');
+    f.addEventListener('keydown', function(ev){ if(ev.key === 'Enter' || ev.key === ' '){ ev.preventDefault(); open(i); } });
+  });
+  document.getElementById('lbClose').addEventListener('click', close);
+  document.getElementById('lbPrev').addEventListener('click', function(){ show(idx - 1); });
+  document.getElementById('lbNext').addEventListener('click', function(){ show(idx + 1); });
+  lb.addEventListener('click', function(ev){ if(ev.target === lb) close(); });
+  document.addEventListener('keydown', function(ev){
+    if(!lb.classList.contains('open')) return;
+    if(ev.key === 'Escape') close();
+    if(ev.key === 'ArrowLeft') show(idx - 1);
+    if(ev.key === 'ArrowRight') show(idx + 1);
+  });
+
+  /* ---------- waitlist ----------
+     Needs no account: FormSubmit relays the submission to the project email.
+     The FIRST submission triggers an activation email to ivdolgov@gmail.com —
+     click it once, and every following submission is delivered.
+     Swap in your own endpoint (Formspree / own API) by changing WAITLIST_ENDPOINT. */
+  var WAITLIST_ENDPOINT = 'https://formsubmit.co/ajax/ivdolgov@gmail.com';
+  var CONTACT = 'ivdolgov@gmail.com';
+
+  var form = document.getElementById('wlForm'),
+      btn = document.getElementById('wlBtn'),
+      msg = document.getElementById('wlMsg'),
+      done = document.getElementById('wlDone');
+
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var email = document.getElementById('wlEmail').value.trim();
+    var which = (form.querySelector('input[name=which]:checked') || {}).value || 'NOT SURE';
+
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){
+      msg.className = 'form-msg err';
+      msg.textContent = 'Please enter a valid email.';
+      return;
+    }
+
+    msg.className = 'form-msg';
+    msg.textContent = 'Sending…';
+    btn.disabled = true;
+
+    fetch(WAITLIST_ENDPOINT, {
+      method:'POST',
+      headers:{'Content-Type':'application/json', 'Accept':'application/json'},
+      body: JSON.stringify({
+        email: email,
+        which: which,
+        _subject: 'L.I.S.a — new waitlist request'
+      })
+    }).then(function(r){
+      if(!r.ok) throw new Error('HTTP ' + r.status);
+      form.classList.add('hidden');
+      done.classList.remove('hidden');
+    }).catch(function(){
+      btn.disabled = false;
+      msg.className = 'form-msg err';
+      msg.innerHTML = 'Could not send right now — email us at <a href="mailto:' + CONTACT +
+                      '" style="border-bottom:1px solid var(--line-2)">' + CONTACT + '</a>.';
+    });
+  });
+})();
+</script>
+</body>
+</html>
