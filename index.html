@@ -388,7 +388,6 @@ footer{border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,4rem) 0}
       </div>
 
       <figure class="hero-media media rv" data-file="assets/hero.jpg">
-        <span class="ph-note" data-i18n="ph.hero">Hero photo — assets/hero.jpg</span>
         <img src="assets/hero.jpg" alt="L.I.S.a" width="1200" height="1500"
              fetchpriority="high" decoding="async">
       </figure>
@@ -402,7 +401,6 @@ footer{border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,4rem) 0}
       <p class="sec-sub rv" data-i18n="proof.sub">She is real.</p>
 
       <div class="video-shell media rv" data-file="assets/lisa-move.mp4">
-        <span class="ph-note" data-i18n="ph.video">Video — assets/lisa-move.mp4</span>
         <video id="lisaVideo"
                poster="assets/poster.jpg"
                muted loop playsinline controls
@@ -525,7 +523,7 @@ footer{border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,4rem) 0}
       <div class="f-sig" data-i18n="sig.here">She is here.</div>
     </div>
     <div>
-      <a class="f-mail" href="mailto:ivdolgov@gmail.com">ivdolgov@gmail.com</a>
+      <a class="f-mail" id="fMail" href="mailto:" rel="nofollow"></a>
     </div>
   </div>
 </footer>
@@ -890,11 +888,14 @@ footer{border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,4rem) 0}
 
   /* ---------- waitlist ----------
      Needs no account: FormSubmit relays the submission to the project email.
-     The FIRST submission triggers an activation email to ivdolgov@gmail.com —
-     click it once, and every following submission is delivered.
+     The address is stored base64-encoded so it never appears literally in the
+     page source (spam bots harvest plain emails from HTML).
      Swap in your own endpoint (Formspree / own API) by changing WAITLIST_ENDPOINT. */
-  var WAITLIST_ENDPOINT = 'https://formsubmit.co/ajax/ivdolgov@gmail.com';
-  var CONTACT = 'ivdolgov@gmail.com';
+  var CONTACT = atob('aXZkb2xnb3ZAZ21haWwuY29t');
+  var WAITLIST_ENDPOINT = 'https://formsubmit.co/ajax/' + CONTACT;
+
+  var fMail = document.getElementById('fMail');
+  if(fMail){ fMail.href = 'mailto:' + CONTACT; fMail.textContent = CONTACT; }
 
   var form = document.getElementById('wlForm'),
       btn = document.getElementById('wlBtn'),
