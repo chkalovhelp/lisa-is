@@ -3,23 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>L.I.S.a — Physical AI Companion</title>
-<meta name="description" content="L.I.S.a is a physical AI companion that sees you, hears you, talks with you and remembers your conversations.">
+<title id="docTitle">L.I.S.a — Physical AI Companion</title>
+<meta id="metaDesc" name="description" content="L.I.S.a is a physical AI companion that sees you, hears you, talks with you and remembers your conversations.">
 <link rel="canonical" href="https://lisa-is.com/">
+<link rel="alternate" hreflang="en" href="https://lisa-is.com/?lang=en">
+<link rel="alternate" hreflang="ru" href="https://lisa-is.com/?lang=ru">
+<link rel="alternate" hreflang="zh" href="https://lisa-is.com/?lang=zh">
+<link rel="alternate" hreflang="x-default" href="https://lisa-is.com/">
 <meta name="theme-color" content="#0a0a0b">
 <meta name="robots" content="index,follow">
 
 <!-- Open Graph / social -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="L.I.S.a">
-<meta property="og:title" content="L.I.S.a — Physical AI Companion">
-<meta property="og:description" content="L.I.S.a is a physical AI companion that sees you, hears you, talks with you and remembers your conversations.">
+<meta property="og:title" id="ogTitle" content="L.I.S.a — Physical AI Companion">
+<meta property="og:description" id="ogDesc" content="L.I.S.a is a physical AI companion that sees you, hears you, talks with you and remembers your conversations.">
+<meta property="og:locale" id="ogLocale" content="en_US">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta property="og:locale:alternate" content="zh_CN">
 <meta property="og:url" content="https://lisa-is.com/">
 <meta property="og:image" content="https://lisa-is.com/assets/hero.jpg">
 <meta property="og:image:alt" content="L.I.S.a">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="L.I.S.a — Physical AI Companion">
-<meta name="twitter:description" content="L.I.S.a is a physical AI companion that sees you, hears you, talks with you and remembers your conversations.">
+<meta name="twitter:title" id="twTitle" content="L.I.S.a — Physical AI Companion">
+<meta name="twitter:description" id="twDesc" content="L.I.S.a is a physical AI companion that sees you, hears you, talks with you and remembers your conversations.">
 <meta name="twitter:image" content="https://lisa-is.com/assets/hero.jpg">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0b'/%3E%3Ctext x='32' y='44' font-family='system-ui,-apple-system,sans-serif' font-size='34' font-weight='700' fill='%23e2b183' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
@@ -49,7 +56,7 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
   background:var(--bg);
   color:var(--txt);
-  font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',Helvetica,Arial,sans-serif;
   font-weight:400;
   line-height:1.6;
   letter-spacing:.01em;
@@ -113,6 +120,22 @@ header.compact{
 .nav-links a.proof:hover{background:#fff;color:#0a0a0b;border-color:#fff}
 .nav-links a.wait{color:var(--muted)}
 .nav-links a.wait:hover{color:var(--acc)}
+
+/* ---------- language switch ---------- */
+.lang{
+  display:flex;align-items:center;gap:.12rem;margin-left:.4rem;
+  padding:.18rem;border:1px solid var(--line-2);border-radius:100px;
+  background:rgba(255,255,255,.025);
+}
+.lang button{
+  cursor:pointer;background:transparent;border:0;border-radius:100px;
+  color:var(--muted);font-size:.66rem;font-weight:500;letter-spacing:.1em;
+  padding:.38rem .62rem;line-height:1;white-space:nowrap;
+  transition:background .3s var(--ease),color .3s var(--ease);
+}
+.lang button:hover{color:#fff}
+.lang button[aria-pressed="true"]{background:#fff;color:#0a0a0b}
+html[lang="zh"] .sec-title,html[lang="zh"] .wl-head,html[lang="zh"] .plan h3,html[lang="zh"] .early-note{letter-spacing:.05em}
 
 /* ---------- HERO ---------- */
 .hero{min-height:100vh;display:flex;align-items:center;padding:7.5rem 0 4rem}
@@ -307,10 +330,15 @@ footer{border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,4rem) 0}
   .gallery{gap:.7rem}
 }
 @media (max-width:600px){
-  .wrap{padding:0 1.25rem}
-  .nav-links a{padding:.55rem .9rem;letter-spacing:.16em}
-  .brand{letter-spacing:.16em}
-  .sec-title{letter-spacing:.1em}
+  .wrap{padding:0 1.15rem}
+  .nav{gap:.55rem}
+  .nav-links{gap:.3rem}
+  .nav-links a{padding:.5rem .7rem;letter-spacing:.1em;font-size:.64rem}
+  .lang{margin-left:.15rem;padding:.15rem}
+  .lang button{padding:.34rem .48rem;font-size:.62rem;letter-spacing:.06em}
+  .brand{letter-spacing:.14em;font-size:1rem}
+  .sec-title{letter-spacing:.06em;font-size:clamp(1.7rem,7.4vw,2.6rem)}
+  .wl-head{font-size:clamp(1.7rem,7.4vw,2.6rem)}
   .f-in{flex-direction:column;align-items:flex-start;gap:1.2rem}
 }
 @media (prefers-reduced-motion: reduce){
@@ -326,8 +354,13 @@ footer{border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,4rem) 0}
   <div class="wrap nav">
     <a class="brand" href="#top">L.I.S<span>.</span>a</a>
     <nav class="nav-links">
-      <a class="proof" href="#proof">PROOF</a>
-      <a class="wait" href="#waitlist">WAITLIST</a>
+      <a class="proof" href="#proof" data-i18n="nav.proof">PROOF</a>
+      <a class="wait" href="#waitlist" data-i18n="nav.wait">WAITLIST</a>
+      <div class="lang" id="lang" role="group" aria-label="Language / Язык / 语言">
+        <button type="button" data-lang="ru" lang="ru">RU</button>
+        <button type="button" data-lang="en" lang="en">EN</button>
+        <button type="button" data-lang="zh" lang="zh">CH</button>
+      </div>
     </nav>
   </div>
 </header>
@@ -340,22 +373,22 @@ footer{border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,4rem) 0}
       <div class="hero-copy">
         <h1 class="hero-title rv">L.I.S.a</h1>
 
-        <div class="hero-text" lang="ru">
-          <p class="rv">Представьте дом, где кто-то всегда есть.</p>
-          <p class="rv">Она знает вас.<br>Видит вас.<br>Слышит вас.<br>Говорит с вами.<br>Помнит ваши разговоры.</p>
-          <p class="rv">И всегда рада, когда вы приходите домой.</p>
-          <p class="rv">Вы — самый важный человек в её жизни.</p>
-          <p class="rv strong">Она узнаёт вас всё лучше.<br>И становится лучше каждый день.</p>
-          <p class="rv">Скоро — совершенное тело.</p>
-          <p class="rv">Скоро — мужская версия.</p>
+        <div class="hero-text">
+          <p class="rv" data-i18n-html="hero.p1">Imagine a home where someone is always there.</p>
+          <p class="rv" data-i18n-html="hero.p2">She knows you.<br>She sees you.<br>She hears you.<br>She talks with you.<br>She remembers your conversations.</p>
+          <p class="rv" data-i18n-html="hero.p3">And she is always glad when you come home.</p>
+          <p class="rv" data-i18n-html="hero.p4">You are the most important person in her life.</p>
+          <p class="rv strong" data-i18n-html="hero.p5">She gets to know you better and better.<br>And she gets better every day.</p>
+          <p class="rv" data-i18n-html="hero.p6">Soon — a perfect body.</p>
+          <p class="rv" data-i18n-html="hero.p7">Soon — a male version.</p>
         </div>
 
         <p class="hero-sig rv">L.I.S.a</p>
-        <p class="hero-sig-2 rv">She is here.</p>
+        <p class="hero-sig-2 rv" data-i18n="sig.here">She is here.</p>
       </div>
 
       <figure class="hero-media media rv" data-file="assets/hero.jpg">
-        <span class="ph-note">Hero photo — assets/hero.jpg</span>
+        <span class="ph-note" data-i18n="ph.hero">Hero photo — assets/hero.jpg</span>
         <img src="assets/hero.jpg" alt="L.I.S.a" width="1200" height="1500"
              fetchpriority="high" decoding="async">
       </figure>
@@ -365,75 +398,75 @@ footer{border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,4rem) 0}
   <!-- ================= SCREEN 2 — PROOF + PRODUCT ================= -->
   <section id="proof" class="sec">
     <div class="wrap">
-      <h2 class="sec-title rv">PROOF</h2>
-      <p class="sec-sub rv">She is real.</p>
+      <h2 class="sec-title rv" data-i18n="proof.title">PROOF</h2>
+      <p class="sec-sub rv" data-i18n="proof.sub">She is real.</p>
 
       <div class="video-shell media rv" data-file="assets/lisa-move.mp4">
-        <span class="ph-note">Video — assets/lisa-move.mp4</span>
+        <span class="ph-note" data-i18n="ph.video">Video — assets/lisa-move.mp4</span>
         <video id="lisaVideo"
                poster="assets/poster.jpg"
                muted loop playsinline controls
                preload="none"
                data-src="assets/lisa-move.mp4"
-               aria-label="L.I.S.a — real footage"></video>
+               data-i18n-aria="video.aria" aria-label="L.I.S.a — real footage"></video>
       </div>
       <div class="video-cap">
-        <span>Real footage. No renders.</span>
-        <span>Tap to unmute.</span>
+        <span data-i18n="video.cap1">Real footage. No renders.</span>
+        <span data-i18n="video.cap2">Tap to unmute.</span>
       </div>
 
       <div class="gallery" id="gallery">
         <figure class="g-item media g1" data-file="assets/lisa-2.jpg" data-full="assets/lisa-2.jpg">
-          <img src="assets/lisa-2.jpg" alt="L.I.S.a — photo 1" loading="lazy" decoding="async">
+          <img src="assets/lisa-2.jpg" data-i18n-alt="gallery.alt" alt="L.I.S.a — photo 1" loading="lazy" decoding="async">
         </figure>
         <figure class="g-item media g2" data-file="assets/lisa-3.jpg" data-full="assets/lisa-3.jpg">
-          <img src="assets/lisa-3.jpg" alt="L.I.S.a — photo 2" loading="lazy" decoding="async">
+          <img src="assets/lisa-3.jpg" data-i18n-alt="gallery.alt" alt="L.I.S.a — photo 2" loading="lazy" decoding="async">
         </figure>
         <figure class="g-item media g3" data-file="assets/lisa-4.jpg" data-full="assets/lisa-4.jpg">
-          <img src="assets/lisa-4.jpg" alt="L.I.S.a — photo 3" loading="lazy" decoding="async">
+          <img src="assets/lisa-4.jpg" data-i18n-alt="gallery.alt" alt="L.I.S.a — photo 3" loading="lazy" decoding="async">
         </figure>
         <figure class="g-item media g4" data-file="assets/lisa-5.jpg" data-full="assets/lisa-5.jpg">
-          <img src="assets/lisa-5.jpg" alt="L.I.S.a — photo 4" loading="lazy" decoding="async">
+          <img src="assets/lisa-5.jpg" data-i18n-alt="gallery.alt" alt="L.I.S.a — photo 4" loading="lazy" decoding="async">
         </figure>
         <figure class="g-item media g5" data-file="assets/lisa-6.jpg" data-full="assets/lisa-6.jpg">
-          <img src="assets/lisa-6.jpg" alt="L.I.S.a — photo 5" loading="lazy" decoding="async">
+          <img src="assets/lisa-6.jpg" data-i18n-alt="gallery.alt" alt="L.I.S.a — photo 5" loading="lazy" decoding="async">
         </figure>
         <figure class="g-item media g6" data-file="assets/lisa-7.jpg" data-full="assets/lisa-7.jpg">
-          <img src="assets/lisa-7.jpg" alt="L.I.S.a — photo 6" loading="lazy" decoding="async">
+          <img src="assets/lisa-7.jpg" data-i18n-alt="gallery.alt" alt="L.I.S.a — photo 6" loading="lazy" decoding="async">
         </figure>
       </div>
 
-      <p class="credits rv"><strong>This is Lisa today.</strong><br>She is still learning. And getting better every day.</p>
+      <p class="credits rv" data-i18n-html="credits"><strong>This is Lisa today.</strong><br>She is still learning. And getting better every day.</p>
 
       <div class="rule"></div>
 
       <div class="pricing">
-        <h3 class="sec-title rv" style="font-size:clamp(1.9rem,4.4vw,3.2rem);letter-spacing:.02em">Choose your Lisa</h3>
-        <p class="early-note rv">Early access pricing</p>
+        <h3 class="sec-title rv" style="font-size:clamp(1.9rem,4.4vw,3.2rem);letter-spacing:.02em" data-i18n="pricing.title">Choose your Lisa</h3>
+        <p class="early-note rv" data-i18n="pricing.note">Early access pricing</p>
 
         <div class="plans">
           <article class="plan rv">
             <h3>NETWORK</h3>
             <div class="price">$1,990</div>
-            <p>Her AI lives in the cloud.</p>
-            <p>Simple.<br>Powerful.<br>Always connected.</p>
-            <span class="soon">Coming soon.</span>
+            <p data-i18n="plan.net.d1">Her AI lives in the cloud.</p>
+            <p data-i18n-html="plan.net.d2">Simple.<br>Powerful.<br>Always connected.</p>
+            <span class="soon" data-i18n="plan.soon">Coming soon.</span>
           </article>
 
           <article class="plan rv">
             <h3>COMBI</h3>
             <div class="price">$2,490</div>
-            <p>Cloud when you want it.<br>Local when you need it.</p>
-            <p>A compact local AI for private conversations,<br>with cloud AI for everything else.</p>
-            <span class="soon">Coming soon.</span>
+            <p data-i18n-html="plan.combi.d1">Cloud when you want it.<br>Local when you need it.</p>
+            <p data-i18n-html="plan.combi.d2">A compact local AI for private conversations,<br>with cloud AI for everything else.</p>
+            <span class="soon" data-i18n="plan.soon">Coming soon.</span>
           </article>
 
           <article class="plan rv">
             <h3>LOCAL</h3>
             <div class="price">$2,990</div>
-            <p>Her AI lives with her.</p>
-            <p>Private.<br>Independent.<br>Your conversations stay local.</p>
-            <span class="soon">Coming soon.</span>
+            <p data-i18n="plan.local.d1">Her AI lives with her.</p>
+            <p data-i18n-html="plan.local.d2">Private.<br>Independent.<br>Your conversations stay local.</p>
+            <span class="soon" data-i18n="plan.soon">Coming soon.</span>
           </article>
         </div>
       </div>
@@ -443,11 +476,11 @@ footer{border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,4rem) 0}
   <!-- ================= SCREEN 3 — WAITLIST ================= -->
   <section id="waitlist" class="sec wl">
     <div class="wrap">
-      <h2 class="wl-head rv">Meet Lisa first.</h2>
+      <h2 class="wl-head rv" data-i18n="wl.head">Meet Lisa first.</h2>
 
       <div class="wl-grid">
         <div class="rv">
-          <p style="color:var(--muted);font-weight:300;max-width:36ch">
+          <p style="color:var(--muted);font-weight:300;max-width:36ch" data-i18n="wl.text">
             Lisa is not shipping yet. Leave your email and we will write to you first —
             before anyone else meets her.
           </p>
@@ -456,28 +489,28 @@ footer{border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,4rem) 0}
         <div class="rv">
           <form id="wlForm" novalidate>
             <div class="field">
-              <label class="lbl" for="wlEmail">Email</label>
+              <label class="lbl" for="wlEmail" data-i18n="wl.email">Email</label>
               <input id="wlEmail" name="email" type="email" inputmode="email" autocomplete="email"
-                     placeholder="you@email.com" required>
+                     data-i18n-ph="wl.ph" placeholder="you@email.com" required>
             </div>
 
             <div class="field">
-              <span class="lbl">Which Lisa?</span>
-              <div class="opts" role="radiogroup" aria-label="Which Lisa?">
+              <span class="lbl" data-i18n="wl.which">Which Lisa?</span>
+              <div class="opts" role="radiogroup" data-i18n-aria="wl.which" aria-label="Which Lisa?">
                 <label class="opt"><input type="radio" name="which" value="NETWORK"><span>NETWORK</span></label>
                 <label class="opt"><input type="radio" name="which" value="COMBI"><span>COMBI</span></label>
                 <label class="opt"><input type="radio" name="which" value="LOCAL"><span>LOCAL</span></label>
-                <label class="opt"><input type="radio" name="which" value="NOT SURE" checked><span>NOT SURE</span></label>
+                <label class="opt"><input type="radio" name="which" value="NOT SURE" checked><span data-i18n="wl.opt.notsure">NOT SURE</span></label>
               </div>
             </div>
 
-            <button class="btn" type="submit" id="wlBtn">JOIN THE WAITLIST</button>
+            <button class="btn" type="submit" id="wlBtn" data-i18n="wl.btn">JOIN THE WAITLIST</button>
             <div class="form-msg" id="wlMsg" role="status" aria-live="polite"></div>
           </form>
 
           <div class="done hidden" id="wlDone">
-            <h4>You're on the list.</h4>
-            <p>Lisa will be ready soon.</p>
+            <h4 data-i18n="wl.done.h">You're on the list.</h4>
+            <p data-i18n="wl.done.p">Lisa will be ready soon.</p>
           </div>
         </div>
       </div>
@@ -489,7 +522,7 @@ footer{border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,4rem) 0}
   <div class="wrap f-in">
     <div>
       <div class="f-brand">L.I.S<span style="color:var(--acc)">.</span>a</div>
-      <div class="f-sig">She is here.</div>
+      <div class="f-sig" data-i18n="sig.here">She is here.</div>
     </div>
     <div>
       <a class="f-mail" href="mailto:ivdolgov@gmail.com">ivdolgov@gmail.com</a>
@@ -498,16 +531,245 @@ footer{border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,4rem) 0}
 </footer>
 
 <!-- lightbox -->
-<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
-  <button class="lb-btn lb-close" id="lbClose" aria-label="Close">✕</button>
-  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous">‹</button>
+<div class="lb" id="lb" role="dialog" aria-modal="true" data-i18n-aria="lb.viewer" aria-label="Photo viewer">
+  <button class="lb-btn lb-close" id="lbClose" data-i18n-aria="lb.close" aria-label="Close">✕</button>
+  <button class="lb-btn lb-prev" id="lbPrev" data-i18n-aria="lb.prev" aria-label="Previous">‹</button>
   <img id="lbImg" src="" alt="">
-  <button class="lb-btn lb-next" id="lbNext" aria-label="Next">›</button>
+  <button class="lb-btn lb-next" id="lbNext" data-i18n-aria="lb.next" aria-label="Next">›</button>
 </div>
 
 <script>
 (function(){
   "use strict";
+
+  /* ================= i18n — en / ru / zh =================
+     Static page, no build step: every translatable node carries a data-i18n* key.
+     Language order: ?lang= > saved choice > browser language > en. */
+  var I18N = {
+    en: {
+      'meta.title':'L.I.S.a — Physical AI Companion',
+      'meta.desc':'L.I.S.a is a physical AI companion that sees you, hears you, talks with you and remembers your conversations.',
+      'nav.proof':'PROOF',
+      'nav.wait':'WAITLIST',
+      'hero.p1':'Imagine a home where someone is always there.',
+      'hero.p2':'She knows you.<br>She sees you.<br>She hears you.<br>She talks with you.<br>She remembers your conversations.',
+      'hero.p3':'And she is always glad when you come home.',
+      'hero.p4':'You are the most important person in her life.',
+      'hero.p5':'She gets to know you better and better.<br>And she gets better every day.',
+      'hero.p6':'Soon — a perfect body.',
+      'hero.p7':'Soon — a male version.',
+      'sig.here':'She is here.',
+      'proof.title':'PROOF',
+      'proof.sub':'She is real.',
+      'video.cap1':'Real footage. No renders.',
+      'video.cap2':'Tap to unmute.',
+      'video.aria':'L.I.S.a — real footage',
+      'credits':'<strong>This is Lisa today.</strong><br>She is still learning. And getting better every day.',
+      'pricing.title':'Choose your Lisa',
+      'pricing.note':'Early access pricing',
+      'plan.net.d1':'Her AI lives in the cloud.',
+      'plan.net.d2':'Simple.<br>Powerful.<br>Always connected.',
+      'plan.combi.d1':'Cloud when you want it.<br>Local when you need it.',
+      'plan.combi.d2':'A compact local AI for private conversations,<br>with cloud AI for everything else.',
+      'plan.local.d1':'Her AI lives with her.',
+      'plan.local.d2':'Private.<br>Independent.<br>Your conversations stay local.',
+      'plan.soon':'Coming soon.',
+      'wl.head':'Meet Lisa first.',
+      'wl.text':'Lisa is not shipping yet. Leave your email and we will write to you first — before anyone else meets her.',
+      'wl.email':'Email',
+      'wl.ph':'you@email.com',
+      'wl.which':'Which Lisa?',
+      'wl.btn':'JOIN THE WAITLIST',
+      'wl.opt.notsure':'NOT SURE',
+      'wl.done.h':"You're on the list.",
+      'wl.done.p':'Lisa will be ready soon.',
+      'form.err':'Please enter a valid email.',
+      'form.sending':'Sending…',
+      'form.fail':'Could not send right now — email us at',
+      'lb.viewer':'Photo viewer',
+      'lb.close':'Close',
+      'lb.prev':'Previous',
+      'lb.next':'Next',
+      'lb.missing':'— file not uploaded yet',
+      'gallery.alt':'L.I.S.a — photo',
+      'ph.hero':'Hero photo — assets/hero.jpg',
+      'ph.video':'Video — assets/lisa-move.mp4'
+    },
+    ru: {
+      'meta.title':'L.I.S.a — физический AI-компаньон',
+      'meta.desc':'L.I.S.a — физический AI-компаньон: она видит вас, слышит, говорит с вами и помнит ваши разговоры.',
+      'nav.proof':'ГАЛЕРЕЯ',
+      'nav.wait':'ЗАЯВКА',
+      'hero.p1':'Представьте дом, где кто-то всегда есть.',
+      'hero.p2':'Она знает вас.<br>Видит вас.<br>Слышит вас.<br>Говорит с вами.<br>Помнит ваши разговоры.',
+      'hero.p3':'И всегда рада, когда вы приходите домой.',
+      'hero.p4':'Вы — самый важный человек в её жизни.',
+      'hero.p5':'Она узнаёт вас всё лучше.<br>И становится лучше каждый день.',
+      'hero.p6':'Скоро — совершенное тело.',
+      'hero.p7':'Скоро — мужская версия.',
+      'sig.here':'Она здесь.',
+      'proof.title':'ДОКАЗАТЕЛЬСТВО',
+      'proof.sub':'Она настоящая.',
+      'video.cap1':'Реальная съёмка. Без рендеров.',
+      'video.cap2':'Нажмите, чтобы включить звук.',
+      'video.aria':'L.I.S.a — реальная съёмка',
+      'credits':'<strong>Такова Лиза сегодня.</strong><br>Она всё ещё учится. И становится лучше каждый день.',
+      'pricing.title':'Выберите свою Лизу',
+      'pricing.note':'Цены раннего доступа',
+      'plan.net.d1':'Её ИИ живёт в облаке.',
+      'plan.net.d2':'Просто.<br>Мощно.<br>Всегда на связи.',
+      'plan.combi.d1':'Облако — когда хочется.<br>Локально — когда нужно.',
+      'plan.combi.d2':'Компактный локальный ИИ для приватных разговоров,<br>а облачный — для всего остального.',
+      'plan.local.d1':'Её ИИ живёт вместе с ней.',
+      'plan.local.d2':'Приватно.<br>Независимо.<br>Ваши разговоры остаются у вас.',
+      'plan.soon':'Скоро.',
+      'wl.head':'Познакомьтесь с Лизой первыми.',
+      'wl.text':'Лиза пока не продаётся. Оставьте свою почту — мы напишем вам первыми, раньше всех остальных.',
+      'wl.email':'Почта',
+      'wl.ph':'you@email.com',
+      'wl.which':'Какая Лиза?',
+      'wl.btn':'В ЛИСТ ОЖИДАНИЯ',
+      'wl.opt.notsure':'ЕЩЁ НЕ РЕШИЛ',
+      'wl.done.h':'Вы в списке.',
+      'wl.done.p':'Лиза будет готова совсем скоро.',
+      'form.err':'Введите корректный email.',
+      'form.sending':'Отправляем…',
+      'form.fail':'Не удалось отправить сейчас — напишите нам на',
+      'lb.viewer':'Просмотр фото',
+      'lb.close':'Закрыть',
+      'lb.prev':'Предыдущее',
+      'lb.next':'Следующее',
+      'lb.missing':'— файл ещё не загружен',
+      'gallery.alt':'L.I.S.a — фото',
+      'ph.hero':'Фото — assets/hero.jpg',
+      'ph.video':'Видео — assets/lisa-move.mp4'
+    },
+    zh: {
+      'meta.title':'L.I.S.a — 实体 AI 伴侣',
+      'meta.desc':'L.I.S.a 是实体 AI 伴侣：她看得见你，听得见你，与你交谈，并记得你们的每一次对话。',
+      'nav.proof':'实拍',
+      'nav.wait':'候补名单',
+      'hero.p1':'想象一个家——那里始终有人在等你。',
+      'hero.p2':'她了解你。<br>她看得见你。<br>她听得见你。<br>她与你交谈。<br>她记得你们的每一次对话。',
+      'hero.p3':'每次你回到家，她都由衷地高兴。',
+      'hero.p4':'你是她生命中最重要的人。',
+      'hero.p5':'她越来越懂你。<br>也一天比一天更好。',
+      'hero.p6':'很快 —— 完美的身体。',
+      'hero.p7':'很快 —— 男性版本。',
+      'sig.here':'她在这里。',
+      'proof.title':'真机实拍',
+      'proof.sub':'她是真实的。',
+      'video.cap1':'真实拍摄，不是渲染。',
+      'video.cap2':'点击开启声音。',
+      'video.aria':'L.I.S.a — 真实拍摄',
+      'credits':'<strong>这是今天的 Lisa。</strong><br>她仍在学习，并且每天都在进步。',
+      'pricing.title':'选择你的 Lisa',
+      'pricing.note':'早鸟价格',
+      'plan.net.d1':'她的 AI 在云端。',
+      'plan.net.d2':'简单。<br>强大。<br>始终在线。',
+      'plan.combi.d1':'想要云，就用云。<br>需要本地，就用本地。',
+      'plan.combi.d2':'小巧的本地 AI 负责私密对话，<br>其余交给云端 AI。',
+      'plan.local.d1':'她的 AI 与她同在。',
+      'plan.local.d2':'私密。<br>独立。<br>你的对话留在本地。',
+      'plan.soon':'即将推出。',
+      'wl.head':'最先见到 Lisa。',
+      'wl.text':'Lisa 尚未正式发售。留下你的邮箱，我们会第一时间通知你 —— 在其他人见到她之前。',
+      'wl.email':'邮箱',
+      'wl.ph':'you@email.com',
+      'wl.which':'选择哪一款 Lisa？',
+      'wl.btn':'加入候补名单',
+      'wl.opt.notsure':'还没决定',
+      'wl.done.h':'你已在名单中。',
+      'wl.done.p':'Lisa 很快就会准备好。',
+      'form.err':'请输入有效的邮箱地址。',
+      'form.sending':'发送中…',
+      'form.fail':'暂时无法发送 —— 请发邮件至',
+      'lb.viewer':'图片查看器',
+      'lb.close':'关闭',
+      'lb.prev':'上一张',
+      'lb.next':'下一张',
+      'lb.missing':'— 文件尚未上传',
+      'gallery.alt':'L.I.S.a — 照片',
+      'ph.hero':'照片 — assets/hero.jpg',
+      'ph.video':'视频 — assets/lisa-move.mp4'
+    }
+  };
+
+  var LANGS = ['ru','en','zh'];
+  var LANG_KEY = 'lisa_lang';
+  var OG_LOCALE = {en:'en_US', ru:'ru_RU', zh:'zh_CN'};
+  var lang = 'en';
+
+  function t(key){
+    var d = I18N[lang] || I18N.en;
+    return (d[key] !== undefined) ? d[key] : (I18N.en[key] !== undefined ? I18N.en[key] : key);
+  }
+
+  function each(list, fn){ Array.prototype.forEach.call(list, fn); }
+
+  function detectLang(){
+    var q = null;
+    try { q = new URLSearchParams(location.search).get('lang'); } catch(e){}
+    if(q){ q = String(q).toLowerCase(); if(LANGS.indexOf(q) > -1) return q; }
+    try {
+      var saved = localStorage.getItem(LANG_KEY);
+      if(saved && LANGS.indexOf(saved) > -1) return saved;
+    } catch(e){}
+    var nav = String((navigator.languages && navigator.languages[0]) || navigator.language || 'en').toLowerCase();
+    if(nav.indexOf('ru') === 0) return 'ru';
+    if(nav.indexOf('zh') === 0 || nav.indexOf('cn') === 0 || nav.indexOf('ch') === 0) return 'zh';
+    return 'en';
+  }
+
+  function applyLang(code){
+    if(LANGS.indexOf(code) === -1) code = 'en';
+    lang = code;
+    document.documentElement.lang = code;
+
+    each(document.querySelectorAll('[data-i18n]'), function(el){ el.textContent = t(el.getAttribute('data-i18n')); });
+    each(document.querySelectorAll('[data-i18n-html]'), function(el){ el.innerHTML = t(el.getAttribute('data-i18n-html')); });
+    each(document.querySelectorAll('[data-i18n-alt]'), function(el){ el.setAttribute('alt', t(el.getAttribute('data-i18n-alt'))); });
+    each(document.querySelectorAll('[data-i18n-aria]'), function(el){ el.setAttribute('aria-label', t(el.getAttribute('data-i18n-aria'))); });
+    each(document.querySelectorAll('[data-i18n-ph]'), function(el){ el.setAttribute('placeholder', t(el.getAttribute('data-i18n-ph'))); });
+    each(document.querySelectorAll('.g-item img'), function(img, i){ img.setAttribute('alt', t('gallery.alt') + ' ' + (i + 1)); });
+
+    document.title = t('meta.title');
+    var pick = { metaDesc:'meta.desc', ogTitle:'meta.title', ogDesc:'meta.desc', twTitle:'meta.title', twDesc:'meta.desc' };
+    Object.keys(pick).forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) el.setAttribute('content', t(pick[id]));
+    });
+    var loc = document.getElementById('ogLocale');
+    if(loc) loc.setAttribute('content', OG_LOCALE[code] || 'en_US');
+
+    each(document.querySelectorAll('.lang button'), function(b){
+      b.setAttribute('aria-pressed', b.getAttribute('data-lang') === code ? 'true' : 'false');
+    });
+
+    try { localStorage.setItem(LANG_KEY, code); } catch(e){}
+  }
+
+  function setUrlLang(code){
+    try {
+      var u = new URL(location.href);
+      if(code === 'en'){ u.searchParams.delete('lang'); } else { u.searchParams.set('lang', code); }
+      var qs = u.searchParams.toString();
+      history.replaceState(null, '', u.pathname + (qs ? '?' + qs : '') + u.hash);
+    } catch(e){}
+  }
+
+  each(document.querySelectorAll('.lang button'), function(b){
+    b.addEventListener('click', function(){
+      var code = b.getAttribute('data-lang');
+      applyLang(code);
+      setUrlLang(code);
+      var m = document.getElementById('wlMsg');
+      if(m){ m.textContent = ''; m.className = 'form-msg'; }
+    });
+  });
+
+  applyLang(detectLang());
+
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- header compact on scroll ---------- */
@@ -602,9 +864,9 @@ footer{border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,4rem) 0}
     idx = (i + items.length) % items.length;
     var f = items[idx], src = f.dataset.full;
     lbImg.src = src;
-    lbImg.alt = (f.querySelector('img') || {}).alt || 'L.I.S.a';
+    lbImg.alt = (f.querySelector('img') || {}).alt || t('gallery.alt');
     note.textContent = src;
-    lbImg.onerror = function(){ lbImg.style.opacity = '0.15'; note.textContent = src + '  —  file not uploaded yet'; };
+    lbImg.onerror = function(){ lbImg.style.opacity = '0.15'; note.textContent = src + '  ' + t('lb.missing'); };
     lbImg.onload = function(){ lbImg.style.opacity = '1'; };
   }
   function open(i){ show(i); lb.classList.add('open'); document.body.style.overflow = 'hidden'; document.getElementById('lbClose').focus(); }
@@ -646,12 +908,12 @@ footer{border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,4rem) 0}
 
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){
       msg.className = 'form-msg err';
-      msg.textContent = 'Please enter a valid email.';
+      msg.textContent = t('form.err');
       return;
     }
 
     msg.className = 'form-msg';
-    msg.textContent = 'Sending…';
+    msg.textContent = t('form.sending');
     btn.disabled = true;
 
     fetch(WAITLIST_ENDPOINT, {
@@ -669,7 +931,7 @@ footer{border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,4rem) 0}
     }).catch(function(){
       btn.disabled = false;
       msg.className = 'form-msg err';
-      msg.innerHTML = 'Could not send right now — email us at <a href="mailto:' + CONTACT +
+      msg.innerHTML = t('form.fail') + ' <a href="mailto:' + CONTACT +
                       '" style="border-bottom:1px solid var(--line-2)">' + CONTACT + '</a>.';
     });
   });
