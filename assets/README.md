@@ -3,24 +3,25 @@
 Drop your real files here with **exactly these names** — the site picks them up automatically.
 Nothing here is generated: until a file exists, the site shows a styled placeholder with the file name.
 
-| File | Where it appears | Notes |
+| File | Where it appears | Status |
 |---|---|---|
-| `assets/hero.jpg` | Screen 1 — hero, 2/3 of the viewport | Your main photo. Also used as the social preview (Open Graph) image. Portrait orientation works best (e.g. 1200×1500). |
-| `assets/lisa-2.jpg` | Proof gallery — tile 1 (tall) | Portrait, e.g. 1200×1500 |
-| `assets/lisa-3.jpg` | Proof gallery — tile 2 (square) | e.g. 1200×1200 |
-| `assets/lisa-4.jpg` | Proof gallery — tile 3 (portrait) | e.g. 1200×1600 |
-| `assets/lisa-5.jpg` | Proof gallery — tile 4 (wide) | e.g. 1600×1000 |
-| `assets/lisa-6.jpg` | Proof gallery — tile 5 (full-width) | e.g. 2000×857 |
-| `assets/poster.jpg` | Video poster frame | A still from the video, 16:9, e.g. 1600×900 |
+| `assets/hero.jpg` | Screen 1 — hero photo (also the social/Open Graph preview) | ✅ uploaded |
+| `assets/lisa-move.mp4` | PROOF — "see her move" video (portrait 720×1280) | ✅ uploaded |
+| `assets/poster.jpg` | Poster frame for the video | ✅ uploaded |
+| `assets/lisa-2.jpg` | Proof gallery — tile 1 (tall, ~4:5) | ⬜ waiting |
+| `assets/lisa-3.jpg` | Proof gallery — tile 2 (square, ~1:1) | ⬜ waiting |
+| `assets/lisa-4.jpg` | Proof gallery — tile 3 (portrait, ~3:4) | ⬜ waiting |
+| `assets/lisa-5.jpg` | Proof gallery — tile 4 (wide, ~16:10) | ⬜ waiting |
+| `assets/lisa-6.jpg` | Proof gallery — tile 5 (full-width, ~21:9) | ⬜ waiting |
 
 ## Video
 
-The site plays `lisa-intro.mp4` from the repository root (already present).
-To use a different file, either replace `lisa-intro.mp4`, or edit the `data-src` / `poster`
-attributes of `<video id="lisaVideo">` in `index.html`.
+The site plays `assets/lisa-move.mp4`, muted-autoplay on scroll, with native controls so a
+visitor can unmute. It is lazy-loaded: nothing is fetched until the PROOF section is approached.
+The poster frame is shown first, so the section never looks empty.
 
-Recommended: H.264 MP4, 1080p, audio, under ~15 MB. Poster + lazy loading are already wired,
-so the video is not downloaded until the visitor scrolls to the PROOF section.
+To swap the video later, replace `assets/lisa-move.mp4` (and optionally `poster.jpg`) —
+no code change needed. Recommended: H.264 MP4 with `-movflags +faststart`, under ~10 MB.
 
 ## Tips
 
