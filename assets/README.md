@@ -1,18 +1,21 @@
 # Media assets for lisa-is.com
 
-Drop your real files here with **exactly these names** — the site picks them up automatically.
-Nothing here is generated: until a file exists, the site shows a styled placeholder with the file name.
+Real files only — the site picks them up automatically.
+Nothing here is generated: no AI images, no stock, no renders.
 
 | File | Where it appears | Status |
 |---|---|---|
-| `assets/hero.jpg` | Screen 1 — hero photo (also the social/Open Graph preview) | ✅ uploaded |
-| `assets/lisa-move.mp4` | PROOF — "see her move" video (portrait 720×1280) | ✅ uploaded |
-| `assets/poster.jpg` | Poster frame for the video | ✅ uploaded |
-| `assets/lisa-2.jpg` | Proof gallery — tile 1 (tall, ~4:5) | ⬜ waiting |
-| `assets/lisa-3.jpg` | Proof gallery — tile 2 (square, ~1:1) | ⬜ waiting |
-| `assets/lisa-4.jpg` | Proof gallery — tile 3 (portrait, ~3:4) | ⬜ waiting |
-| `assets/lisa-5.jpg` | Proof gallery — tile 4 (wide, ~16:10) | ⬜ waiting |
-| `assets/lisa-6.jpg` | Proof gallery — tile 5 (full-width, ~21:9) | ⬜ waiting |
+| `assets/hero.jpg` | Screen 1 — hero photo (also the Open Graph preview) | ✅ uploaded (853×1280) |
+| `assets/lisa-move.mp4` | PROOF — "see her move" video (720×1280, 15 s) | ✅ uploaded |
+| `assets/poster.jpg` | Poster frame for the video (real frame, `-ss 1.5`) | ✅ uploaded |
+| `assets/lisa-2.jpg` | Proof gallery — tile 1 (3:4) | ✅ uploaded (960×1280) |
+| `assets/lisa-3.jpg` | Proof gallery — tile 2 (3:4) | ✅ uploaded (960×1280) |
+| `assets/lisa-4.jpg` | Proof gallery — tile 3 (3:4) | ✅ uploaded (960×1280) |
+| `assets/lisa-5.jpg` | Proof gallery — tile 4 (3:4) | ✅ uploaded (960×1280) |
+| `assets/lisa-6.jpg` | Proof gallery — tile 5 (3:4) | ✅ uploaded (720×1280) |
+| `assets/lisa-7.jpg` | Proof gallery — tile 6 (3:4) | ✅ uploaded (960×1280) |
+
+Original files (untouched) are kept outside the deploy in `_source_originals/`.
 
 ## Video
 
