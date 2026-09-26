@@ -153,17 +153,20 @@ section{position:relative}
 
 /* ---------- video ---------- */
 .video-shell{
-  margin-top:clamp(2.5rem,5vw,4rem);
+  margin:clamp(2.5rem,5vw,4rem) auto 0;
+  width:min(430px,100%);
+  aspect-ratio:9/16;
   border-radius:var(--r);overflow:hidden;
   border:1px solid var(--line);
   background:#0c0c0d;
   box-shadow:0 60px 120px -60px rgba(0,0,0,.95);
 }
-.video-shell.media{aspect-ratio:16/9}
+
 video{width:100%;height:100%;object-fit:cover;background:#0c0c0d}
 .video-cap{
   display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
-  margin-top:.9rem;color:var(--muted);font-size:.78rem;letter-spacing:.06em;
+  width:min(430px,100%);margin:.9rem auto 0;
+  color:var(--muted);font-size:.78rem;letter-spacing:.06em;
 }
 
 /* ---------- gallery ---------- */
@@ -364,18 +367,18 @@ footer{border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,4rem) 0}
       <h2 class="sec-title rv">PROOF</h2>
       <p class="sec-sub rv">She is real.</p>
 
-      <div class="video-shell media rv" data-file="Video — lisa-intro.mp4">
-        <span class="ph-note">Video — lisa-intro.mp4</span>
+      <div class="video-shell media rv" data-file="assets/lisa-move.mp4">
+        <span class="ph-note">Video — assets/lisa-move.mp4</span>
         <video id="lisaVideo"
                poster="assets/poster.jpg"
                muted loop playsinline controls
                preload="none"
-               data-src="lisa-intro.mp4"
+               data-src="assets/lisa-move.mp4"
                aria-label="L.I.S.a — real footage"></video>
       </div>
       <div class="video-cap">
         <span>Real footage. No renders.</span>
-        <span>Sound on.</span>
+        <span>Tap to unmute.</span>
       </div>
 
       <div class="gallery" id="gallery">
