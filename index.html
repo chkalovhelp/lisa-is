@@ -1,975 +1,1111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="docTitle">L.I.S.a — Physical AI Companion</title>
-<meta id="metaDesc" name="description" content="L.I.S.a is a physical AI companion that sees you, hears you, talks with you and remembers your conversations.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L.I.S.A. — удалённый сотрудник в каждом филиале | робот для ресепшена</title>
+<meta name="description" content="L.I.S.A. — физический AI-интерфейс для бизнеса: робот на ресепшене, в клинике, отеле, офисе или ЖК. Отвечает на типовые вопросы с помощью AI и подключает удалённого оператора, когда нужен человек. Один оператор — несколько филиалов.">
+<meta name="keywords" content="робот для ресепшена, робот-рецепционист, робот на ресепшен, удалённый сотрудник, удалённый администратор, автоматизация ресепшена, робот для гостиницы, робот для клиники, робот для бизнес-центра, робот-консьерж, робот для ЖК">
 <link rel="canonical" href="https://lisa-is.com/">
-<link rel="alternate" hreflang="en" href="https://lisa-is.com/?lang=en">
-<link rel="alternate" hreflang="ru" href="https://lisa-is.com/?lang=ru">
-<link rel="alternate" hreflang="zh" href="https://lisa-is.com/?lang=zh">
-<link rel="alternate" hreflang="x-default" href="https://lisa-is.com/">
-<meta name="theme-color" content="#0a0a0b">
-<meta name="robots" content="index,follow">
-
-<!-- Open Graph / social -->
+<meta property="og:title" content="L.I.S.A. — удалённый сотрудник. В каждом филиале.">
+<meta property="og:description" content="Один оператор может обслуживать несколько роботов в разных филиалах. L.I.S.A. отвечает на типовые вопросы с помощью AI и подключает человека, когда он нужен.">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="L.I.S.a">
-<meta property="og:title" id="ogTitle" content="L.I.S.a — Physical AI Companion">
-<meta property="og:description" id="ogDesc" content="L.I.S.a is a physical AI companion that sees you, hears you, talks with you and remembers your conversations.">
-<meta property="og:locale" id="ogLocale" content="en_US">
-<meta property="og:locale:alternate" content="ru_RU">
-<meta property="og:locale:alternate" content="zh_CN">
 <meta property="og:url" content="https://lisa-is.com/">
+<meta property="og:locale" content="ru_RU">
 <meta property="og:image" content="https://lisa-is.com/assets/hero.jpg">
-<meta property="og:image:alt" content="L.I.S.a">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" id="twTitle" content="L.I.S.a — Physical AI Companion">
-<meta name="twitter:description" id="twDesc" content="L.I.S.a is a physical AI companion that sees you, hears you, talks with you and remembers your conversations.">
+<meta name="twitter:title" content="L.I.S.A. — удалённый сотрудник. В каждом филиале.">
+<meta name="twitter:description" content="Физический AI-интерфейс для бизнеса. AI отвечает на типовые вопросы, удалённый оператор подключается, когда нужен человек.">
 <meta name="twitter:image" content="https://lisa-is.com/assets/hero.jpg">
-
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0b'/%3E%3Ctext x='32' y='44' font-family='system-ui,-apple-system,sans-serif' font-size='34' font-weight='700' fill='%23e2b183' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d1014'/%3E%3Ctext x='32' y='44' font-family='system-ui,-apple-system,sans-serif' font-size='34' font-weight='700' fill='%23c8763f' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="assets/hero.jpg">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
 
 <style>
+/* ===========================================================================
+   L.I.S.A. — Remote Reception. B2B-лендинг.
+   Светлая премиальная тема. Вся «визуальная ДНК» старого сайта сохраняется
+   (тёплый акцент, крупная типографика, много воздуха), но тон — enterprise.
+   ========================================================================== */
 :root{
-  --bg:#0a0a0b;
-  --panel:#101012;
-  --panel-2:#141416;
-  --txt:#eceae6;
-  --muted:#9b978f;
-  --line:rgba(255,255,255,.08);
-  --line-2:rgba(255,255,255,.14);
-  --acc:#e2b183;
-  --acc-dim:rgba(226,177,131,.14);
-  --r:14px;
-  --wrap:1180px;
+  --bg:#ffffff;
+  --bg-2:#f5f6f8;
+  --bg-3:#eef0f3;
+  --ink:#0d1014;
+  --ink-2:#2a3037;
+  --muted:#5b6470;
+  --line:#e4e7eb;
+  --line-2:#d3d8de;
+  --acc:#c8763f;          /* тёплый акцент — из ДНК старого сайта */
+  --acc-soft:#f7efe8;
+  --acc-2:#1d6f8b;        /* холодный акцент — «enterprise» */
+  --ok:#1f7a4d;
+  --wrap:1200px;
+  --r:16px;
   --ease:cubic-bezier(.22,.61,.36,1);
+  --shadow:0 1px 2px rgba(13,16,20,.04),0 12px 32px -18px rgba(13,16,20,.18);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
-  background:var(--bg);
-  color:var(--txt);
-  font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',Helvetica,Arial,sans-serif;
-  font-weight:400;
-  line-height:1.6;
-  letter-spacing:.01em;
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
+  background:var(--bg);color:var(--ink);
+  font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  font-weight:400;line-height:1.6;letter-spacing:.004em;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
 }
 img,video{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
-button,input{font:inherit;color:inherit}
-.wrap{max-width:var(--wrap);margin:0 auto;padding:0 2rem}
+button,input,select,textarea{font:inherit;color:inherit}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.hidden{display:none !important}
 
-/* ---------- placeholder for media the owner adds later ---------- */
-.media{position:relative;overflow:hidden;background:
-  linear-gradient(135deg,#141416 0%,#0e0e10 55%,#161514 100%);}
-.media::after{
-  content:attr(data-file);
-  position:absolute;inset:auto 0 0 0;
-  padding:.5rem .85rem;
-  font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
-  color:rgba(226,177,131,.75);
-  background:linear-gradient(to top,rgba(0,0,0,.55),transparent);
-  pointer-events:none;
+/* ---------- типографика ---------- */
+h1,h2,h3,h4{line-height:1.12;letter-spacing:-.022em;font-weight:600}
+.eyebrow{
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--acc);font-weight:600;margin-bottom:14px;
 }
-.media>.ph-note{
-  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
-  color:rgba(236,234,230,.42);text-align:center;pointer-events:none;
-  width:80%;
+.h-xl{font-size:clamp(2.4rem,6vw,4.6rem);font-weight:700}
+.h-lg{font-size:clamp(1.9rem,4vw,3.1rem)}
+.h-md{font-size:clamp(1.3rem,2.2vw,1.7rem)}
+.lead{font-size:clamp(1.02rem,1.5vw,1.22rem);color:var(--muted);max-width:62ch}
+.small{font-size:.86rem;color:var(--muted)}
+.note{font-size:.82rem;color:var(--muted);line-height:1.55}
+
+/* ---------- кнопки ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  padding:.95rem 1.6rem;border-radius:999px;border:1px solid transparent;
+  background:var(--ink);color:#fff;font-weight:600;font-size:.95rem;
+  cursor:pointer;transition:transform .25s var(--ease),background .25s,box-shadow .25s;
+  white-space:nowrap;
 }
-.media>img,.media>video{position:relative;z-index:1;width:100%;height:100%;object-fit:cover}
-.media.is-loaded::after,.media.is-loaded>.ph-note{display:none}
+.btn:hover{transform:translateY(-1px);background:#20262d;box-shadow:var(--shadow)}
+.btn-acc{background:var(--acc)}
+.btn-acc:hover{background:#b3652c}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line-2)}
+.btn-ghost:hover{background:var(--bg-2);border-color:var(--ink)}
+.btn-sm{padding:.6rem 1.05rem;font-size:.85rem}
+.btn:disabled{opacity:.55;cursor:default;transform:none}
+
+/* ---------- секции ---------- */
+section{position:relative}
+.sec{padding:clamp(58px,8vw,112px) 0}
+.sec-head{max-width:760px;margin-bottom:clamp(28px,4vw,52px)}
+.sec-alt{background:var(--bg-2)}
+.grid{display:grid;gap:22px}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r);
+  padding:26px;box-shadow:var(--shadow);
+}
+.card-plain{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px}
+
+/* ---------- появление ---------- */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
 
 /* ---------- header ---------- */
 header{
-  position:fixed;top:0;left:0;right:0;z-index:60;
-  padding:1.15rem 0;
-  transition:padding .45s var(--ease),background .45s var(--ease),backdrop-filter .45s var(--ease),border-color .45s var(--ease);
-  border-bottom:1px solid transparent;
+  position:sticky;top:0;z-index:60;background:rgba(255,255,255,.82);
+  backdrop-filter:saturate(160%) blur(14px);border-bottom:1px solid transparent;
+  transition:border-color .3s,background .3s;
 }
-header.compact{
-  padding:.6rem 0;
-  background:rgba(10,10,11,.72);
-  backdrop-filter:blur(14px) saturate(140%);
-  -webkit-backdrop-filter:blur(14px) saturate(140%);
-  border-bottom-color:var(--line);
+header.is-scrolled{border-bottom-color:var(--line)}
+.hdr-in{display:flex;align-items:center;gap:24px;height:70px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.02em;font-size:1.06rem}
+.logo span{color:var(--acc)}
+.logo .dot{width:9px;height:9px;border-radius:50%;background:var(--acc);display:inline-block}
+nav{margin-left:auto;display:flex;align-items:center;gap:26px}
+nav a{font-size:.92rem;color:var(--ink-2);transition:color .2s}
+nav a:hover{color:var(--acc)}
+.hdr-cta{display:flex;align-items:center;gap:12px}
+#burger{
+  display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:12px;
+  background:#fff;cursor:pointer;align-items:center;justify-content:center;
 }
-.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.brand{font-weight:600;font-size:1.05rem;letter-spacing:.22em}
-.brand span{color:var(--acc)}
-.nav-links{display:flex;align-items:center;gap:.55rem}
-.nav-links a{
-  font-size:.72rem;letter-spacing:.2em;font-weight:500;
-  padding:.6rem 1.1rem;border-radius:100px;
-  border:1px solid transparent;transition:all .35s var(--ease);
-  white-space:nowrap;
-}
-.nav-links a.proof{
-  border-color:var(--line-2);color:#fff;
-  background:rgba(255,255,255,.03);
-}
-.nav-links a.proof:hover{background:#fff;color:#0a0a0b;border-color:#fff}
-.nav-links a.wait{color:var(--muted)}
-.nav-links a.wait:hover{color:var(--acc)}
+#burger i{display:block;width:18px;height:2px;background:var(--ink);position:relative}
+#burger i::before,#burger i::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--ink)}
+#burger i::before{top:-6px}#burger i::after{top:6px}
 
-/* ---------- language switch ---------- */
-.lang{
-  display:flex;align-items:center;gap:.12rem;margin-left:.4rem;
-  padding:.18rem;border:1px solid var(--line-2);border-radius:100px;
-  background:rgba(255,255,255,.025);
+/* ---------- hero ---------- */
+.hero{padding:clamp(48px,6vw,92px) 0 clamp(40px,6vw,80px)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,64px);align-items:center}
+.badge{
+  display:inline-flex;align-items:center;gap:9px;padding:.42rem .95rem;border-radius:999px;
+  background:var(--acc-soft);color:#8f5122;font-size:.8rem;font-weight:600;letter-spacing:.01em;
+  border:1px solid #f0e2d5;margin-bottom:22px;
 }
-.lang button{
-  cursor:pointer;background:transparent;border:0;border-radius:100px;
-  color:var(--muted);font-size:.66rem;font-weight:500;letter-spacing:.1em;
-  padding:.38rem .62rem;line-height:1;white-space:nowrap;
-  transition:background .3s var(--ease),color .3s var(--ease);
+.hero h1{font-size:clamp(2.5rem,5.6vw,4.5rem);font-weight:700;letter-spacing:-.03em}
+.hero h1 em{font-style:normal;color:var(--acc);display:block}
+.hero .lead{margin-top:22px;font-size:clamp(1.04rem,1.6vw,1.26rem)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+.hero-sign{margin-top:18px}
+.hero-media{position:relative;border-radius:calc(var(--r) + 6px);overflow:hidden;background:var(--bg-3)}
+.hero-media img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.hero-media figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:18px 20px;color:#fff;font-size:.8rem;
+  background:linear-gradient(to top,rgba(0,0,0,.62),rgba(0,0,0,0));
 }
-.lang button:hover{color:#fff}
-.lang button[aria-pressed="true"]{background:#fff;color:#0a0a0b}
-html[lang="zh"] .sec-title,html[lang="zh"] .wl-head,html[lang="zh"] .plan h3,html[lang="zh"] .early-note{letter-spacing:.05em}
+.hero-stats{display:flex;flex-wrap:wrap;gap:26px;margin-top:34px}
+.hero-stat b{display:block;font-size:1.5rem;font-weight:700;letter-spacing:-.02em}
+.hero-stat span{font-size:.8rem;color:var(--muted)}
 
-/* ---------- HERO ---------- */
-.hero{min-height:100vh;display:flex;align-items:center;padding:7.5rem 0 4rem}
-.hero-grid{
-  display:grid;grid-template-columns:minmax(0,1fr) auto;
-  gap:clamp(2rem,5vw,5rem);align-items:center;width:100%;
+/* ---------- схема централизации ---------- */
+.central{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(16px,3vw,40px);align-items:center}
+.cv-box{border:1px solid var(--line);border-radius:var(--r);padding:26px;background:#fff;height:100%}
+.cv-box h3{font-size:1rem;margin-bottom:18px;color:var(--muted);font-weight:600;letter-spacing:.02em;text-transform:uppercase}
+.cv-lines{display:grid;gap:12px}
+.cv-row{display:flex;align-items:center;gap:12px;font-weight:500}
+.cv-row .n{
+  width:34px;height:34px;flex:0 0 34px;border-radius:10px;display:grid;place-items:center;
+  background:var(--bg-2);font-size:.82rem;font-weight:700;color:var(--ink-2);
 }
-.hero-copy{max-width:34ch}
-.hero-title{
-  font-size:clamp(2.6rem,5vw,4.1rem);font-weight:600;
-  letter-spacing:.06em;line-height:1;margin-bottom:1.9rem;
+.cv-row.is-acc .n{background:var(--acc-soft);color:#8f5122}
+.cv-arrow{display:grid;place-items:center;color:var(--line-2);font-size:1.4rem}
+.cv-mid{
+  text-align:center;padding:22px 18px;border-radius:var(--r);
+  background:var(--ink);color:#fff;font-weight:700;letter-spacing:-.02em;font-size:1.05rem;
+  min-width:170px;
 }
-.hero-text{font-weight:300;color:#ddd9d3}
-.hero-text p{margin-bottom:1.15rem}
-.hero-text p:last-of-type{margin-bottom:0}
-.hero-text .strong{color:#fff;font-weight:400}
-.hero-sig{margin-top:2.4rem;font-size:clamp(1.5rem,2.4vw,2rem);font-weight:600;letter-spacing:.1em}
-.hero-sig-2{color:var(--acc);letter-spacing:.05em;font-weight:400;font-size:1.05rem}
-.hero-media{
-  width:auto;height:78vh;max-height:740px;aspect-ratio:2/3;
-  justify-self:end;
-  border-radius:var(--r);
-  border:1px solid var(--line);
-  box-shadow:0 40px 90px -50px rgba(0,0,0,.9),0 0 60px -30px var(--acc-dim);
-}
-.hero-media img{transform:scale(1.06);transition:transform 1.6s var(--ease)}
-.hero-media.is-loaded{background:#0c0c0d}
+.cv-mid span{display:block;font-weight:400;font-size:.78rem;color:rgba(255,255,255,.62);margin-top:6px;letter-spacing:0}
 
-/* ---------- sections ---------- */
-section{position:relative}
-.sec{padding:clamp(5rem,11vw,9rem) 0}
-.sec-title{
-  font-size:clamp(2.4rem,6vw,4.6rem);font-weight:600;
-  letter-spacing:.14em;line-height:1;
-}
-.sec-sub{color:var(--acc);font-size:clamp(.95rem,1.6vw,1.15rem);margin-top:.9rem;letter-spacing:.02em}
-.rule{height:1px;background:var(--line);margin:clamp(3rem,7vw,6rem) 0}
+/* ---------- шаги ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:s}
+.step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px;position:relative}
+.step .num{font-size:.78rem;font-weight:700;letter-spacing:.16em;color:var(--acc);margin-bottom:16px}
+.step h3{font-size:1.2rem;margin-bottom:10px}
+.step p{color:var(--muted);font-size:.95rem}
+.step ul{margin:12px 0 0 0;padding-left:0;list-style:none;display:grid;gap:7px}
+.step li{font-size:.92rem;color:var(--ink-2);padding-left:16px;position:relative}
+.step li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--acc)}
 
-/* ---------- video ---------- */
-.video-shell{
-  margin:clamp(2.5rem,5vw,4rem) auto 0;
-  width:min(430px,100%);
-  aspect-ratio:9/16;
-  border-radius:var(--r);overflow:hidden;
-  border:1px solid var(--line);
-  background:#0c0c0d;
-  box-shadow:0 60px 120px -60px rgba(0,0,0,.95);
+/* ---------- калькулятор ---------- */
+.calc{display:grid;grid-template-columns:1.06fr .94fr;gap:26px;align-items:start}
+.calc-panel{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px;box-shadow:var(--shadow)}
+.field{margin-bottom:22px}
+.field > label{display:block;font-size:.9rem;font-weight:600;margin-bottom:9px}
+.field .hint{font-size:.78rem;color:var(--muted);margin-top:7px}
+input[type=range]{
+  -webkit-appearance:none;appearance:none;width:100%;height:26px;background:transparent;cursor:pointer;
 }
+input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:999px;background:
+  linear-gradient(to right,var(--acc) 0 var(--fill,50%),var(--bg-3) var(--fill,50%) 100%)}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;
+  border:2px solid var(--acc);margin-top:-8px;box-shadow:var(--shadow);
+}
+input[type=range]::-moz-range-track{height:6px;border-radius:999px;background:var(--bg-3)}
+input[type=range]::-moz-range-progress{height:6px;border-radius:999px;background:var(--acc)}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:#fff;border:2px solid var(--acc)}
+.input,.select{
+  width:100%;padding:.72rem .9rem;border:1px solid var(--line-2);border-radius:12px;background:#fff;
+  transition:border-color .2s,box-shadow .2s;font-size:.95rem;
+}
+.input:focus,.select:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px var(--acc-soft)}
+.row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ratio-line{font-size:.84rem;color:var(--muted);margin-top:8px}
+.ratio-line b{color:var(--ink)}
+/* выбор тарифа аренды */
+.tar-pick{display:grid;gap:10px}
+.tar-opt{display:block;cursor:pointer}
+.tar-opt input{position:absolute;opacity:0;pointer-events:none}
+.tar-in{
+  display:grid;gap:3px;padding:14px 16px;border:1px solid var(--line-2);border-radius:12px;
+  background:#fff;transition:border-color .2s,box-shadow .2s,background .2s;
+}
+.tar-in b{font-size:.97rem;font-weight:600}
+.tar-in i{font-style:normal;font-size:.8rem;color:var(--muted)}
+.tar-in em{font-style:normal;font-weight:600;font-size:.92rem;color:var(--acc-d);margin-top:4px}
+.tar-opt:hover .tar-in{border-color:var(--acc)}
+.tar-opt input:checked + .tar-in{border-color:var(--acc);background:var(--acc-soft);box-shadow:0 0 0 3px var(--acc-soft)}
+.tar-opt input:focus-visible + .tar-in{outline:2px solid var(--acc);outline-offset:2px}
 
-video{width:100%;height:100%;object-fit:cover;background:#0c0c0d}
-.video-cap{
-  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
-  width:min(430px,100%);margin:.9rem auto 0;
-  color:var(--muted);font-size:.78rem;letter-spacing:.06em;
-}
+.calc-out{background:var(--ink);color:#fff;border-radius:var(--r);padding:30px;position:sticky;top:92px}
+.calc-out h3{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);font-weight:600;margin-bottom:22px}
+.out-row{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.out-row span{color:rgba(255,255,255,.66);font-size:.9rem}
+.out-row b{font-weight:600;font-variant-numeric:tabular-nums}
+.out-big{padding:22px 0 6px}
+.out-big span{display:block;color:rgba(255,255,255,.6);font-size:.86rem;margin-bottom:6px}
+.out-big b{font-size:clamp(1.9rem,3.4vw,2.7rem);font-weight:700;letter-spacing:-.03em;color:#fff;font-variant-numeric:tabular-nums}
+.out-big b.acc{color:#f0a878}
+/* два тарифа аренды в тёмной панели */
+.tar-res{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0 10px}
+.tar-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:16px}
+.tc-name{font-weight:600;font-size:.95rem;margin-bottom:2px}
+.tc-price{font-size:.78rem;color:rgba(255,255,255,.6);margin-bottom:12px}
+.tc-row{display:flex;justify-content:space-between;gap:10px;font-size:.82rem;padding:6px 0;border-top:1px solid rgba(255,255,255,.09)}
+.tc-row span{color:rgba(255,255,255,.62)}
+.tc-row b{font-variant-numeric:tabular-nums}
+.tc-row b.acc{color:#f0a878}
+@media (max-width:560px){.tar-res{grid-template-columns:1fr}}
+.out-bar{height:6px;border-radius:999px;background:rgba(255,255,255,.14);overflow:hidden;margin-top:8px}
+.out-bar i{display:block;height:100%;background:linear-gradient(90deg,#f0a878,#c8763f);transition:width .5s var(--ease)}
 
-/* ---------- gallery ---------- */
-.gallery{
-  display:grid;grid-template-columns:repeat(12,1fr);
-  gap:clamp(.6rem,1.4vw,1.1rem);margin-top:clamp(2.5rem,5vw,4rem);
+/* ---------- сценарии ---------- */
+.sc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.sc{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px;display:grid;gap:14px;align-content:start}
+.sc h3{font-size:1.15rem}
+.sc-flow{display:grid;gap:8px;font-size:.92rem;color:var(--ink-2)}
+.sc-flow .f-row{display:flex;justify-content:space-between;gap:12px;padding:9px 12px;background:var(--bg-2);border-radius:10px}
+.sc-flow .f-row b{font-variant-numeric:tabular-nums}
+.sc-res{border-top:1px dashed var(--line-2);padding-top:14px}
+.sc-res .big{font-size:1.3rem;font-weight:700;color:var(--acc);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.sc-res .sub{font-size:.86rem;color:var(--muted)}
+
+/* ---------- блок «человек в системе» ---------- */
+.human{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:center}
+.flow-vert{display:grid;gap:10px;justify-items:start}
+.fv{
+  border:1px solid var(--line);background:#fff;border-radius:12px;padding:14px 18px;font-weight:600;
+  display:flex;align-items:center;gap:12px;min-width:230px;
 }
+.fv small{display:block;font-weight:400;color:var(--muted);font-size:.78rem}
+.fv.is-acc{border-color:#eddfd2;background:var(--acc-soft)}
+.fv-down{color:var(--line-2);margin-left:26px;font-size:1.1rem;line-height:1}
+.split2{display:grid;gap:10px;margin-left:26px}
+.split2 .fv{min-width:0;font-weight:500}
+
+/* ---------- диалоги ---------- */
+.dlg{display:grid;gap:18px}
+.dlg-item{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px}
+.bubble{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}
+.bubble:last-child{margin-bottom:0}
+.bubble .who{
+  flex:0 0 auto;width:46px;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);padding-top:4px;
+}
+.bubble .txt{font-size:.98rem}
+.bubble.me .txt{color:var(--muted)}
+.bubble.ai .txt{color:var(--ink)}
+.bubble.ai .who{color:var(--acc)}
+
+/* ---------- карточки применения ---------- */
+.uc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.uc{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px;transition:transform .3s var(--ease),box-shadow .3s}
+.uc:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.uc .ico{width:38px;height:38px;border-radius:11px;background:var(--acc-soft);display:grid;place-items:center;margin-bottom:16px;color:#8f5122;font-weight:700;font-size:.86rem}
+.uc h3{font-size:1.06rem;margin-bottom:8px}
+.uc p{font-size:.92rem;color:var(--muted)}
+
+/* ---------- галерея ---------- */
+.gallery{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:30px}
 .g-item{
-  position:relative;cursor:zoom-in;border-radius:var(--r);
-  border:1px solid var(--line);overflow:hidden;
-  transition:transform .7s var(--ease),border-color .5s var(--ease);
+  position:relative;overflow:hidden;border-radius:14px;background:var(--bg-3);cursor:zoom-in;
+  border:1px solid var(--line);margin:0;
 }
-.g-item:hover{transform:translateY(-4px);border-color:var(--line-2)}
-.g-item img{transition:transform 1.2s var(--ease);height:100%;width:100%}
-.g-item:hover img{transform:scale(1.035)}
-.g1{grid-column:span 7;aspect-ratio:3/4}
-.g2{grid-column:span 5;aspect-ratio:3/4}
-.g3{grid-column:span 4;aspect-ratio:3/4}
-.g4{grid-column:span 4;aspect-ratio:3/4}
-.g5{grid-column:span 4;aspect-ratio:3/4}
-.g6{grid-column:4 / span 6;aspect-ratio:3/4}
-.credits{
-  margin-top:clamp(2rem,4vw,3rem);color:var(--muted);
-  font-size:clamp(.9rem,1.4vw,1rem);line-height:1.75;max-width:44ch;
+.g-item img{width:100%;height:100%;aspect-ratio:3/4;object-fit:cover;transition:transform .5s var(--ease)}
+.g-item:hover img{transform:scale(1.04)}
+.g1{grid-column:span 3}.g2{grid-column:span 3}
+.g3,.g4,.g5,.g6{grid-column:span 3}
+@media (min-width:900px){
+  .g1{grid-column:span 2}.g2{grid-column:span 2}.g3{grid-column:span 2}
+  .g4{grid-column:span 3}.g5{grid-column:span 3}
+  .g6{grid-column:span 6}
+  .g6 img{aspect-ratio:16/7}
 }
-.credits strong{color:#e6e2dc;font-weight:500}
+.video-shell{border-radius:calc(var(--r) + 4px);overflow:hidden;border:1px solid var(--line);background:#000;margin-top:26px}
+.video-shell video{width:100%;height:auto;display:block}
 
-/* ---------- pricing ---------- */
-.pricing{margin-top:clamp(4rem,9vw,7rem)}
-.plans{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:clamp(.8rem,1.6vw,1.4rem);margin-top:clamp(2rem,4vw,3rem);
+/* лайтбокс */
+.lb{position:fixed;inset:0;z-index:200;display:none;place-items:center;background:rgba(9,11,14,.92);padding:24px}
+.lb.is-on{display:grid}
+.lb img{max-width:min(1100px,92vw);max-height:86vh;border-radius:12px;object-fit:contain}
+.lb-btn{
+  position:absolute;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.22);
+  border-radius:12px;width:46px;height:46px;display:grid;place-items:center;cursor:pointer;font-size:1.1rem;
 }
-.plan{
-  border:1px solid var(--line);border-radius:var(--r);
-  background:linear-gradient(180deg,rgba(255,255,255,.022),rgba(255,255,255,0));
-  padding:clamp(1.6rem,3vw,2.4rem);
-  display:flex;flex-direction:column;gap:1rem;
-  transition:border-color .5s var(--ease),transform .6s var(--ease),background .5s var(--ease);
-}
-.plan:hover{border-color:var(--line-2);transform:translateY(-4px);background:linear-gradient(180deg,rgba(226,177,131,.05),rgba(255,255,255,0))}
-.plan h3{font-size:.78rem;letter-spacing:.26em;font-weight:600;color:var(--muted)}
-.plan .price{font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:600;letter-spacing:-.01em;line-height:1}
-.plan p{font-size:.95rem;font-weight:300;color:#d6d2cc}
-.plan p.tight{color:#d6d2cc}
-.plan .soon{
-  margin-top:auto;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--acc);opacity:.85;
-}
-.plan.is-pre{
-  border-color:rgba(226,177,131,.34);
-  background:linear-gradient(180deg,rgba(226,177,131,.07),rgba(255,255,255,0));
-}
-.plan .price s{
-  font-size:.52em;font-weight:400;color:var(--muted);
-  text-decoration:line-through;text-decoration-thickness:1px;
-  margin-right:.5em;vertical-align:.16em;
-}
-.plan-photos{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin:0 0 .2rem}
-.plan-photos figure{margin:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--panel)}
-.plan-photos img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform 1.2s var(--ease)}
-.plan-photos figure:hover img{transform:scale(1.04)}
-.plan .pre{
-  margin-top:auto;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--acc);opacity:.95;
-}
-.early-note{
-  margin-top:1.1rem;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
-}
+.lb-btn:hover{background:rgba(255,255,255,.2)}
+.lb-close{top:22px;right:22px}
+.lb-prev{left:22px;top:50%;transform:translateY(-50%)}
+.lb-next{right:22px;top:50%;transform:translateY(-50%)}
 
-/* ---------- waitlist ---------- */
-.wl{border-top:1px solid var(--line);background:linear-gradient(180deg,rgba(226,177,131,.035),transparent 60%)}
-.wl-head{font-size:clamp(2.2rem,6.2vw,4.4rem);font-weight:600;line-height:1.05;letter-spacing:-.01em;max-width:16ch}
-.wl-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,4.5rem);align-items:start;margin-top:clamp(2.5rem,5vw,4rem)}
-form{display:flex;flex-direction:column;gap:1.6rem}
-.field{display:flex;flex-direction:column;gap:.6rem}
-label.lbl{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
-input[type=email]{
-  background:transparent;border:0;border-bottom:1px solid var(--line-2);
-  padding:.85rem 0;font-size:1.05rem;outline:none;
-  transition:border-color .4s var(--ease);
+/* ---------- приватность ---------- */
+.pv-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.pv{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px}
+.pv .tag{display:inline-block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--acc);margin-bottom:12px}
+.pv ul{margin-top:14px;display:grid;gap:9px;list-style:none}
+.pv li{font-size:.92rem;color:var(--ink-2);padding-left:18px;position:relative}
+.pv li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--line-2)}
+
+/* ---------- формы ---------- */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-grid .full{grid-column:1/-1}
+label.fld{display:block}
+label.fld span{display:block;font-size:.84rem;font-weight:600;margin-bottom:7px}
+textarea.input{min-height:104px;resize:vertical}
+.form-msg{margin-top:14px;font-size:.9rem;color:var(--muted)}
+.form-msg.err{color:#b02a2a}
+.done{
+  background:var(--acc-soft);border:1px solid #eddfd2;border-radius:var(--r);padding:26px;
 }
-input[type=email]:focus{border-bottom-color:var(--acc)}
-input[type=email]::placeholder{color:rgba(155,151,143,.6)}
-.opts{display:flex;flex-wrap:wrap;gap:.5rem}
-.opt{position:relative}
-.opt input{position:absolute;opacity:0;width:100%;height:100%;left:0;top:0;cursor:pointer;margin:0}
-.opt span{
-  display:block;padding:.6rem 1.15rem;border-radius:100px;
-  border:1px solid var(--line-2);font-size:.74rem;letter-spacing:.14em;
-  color:#cfcbc4;transition:all .35s var(--ease);user-select:none;
-}
-.opt input:checked+span{border-color:var(--acc);background:var(--acc-dim);color:#fff}
-.opt input:focus-visible+span{outline:2px solid var(--acc);outline-offset:3px}
-.btn{
-  align-self:flex-start;cursor:pointer;
-  padding:.95rem 2.2rem;border-radius:100px;border:1px solid #fff;
-  background:#fff;color:#0a0a0b;font-size:.74rem;letter-spacing:.2em;font-weight:600;
-  transition:all .4s var(--ease);
-}
-.btn:hover{background:transparent;color:#fff}
-.btn[disabled]{opacity:.5;cursor:default}
-.btn[disabled]:hover{background:#fff;color:#0a0a0b}
-.form-msg{font-size:.9rem;color:var(--muted);min-height:1.4em}
-.form-msg.err{color:#e08f7f}
-.done{padding:1.6rem 0}
-.done h4{font-size:clamp(1.4rem,2.6vw,1.9rem);font-weight:500;margin-bottom:.5rem}
-.done p{color:var(--muted)}
-.hidden{display:none !important}
+.done b{display:block;font-size:1.1rem;margin-bottom:8px}
+
+/* ---------- ROI ---------- */
+.roi{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+#roiOut{display:none}
+#roiOut.is-on{display:block}
+
+/* ---------- финальный CTA ---------- */
+.final{background:var(--ink);color:#fff;border-radius:28px;padding:clamp(40px,6vw,74px);text-align:center}
+.final .h-lg{color:#fff}
+.final .lead{color:rgba(255,255,255,.68);margin:20px auto 0;text-align:center}
+.final-cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:32px}
+.final .btn-ghost{color:#fff;border-color:rgba(255,255,255,.28)}
+.final .btn-ghost:hover{background:rgba(255,255,255,.08);border-color:#fff}
+.final-tel{margin-top:26px;color:rgba(255,255,255,.7);font-size:.95rem}
+.final-tel a{color:#f0a878;font-weight:600}
 
 /* ---------- footer ---------- */
-footer{border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,4rem) 0}
-.f-in{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
-.f-brand{font-size:1.1rem;font-weight:600;letter-spacing:.22em}
-.f-sig{color:var(--muted);font-size:.9rem;margin-top:.35rem}
-.f-mail{font-size:.95rem;color:#d6d2cc;border-bottom:1px solid var(--line-2);padding-bottom:.15rem;transition:color .35s var(--ease),border-color .35s var(--ease)}
-.f-mail:hover{color:var(--acc);border-color:var(--acc)}
+footer{border-top:1px solid var(--line);padding:44px 0 56px;margin-top:0;background:#fff}
+.f-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px}
+.f-grid h4{font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;font-weight:600}
+.f-grid a{display:block;font-size:.92rem;color:var(--ink-2);padding:5px 0}
+.f-grid a:hover{color:var(--acc)}
+.f-bottom{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;font-size:.82rem;color:var(--muted)}
 
-/* ---------- lightbox ---------- */
-.lb{
-  position:fixed;inset:0;z-index:200;background:rgba(6,6,7,.94);
-  display:flex;align-items:center;justify-content:center;
-  opacity:0;pointer-events:none;transition:opacity .45s var(--ease);
-  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+/* ===========================================================================
+   АДАПТИВ
+   ========================================================================== */
+@media (max-width:1080px){
+  .calc,.roi{grid-template-columns:1fr}
+  .calc-out{position:static}
+  .uc-grid,.sc-grid,.steps{grid-template-columns:1fr 1fr}
+  .central{grid-template-columns:1fr;gap:18px}
+  .cv-arrow{transform:rotate(90deg)}
+  .cv-mid{min-width:0}
 }
-.lb.open{opacity:1;pointer-events:auto}
-.lb img{max-width:92vw;max-height:88vh;object-fit:contain;border-radius:8px;transform:scale(.97);transition:transform .5s var(--ease)}
-.lb.open img{transform:scale(1)}
-.lb-btn{
-  position:absolute;background:rgba(255,255,255,.06);border:1px solid var(--line-2);
-  color:#fff;width:46px;height:46px;border-radius:50%;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;font-size:1.1rem;
-  transition:background .3s var(--ease);
+@media (max-width:820px){
+  .grid.fit{grid-template-columns:1fr !important}
+  nav{
+    position:fixed;inset:70px 0 auto 0;background:#fff;border-bottom:1px solid var(--line);
+    flex-direction:column;align-items:stretch;gap:0;padding:10px 24px 22px;display:none;
+    box-shadow:var(--shadow);
+  }
+  nav.is-open{display:flex}
+  nav a{padding:13px 0;border-bottom:1px solid var(--line);font-size:1rem}
+  #burger{display:flex}
+  .hdr-cta .btn{display:none}
+  .hero-grid,.human,.pv-grid,.form-grid,.f-grid{grid-template-columns:1fr}
+  .uc-grid,.sc-grid,.steps{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr 1fr}
+  .g1,.g2,.g3,.g4,.g5,.g6{grid-column:span 1}
+  .g6 img{aspect-ratio:3/4}
+  .sec{padding:52px 0}
+  .hero{padding-top:34px}
 }
-.lb-btn:hover{background:rgba(255,255,255,.16)}
-.lb-close{top:1.4rem;right:1.4rem}
-.lb-prev{left:1.2rem;top:50%;transform:translateY(-50%)}
-.lb-next{right:1.2rem;top:50%;transform:translateY(-50%)}
-.lb-ph{color:var(--acc);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase}
-
-/* ---------- reveal ---------- */
-.rv{opacity:0;transform:translateY(22px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
-.rv.in{opacity:1;transform:none}
-
-/* ---------- responsive ---------- */
-@media (max-width:980px){
-  .hero-grid{grid-template-columns:1fr;gap:2rem}
-  .hero{padding:6.5rem 0 3rem;min-height:auto}
-  .hero-media{order:-1;width:100%;height:auto;max-height:none;aspect-ratio:2/3;justify-self:stretch}
-  .hero-copy{max-width:none}
-  .plans{grid-template-columns:1fr}
-  .wl-grid{grid-template-columns:1fr}
-  .g1,.g2,.g3,.g4,.g5,.g6{grid-column:span 12}
-  .g1,.g2{aspect-ratio:3/4}.g3,.g4,.g5,.g6{aspect-ratio:3/4}
-  .gallery{gap:.7rem}
-}
-@media (max-width:600px){
-  .wrap{padding:0 1.15rem}
-  .nav{gap:.55rem}
-  .nav-links{gap:.3rem}
-  .nav-links a{padding:.5rem .7rem;letter-spacing:.1em;font-size:.64rem}
-  .lang{margin-left:.15rem;padding:.15rem}
-  .lang button{padding:.34rem .48rem;font-size:.62rem;letter-spacing:.06em}
-  .brand{letter-spacing:.14em;font-size:1rem}
-  .sec-title{letter-spacing:.06em;font-size:clamp(1.7rem,7.4vw,2.6rem)}
-  .wl-head{font-size:clamp(1.7rem,7.4vw,2.6rem)}
-  .f-in{flex-direction:column;align-items:flex-start;gap:1.2rem}
-}
-@media (prefers-reduced-motion: reduce){
-  *{animation:none !important;transition:none !important}
-  html{scroll-behavior:auto}
-  .rv{opacity:1;transform:none}
+@media (max-width:420px){
+  .wrap{padding:0 18px}
 }
 </style>
 </head>
 <body>
 
+<!-- =========================================================================
+     ШАПКА
+     ======================================================================= -->
 <header id="hdr">
-  <div class="wrap nav">
-    <a class="brand" href="#top">L.I.S<span>.</span>a</a>
-    <nav class="nav-links">
-      <a class="proof" href="#proof" data-i18n="nav.proof">PROOF</a>
-      <a class="wait" href="#waitlist" data-i18n="nav.wait">WAITLIST</a>
-      <div class="lang" id="lang" role="group" aria-label="Language / Язык / 语言">
-        <button type="button" data-lang="ru" lang="ru">RU</button>
-        <button type="button" data-lang="en" lang="en">EN</button>
-        <button type="button" data-lang="zh" lang="zh">CH</button>
-      </div>
+  <div class="wrap hdr-in">
+    <a class="logo" href="#top" aria-label="L.I.S.A. — на главную">
+      <span class="dot" aria-hidden="true"></span>L.I.S.A.<span>Remote Reception</span>
+    </a>
+    <nav id="nav" aria-label="Основная навигация">
+      <a href="#central">Централизация</a>
+      <a href="#how">Как это работает</a>
+      <a href="#savings">Экономика</a>
+      <a href="#use">Сценарии</a>
+      <a href="#privacy">Приватность</a>
+      <a href="#contact">Связаться</a>
     </nav>
+    <div class="hdr-cta">
+      <a class="btn btn-sm" href="#savings">Рассчитать экономию</a>
+      <button id="burger" aria-label="Меню" aria-expanded="false" aria-controls="nav"><i></i></button>
+    </div>
   </div>
 </header>
 
 <main id="top">
 
-  <!-- ================= SCREEN 1 — HERO ================= -->
+  <!-- =======================================================================
+       1. ПЕРВЫЙ ЭКРАН
+       ===================================================================== -->
   <section class="hero">
     <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <h1 class="hero-title rv">L.I.S.a</h1>
-
-        <div class="hero-text">
-          <p class="rv" data-i18n-html="hero.p1">Imagine a home where someone is always there.</p>
-          <p class="rv" data-i18n-html="hero.p2">She knows you.<br>She sees you.<br>She hears you.<br>She talks with you.<br>She remembers your conversations.</p>
-          <p class="rv" data-i18n-html="hero.p3">And she is always glad when you come home.</p>
-          <p class="rv" data-i18n-html="hero.p4">You are the most important person in her life.</p>
-          <p class="rv strong" data-i18n-html="hero.p5">She gets to know you better and better.<br>And she gets better every day.</p>
-          <p class="rv" data-i18n-html="hero.p6">Soon — a perfect body.</p>
-          <p class="rv" data-i18n-html="hero.p7">Soon — a male version.</p>
+      <div>
+        <div class="badge rv">Физический AI-интерфейс для бизнеса</div>
+        <h1 class="rv">Удалённый сотрудник.<em>В каждом филиале.</em></h1>
+        <p class="lead rv">Один оператор может обслуживать несколько роботов в разных филиалах.
+          L.I.S.A. отвечает на типовые вопросы с помощью AI и подключает человека, когда он нужен.</p>
+        <div class="hero-cta rv">
+          <a class="btn btn-acc" href="#savings">Рассчитать экономию</a>
+          <a class="btn btn-ghost" href="#now">Посмотреть L.I.S.A. в работе</a>
         </div>
-
-        <p class="hero-sig rv">L.I.S.a</p>
-        <p class="hero-sig-2 rv" data-i18n="sig.here">She is here.</p>
+        <div class="hero-stats rv">
+          <div class="hero-stat"><b>1 оператор</b><span>на несколько филиалов</span></div>
+          <div class="hero-stat"><b>AI</b><span>типовые вопросы</span></div>
+          <div class="hero-stat"><b>24/7</b><span>L.I.S.A. на месте</span></div>
+        </div>
       </div>
-
-      <figure class="hero-media media rv" data-file="assets/hero.jpg">
-        <img src="assets/hero.jpg" alt="L.I.S.a" width="1200" height="1500"
-             fetchpriority="high" decoding="async">
+      <figure class="hero-media rv">
+        <img src="assets/hero.jpg" alt="L.I.S.A. — робот-рецепционист: физический AI-интерфейс на ресепшене" width="1200" height="1500" fetchpriority="high" decoding="async">
+        <figcaption>L.I.S.A. — физический корпус, лицо и голос. Работающий прототип.</figcaption>
       </figure>
     </div>
   </section>
 
-  <!-- ================= SCREEN 2 — PROOF + PRODUCT ================= -->
-  <section id="proof" class="sec">
+  <!-- =======================================================================
+       2. ОДИН СОТРУДНИК — НЕСКОЛЬКО ФИЛИАЛОВ
+       ===================================================================== -->
+  <section id="central" class="sec sec-alt">
     <div class="wrap">
-      <h2 class="sec-title rv" data-i18n="proof.title">PROOF</h2>
-      <p class="sec-sub rv" data-i18n="proof.sub">She is real.</p>
-
-      <div class="video-shell media rv" data-file="assets/lisa-move.mp4">
-        <video id="lisaVideo"
-               poster="assets/poster.jpg"
-               muted loop playsinline controls
-               preload="none"
-               data-src="assets/lisa-move.mp4"
-               data-i18n-aria="video.aria" aria-label="L.I.S.a — real footage"></video>
-      </div>
-      <div class="video-cap">
-        <span data-i18n="video.cap1">Real footage. No renders.</span>
-        <span data-i18n="video.cap2">Tap to unmute.</span>
+      <div class="sec-head">
+        <div class="eyebrow rv">Централизация персонала</div>
+        <h2 class="h-lg rv">Один сотрудник — несколько филиалов</h2>
+        <p class="lead rv" style="margin-top:18px">L.I.S.A. не требует, чтобы оператор физически
+          находился в филиале. Он подключается к нужному роботу удалённо и обслуживает посетителя через него.</p>
       </div>
 
-      <div class="gallery" id="gallery">
-        <figure class="g-item media g1" data-file="assets/lisa-2.jpg" data-full="assets/lisa-2.jpg">
-          <img src="assets/lisa-2.jpg" data-i18n-alt="gallery.alt" alt="L.I.S.a — photo 1" loading="lazy" decoding="async">
-        </figure>
-        <figure class="g-item media g2" data-file="assets/lisa-3.jpg" data-full="assets/lisa-3.jpg">
-          <img src="assets/lisa-3.jpg" data-i18n-alt="gallery.alt" alt="L.I.S.a — photo 2" loading="lazy" decoding="async">
-        </figure>
-        <figure class="g-item media g3" data-file="assets/lisa-4.jpg" data-full="assets/lisa-4.jpg">
-          <img src="assets/lisa-4.jpg" data-i18n-alt="gallery.alt" alt="L.I.S.a — photo 3" loading="lazy" decoding="async">
-        </figure>
-        <figure class="g-item media g4" data-file="assets/lisa-5.jpg" data-full="assets/lisa-5.jpg">
-          <img src="assets/lisa-5.jpg" data-i18n-alt="gallery.alt" alt="L.I.S.a — photo 4" loading="lazy" decoding="async">
-        </figure>
-        <figure class="g-item media g5" data-file="assets/lisa-6.jpg" data-full="assets/lisa-6.jpg">
-          <img src="assets/lisa-6.jpg" data-i18n-alt="gallery.alt" alt="L.I.S.a — photo 5" loading="lazy" decoding="async">
-        </figure>
-        <figure class="g-item media g6" data-file="assets/lisa-7.jpg" data-full="assets/lisa-7.jpg">
-          <img src="assets/lisa-7.jpg" data-i18n-alt="gallery.alt" alt="L.I.S.a — photo 6" loading="lazy" decoding="async">
-        </figure>
-      </div>
-
-      <p class="credits rv" data-i18n-html="credits"><strong>This is Lisa today.</strong><br>She is still learning. And getting better every day.</p>
-
-      <div class="rule"></div>
-
-      <div class="pricing">
-        <h3 class="sec-title rv" style="font-size:clamp(1.9rem,4.4vw,3.2rem);letter-spacing:.02em" data-i18n="pricing.title">Choose your Lisa</h3>
-        <p class="early-note rv" data-i18n="pricing.note">Early access pricing</p>
-
-        <div class="plans">
-          <article class="plan rv is-pre">
-            <h3>NETWORK</h3>
-            <div class="plan-photos">
-              <figure><img src="assets/lisa-pre-1.jpg" data-i18n-alt="plan.net.alt" alt="L.I.S.a NETWORK — photo 1" loading="lazy" decoding="async"></figure>
-              <figure><img src="assets/lisa-pre-2.jpg" data-i18n-alt="plan.net.alt" alt="L.I.S.a NETWORK — photo 2" loading="lazy" decoding="async"></figure>
-            </div>
-            <div class="price"><s>$1,990</s>$599</div>
-            <p data-i18n="plan.net.d1">Her AI lives in the cloud.</p>
-            <p data-i18n-html="plan.net.d2">Simple.<br>Powerful.<br>Always connected.</p>
-            <span class="pre" data-i18n="plan.pre">Pre-order open.</span>
-          </article>
-
-          <article class="plan rv">
-            <h3>COMBI</h3>
-            <div class="price">$2,490</div>
-            <p data-i18n-html="plan.combi.d1">Cloud when you want it.<br>Local when you need it.</p>
-            <p data-i18n-html="plan.combi.d2">A compact local AI for private conversations,<br>with cloud AI for everything else.</p>
-            <span class="soon" data-i18n="plan.soon">Coming soon.</span>
-          </article>
-
-          <article class="plan rv">
-            <h3>LOCAL</h3>
-            <div class="price">$2,990</div>
-            <p data-i18n="plan.local.d1">Her AI lives with her.</p>
-            <p data-i18n-html="plan.local.d2">Private.<br>Independent.<br>Your conversations stay local.</p>
-            <span class="soon" data-i18n="plan.soon">Coming soon.</span>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= SCREEN 3 — WAITLIST ================= -->
-  <section id="waitlist" class="sec wl">
-    <div class="wrap">
-      <h2 class="wl-head rv" data-i18n="wl.head">Meet Lisa first.</h2>
-
-      <div class="wl-grid">
-        <div class="rv">
-          <p style="color:var(--muted);font-weight:300;max-width:36ch" data-i18n="wl.text">
-            Lisa is not shipping yet. Leave your email and we will write to you first —
-            before anyone else meets her.
-          </p>
+      <div class="central">
+        <div class="cv-box rv">
+          <h3>Было</h3>
+          <div class="cv-lines">
+            <div class="cv-row"><span class="n">5</span> филиалов</div>
+            <div class="cv-row"><span class="n">5</span> сотрудников на ресепшене</div>
+            <div class="cv-row"><span class="n">5</span> рабочих мест в разных городах</div>
+          </div>
         </div>
 
-        <div class="rv">
-          <form id="wlForm" novalidate>
-            <div class="field">
-              <label class="lbl" for="wlEmail" data-i18n="wl.email">Email</label>
-              <input id="wlEmail" name="email" type="email" inputmode="email" autocomplete="email"
-                     data-i18n-ph="wl.ph" placeholder="you@email.com" required>
-            </div>
+        <div class="cv-mid rv">Централизация персонала<span>ресепшен перестаёт быть привязкой к месту</span></div>
 
-            <div class="field">
-              <span class="lbl" data-i18n="wl.which">Which Lisa?</span>
-              <div class="opts" role="radiogroup" data-i18n-aria="wl.which" aria-label="Which Lisa?">
-                <label class="opt"><input type="radio" name="which" value="NETWORK"><span>NETWORK</span></label>
-                <label class="opt"><input type="radio" name="which" value="COMBI"><span>COMBI</span></label>
-                <label class="opt"><input type="radio" name="which" value="LOCAL"><span>LOCAL</span></label>
-                <label class="opt"><input type="radio" name="which" value="NOT SURE" checked><span data-i18n="wl.opt.notsure">NOT SURE</span></label>
-              </div>
-            </div>
-
-            <button class="btn" type="submit" id="wlBtn" data-i18n="wl.btn">JOIN THE WAITLIST</button>
-            <div class="form-msg" id="wlMsg" role="status" aria-live="polite"></div>
-          </form>
-
-          <div class="done hidden" id="wlDone">
-            <h4 data-i18n="wl.done.h">You're on the list.</h4>
-            <p data-i18n="wl.done.p">Lisa will be ready soon.</p>
+        <div class="cv-box rv">
+          <h3>С L.I.S.A.</h3>
+          <div class="cv-lines">
+            <div class="cv-row is-acc"><span class="n">5</span> филиалов</div>
+            <div class="cv-row is-acc"><span class="n">5</span> роботов L.I.S.A.</div>
+            <div class="cv-row is-acc"><span class="n">1</span> удалённый оператор</div>
           </div>
         </div>
       </div>
+      <p class="note rv" style="margin-top:22px;max-width:70ch">
+        Схема «5 филиалов → 1 оператор» — расчётный ориентир. Точное количество операторов зависит
+        от нагрузки, графика работы и сложности вопросов в конкретной сети.
+      </p>
     </div>
   </section>
+
+  <!-- =======================================================================
+       3. КАК ЭТО РАБОТАЕТ
+       ===================================================================== -->
+  <section id="how" class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow rv">Три шага</div>
+        <h2 class="h-lg rv">Как это работает</h2>
+      </div>
+      <div class="steps">
+        <article class="step rv">
+          <div class="num">01</div>
+          <h3>Посетитель подходит</h3>
+          <p>L.I.S.A. приветствует его и спрашивает, чем помочь. Робот смотрит на человека и отвечает голосом.</p>
+        </article>
+        <article class="step rv">
+          <div class="num">02</div>
+          <h3>AI отвечает</h3>
+          <p>На типовые вопросы отвечает нейросеть:</p>
+          <ul>
+            <li>где находится кабинет;</li>
+            <li>часы работы и расписание;</li>
+            <li>правила и порядок;</li>
+            <li>контакты и информация о компании;</li>
+            <li>стандартные инструкции.</li>
+          </ul>
+        </article>
+        <article class="step rv">
+          <div class="num">03</div>
+          <h3>Подключается сотрудник</h3>
+          <p>Если нужен человек, L.I.S.A. подключает удалённого оператора. Оператор разговаривает
+            с посетителем через робота — как если бы он стоял рядом.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       4. КАЛЬКУЛЯТОР ЭКОНОМИИ
+       ===================================================================== -->
+  <section id="savings" class="sec sec-alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow rv">Экономика</div>
+        <h2 class="h-lg rv">Сколько можно сэкономить на персонале?</h2>
+        <p class="lead rv" style="margin-top:18px">Двигайте ползунки — расчёт пересчитывается на месте.
+          Модель считает полную стоимость сотрудника для компании, а не зарплату «на руки».</p>
+      </div>
+
+      <div class="calc">
+        <div class="calc-panel rv" id="calc">
+          <div class="field">
+            <label for="cBranches">Количество филиалов</label>
+            <input type="number" class="input" id="cBranches" min="1" max="100" step="1" value="5" inputmode="numeric">
+            <input type="range" id="cBranchesRange" min="1" max="100" step="1" value="5" aria-label="Количество филиалов">
+            <div class="ratio-line">от 1 до 100 точек обслуживания</div>
+          </div>
+
+          <div class="field">
+            <label for="cCost">Стоимость одного сотрудника в месяц</label>
+            <input type="number" class="input" id="cCost" min="0" step="1000" value="80000" inputmode="numeric">
+            <div class="hint">Полная стоимость сотрудника для компании (оклад, налоги, рабочее место, оборудование) — не зарплата «на руки».</div>
+          </div>
+
+          <div class="field">
+            <label for="cPerOp">Удалённых операторов: сколько филиалов на одного</label>
+            <select class="select" id="cPerOp">
+              <option value="1">1 оператор → 1 филиал</option>
+              <option value="2">1 оператор → 2 филиала</option>
+              <option value="3">1 оператор → 3 филиала</option>
+              <option value="4">1 оператор → 4 филиала</option>
+              <option value="5" selected>1 оператор → 5 филиалов</option>
+              <option value="6">1 оператор → 6 филиалов</option>
+              <option value="8">1 оператор → 8 филиалов</option>
+              <option value="10">1 оператор → 10 филиалов</option>
+            </select>
+            <input type="range" id="cPerOpRange" min="1" max="10" step="1" value="5" aria-label="Филиалов на одного оператора">
+            <div class="ratio-line" id="cRatio">1 оператор → 5 филиалов</div>
+          </div>
+
+          <div class="field">
+            <label>Тариф аренды L.I.S.A. (за одну точку)</label>
+            <div class="tar-pick">
+              <label class="tar-opt">
+                <input type="radio" name="cTariff" value="avatar">
+                <span class="tar-in">
+                  <b>Аватар</b>
+                  <i>Физическое присутствие удалённого сотрудника</i>
+                  <em data-tariff-price="avatar">24 900 ₽ / мес</em>
+                </span>
+              </label>
+              <label class="tar-opt">
+                <input type="radio" name="cTariff" value="avatarAi" checked>
+                <span class="tar-in">
+                  <b>Аватар + AI</b>
+                  <i>Физическое присутствие + автономная работа AI</i>
+                  <em data-tariff-price="avatarAi">34 900 ₽ / мес</em>
+                </span>
+              </label>
+            </div>
+            <div class="ratio-line" id="cRentNote">—</div>
+          </div>
+
+          <p class="note">L.I.S.A. сдаётся в аренду — покупки оборудования и капитальных вложений нет,
+            экономия начинается с первого месяца. Расчёт является примером потенциальной экономии:
+            фактическая зависит от нагрузки, графика работы и количества операторов.</p>
+        </div>
+
+        <aside class="calc-out rv" aria-live="polite">
+          <h3>Результат модели</h3>
+          <div class="out-row"><span>Текущие расходы на ресепшен</span><b id="cCurrent">—</b></div>
+          <div class="out-row"><span>Нужно удалённых операторов</span><b id="cOperators">—</b></div>
+          <div class="out-row"><span>Аренда L.I.S.A. (все точки)</span><b id="cRent">—</b></div>
+          <div class="out-row"><span>Оплата удалённых операторов</span><b id="cOps">—</b></div>
+          <div class="out-row"><span>Расходы с L.I.S.A.</span><b id="cWithLisa">—</b></div>
+          <div class="out-big">
+            <span>Потенциальная разница в месяц</span>
+            <b id="cMonth" class="acc">—</b>
+            <div class="out-bar" aria-hidden="true"><i id="cShareBar" style="width:0%"></i></div>
+          </div>
+          <div class="out-row"><span>За год</span><b id="cYear">—</b></div>
+          <div class="out-row"><span>Экономия от текущих расходов</span><b id="cShare">—</b></div>
+          <div class="out-row"><span>Одна точка: сотрудник → L.I.S.A.</span><b id="cPerBranch">—</b></div>
+          <p class="note" id="cWarn" style="color:rgba(255,255,255,.75);margin-top:16px" hidden>На малом числе точек
+            централизация не окупает удалённого оператора: один оператор рассчитан на несколько точек.
+            Экономия появляется на сети.</p>
+          <a class="btn btn-acc" style="margin-top:24px;width:100%" href="#contact">Получить расчёт для своей сети</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       5. ТРИ СЦЕНАРИЯ
+       ===================================================================== -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow rv">Примеры</div>
+        <h2 class="h-lg rv">Как это выглядит на цифрах</h2>
+        <p class="lead rv" style="margin-top:18px">Три типовые конфигурации сети при полной стоимости
+          сотрудника 80 000 ₽ в месяц и тарифе аренды <b>Аватар + AI — 34 900 ₽/мес за точку</b>.
+          Это модельный расчёт, а не гарантированная экономия.</p>
+      </div>
+      <div class="sc-grid">
+        <article class="sc rv" data-scenario data-branches="5" data-per-operator="5">
+          <h3>Небольшая сеть</h3>
+          <div class="sc-flow">
+            <div class="f-row"><span data-out="branches">—</span><b data-out="staff">—</b></div>
+            <div class="f-row"><span>Сейчас</span><b data-out="current">—</b></div>
+            <div class="f-row"><span>Удалённых операторов</span><b data-out="operators">—</b></div>
+            <div class="f-row"><span>Аренда L.I.S.A.</span><b data-out="rent">—</b></div>
+            <div class="f-row"><span>С L.I.S.A.</span><b data-out="withLisa">—</b></div>
+          </div>
+          <div class="sc-res">
+            <div class="big" data-out="month">—</div>
+            <div class="sub" data-out="year">—</div>
+          </div>
+        </article>
+
+        <article class="sc rv" data-scenario data-branches="10" data-per-operator="5">
+          <h3>Средняя сеть</h3>
+          <div class="sc-flow">
+            <div class="f-row"><span data-out="branches">—</span><b data-out="staff">—</b></div>
+            <div class="f-row"><span>Сейчас</span><b data-out="current">—</b></div>
+            <div class="f-row"><span>Удалённых операторов</span><b data-out="operators">—</b></div>
+            <div class="f-row"><span>Аренда L.I.S.A.</span><b data-out="rent">—</b></div>
+            <div class="f-row"><span>С L.I.S.A.</span><b data-out="withLisa">—</b></div>
+          </div>
+          <div class="sc-res">
+            <div class="big" data-out="month">—</div>
+            <div class="sub" data-out="year">—</div>
+          </div>
+        </article>
+
+        <article class="sc rv" data-scenario data-branches="20" data-per-operator="5">
+          <h3>Крупная сеть</h3>
+          <div class="sc-flow">
+            <div class="f-row"><span data-out="branches">—</span><b data-out="staff">—</b></div>
+            <div class="f-row"><span>Сейчас</span><b data-out="current">—</b></div>
+            <div class="f-row"><span>Удалённых операторов</span><b data-out="operators">—</b></div>
+            <div class="f-row"><span>Аренда L.I.S.A.</span><b data-out="rent">—</b></div>
+            <div class="f-row"><span>С L.I.S.A.</span><b data-out="withLisa">—</b></div>
+          </div>
+          <div class="sc-res">
+            <div class="big" data-out="month">—</div>
+            <div class="sub" data-out="year">—</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       6. ЧЕЛОВЕК ОСТАЁТСЯ В СИСТЕМЕ
+       ===================================================================== -->
+  <section class="sec sec-alt">
+    <div class="wrap human">
+      <div>
+        <div class="eyebrow rv">Доверие</div>
+        <h2 class="h-lg rv">Человек остаётся в системе</h2>
+        <p class="lead rv" style="margin-top:18px">L.I.S.A. не пытается заменить сотрудника искусственным
+          интеллектом там, где нужен человек. Она переносит сотрудника из конкретного филиала
+          в единый удалённый центр.</p>
+      </div>
+      <div class="flow-vert rv" aria-label="Схема: посетитель → L.I.S.A. → AI или оператор">
+        <div class="fv">Посетитель<small>в филиале</small></div>
+        <div class="fv-down" aria-hidden="true">↓</div>
+        <div class="fv is-acc">L.I.S.A.<small>физический интерфейс</small></div>
+        <div class="fv-down" aria-hidden="true">↓</div>
+        <div class="fv">AI<small>простые вопросы</small></div>
+        <div class="split2">
+          <div class="fv">→ ответ сразу<small>навигация, часы работы, расписание, правила</small></div>
+          <div class="fv">→ удалённый оператор<small>когда нужен человек</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       7. AI И ПРИМЕРЫ ДИАЛОГА
+       ===================================================================== -->
+  <section id="ai" class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow rv">AI</div>
+        <h2 class="h-lg rv">Большинство простых вопросов можно автоматизировать</h2>
+        <p class="lead rv" style="margin-top:18px">AI отвечает на типовые вопросы.
+          Человек подключается там, где нужен человек.</p>
+      </div>
+
+      <div class="dlg">
+        <div class="dlg-item rv">
+          <div class="bubble me"><div class="who">Посетитель</div><div class="txt">«Где находится кабинет директора?»</div></div>
+          <div class="bubble ai"><div class="who">L.I.S.A.</div><div class="txt">«Кабинет директора находится на втором этаже, направо от лестницы.»</div></div>
+        </div>
+        <div class="dlg-item rv">
+          <div class="bubble me"><div class="who">Посетитель</div><div class="txt">«До скольки вы работаете?»</div></div>
+          <div class="bubble ai"><div class="who">L.I.S.A.</div><div class="txt">«Сегодня мы работаем до 21:00.»</div></div>
+        </div>
+        <div class="dlg-item rv">
+          <div class="bubble me"><div class="who">Посетитель</div><div class="txt">«Мне нужно поговорить с менеджером.»</div></div>
+          <div class="bubble ai"><div class="who">L.I.S.A.</div><div class="txt">«Конечно. Сейчас я соединю вас с сотрудником.»</div></div>
+        </div>
+      </div>
+      <p class="note rv" style="margin-top:20px">Примеры ответов приведены для иллюстрации.
+        Содержание настраивается под конкретную компанию: кабинеты, часы работы, правила, контакты.</p>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       8. СЦЕНАРИИ ПРИМЕНЕНИЯ
+       ===================================================================== -->
+  <section id="use" class="sec sec-alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow rv">Сценарии применения</div>
+        <h2 class="h-lg rv">Где работает L.I.S.A.</h2>
+        <p class="lead rv" style="margin-top:18px">Точки, где посетителя встречает человек
+          и где большую часть вопросов можно централизовать.</p>
+      </div>
+      <div class="uc-grid">
+        <article class="uc rv"><div class="ico">01</div><h3>Ресепшен</h3><p>Приём посетителей и навигация.</p></article>
+        <article class="uc rv"><div class="ico">02</div><h3>Отель</h3><p>Заселение, информация, связь с сотрудником.</p></article>
+        <article class="uc rv"><div class="ico">03</div><h3>Клиника</h3><p>Навигация, расписание, информация, связь с администратором.</p></article>
+        <article class="uc rv"><div class="ico">04</div><h3>Бизнес-центр</h3><p>Приём гостей и связь с сотрудниками.</p></article>
+        <article class="uc rv"><div class="ico">05</div><h3>ЖК</h3><p>Информация для жителей и связь с управляющей компанией.</p></article>
+        <article class="uc rv"><div class="ico">06</div><h3>Проходная</h3><p>Инструкции, навигация, связь с охраной или сотрудником.</p></article>
+      </div>
+      <p class="note rv" style="margin-top:22px">Это сценарии применения. Готовые отраслевые
+        сертификации и интеграции не заявляются — конфигурация под задачу обсуждается отдельно.</p>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       9. ЭТО НЕ ЭКРАН НА СТЕНЕ + ГАЛЕРЕЯ
+       ===================================================================== -->
+  <section id="real" class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow rv">Физический продукт</div>
+        <h2 class="h-lg rv">Это не экран на стене</h2>
+        <p class="lead rv" style="margin-top:18px">L.I.S.A. — физический AI-интерфейс.
+          Она смотрит на человека, поворачивает голову, слушает, отвечает голосом и создаёт
+          ощущение реального сотрудника в пространстве.</p>
+      </div>
+
+      <div class="gallery" id="gallery">
+        <figure class="g-item g1"><img src="assets/lisa-2.jpg" data-full="assets/lisa-2.jpg" alt="L.I.S.A. — лицо робота крупным планом" loading="lazy" decoding="async"></figure>
+        <figure class="g-item g2"><img src="assets/lisa-3.jpg" data-full="assets/lisa-3.jpg" alt="L.I.S.A. — глаза и мимика" loading="lazy" decoding="async"></figure>
+        <figure class="g-item g3"><img src="assets/lisa-4.jpg" data-full="assets/lisa-4.jpg" alt="L.I.S.A. — движение головы" loading="lazy" decoding="async"></figure>
+        <figure class="g-item g4"><img src="assets/lisa-5.jpg" data-full="assets/lisa-5.jpg" alt="L.I.S.A. — бюст и корпус" loading="lazy" decoding="async"></figure>
+        <figure class="g-item g5"><img src="assets/lisa-6.jpg" data-full="assets/lisa-6.jpg" alt="L.I.S.A. — корпус целиком" loading="lazy" decoding="async"></figure>
+        <figure class="g-item g6"><img src="assets/lisa-7.jpg" data-full="assets/lisa-7.jpg" alt="Человек взаимодействует с L.I.S.A." loading="lazy" decoding="async"></figure>
+      </div>
+      <p class="note rv" style="margin-top:16px">Реальные фотографии прототипа. Нажмите на фото, чтобы увеличить.</p>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       10. УДАЛЁННЫЙ СОТРУДНИК В ДРУГОМ ГОРОДЕ
+       ===================================================================== -->
+  <section class="sec sec-alt">
+    <div class="wrap human">
+      <div>
+        <div class="eyebrow rv">Распределённая сеть</div>
+        <h2 class="h-lg rv">Ваш сотрудник может находиться в другом городе</h2>
+        <p class="lead rv" style="margin-top:18px">Сотруднику не обязательно физически находиться
+          в каждом филиале. L.I.S.A. становится его физическим представителем на месте.</p>
+      </div>
+      <div class="flow-vert rv" aria-label="Схема: оператор в Москве подключается к филиалам через L.I.S.A.">
+        <div class="fv is-acc">Москва — оператор<small>единый удалённый центр</small></div>
+        <div class="fv-down" aria-hidden="true">↓</div>
+        <div class="split2" style="margin-left:0">
+          <div class="fv">L.I.S.A. → филиал №1</div>
+          <div class="fv">L.I.S.A. → филиал №2</div>
+          <div class="fv">L.I.S.A. → филиал №3</div>
+          <div class="fv">L.I.S.A. → филиал №4</div>
+          <div class="fv">L.I.S.A. → филиал №5</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       11. ПРИВАТНОСТЬ
+       ===================================================================== -->
+  <section id="privacy" class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow rv">Приватность</div>
+        <h2 class="h-lg rv">Вы выбираете уровень приватности</h2>
+        <p class="lead rv" style="margin-top:18px">Две конфигурации — под разные требования
+          к данным и помещениям.</p>
+      </div>
+      <div class="pv-grid">
+        <article class="pv rv">
+          <div class="tag">L.I.S.A. Private</div>
+          <h3 class="h-md">Без камеры</h3>
+          <p class="small" style="margin-top:12px">Микрофоны используются для общения и определения направления звука.</p>
+          <ul>
+            <li>общение голосом без видеоданных;</li>
+            <li>определение направления звука для поворота к говорящему.</li>
+          </ul>
+        </article>
+        <article class="pv rv">
+          <div class="tag">L.I.S.A. Vision</div>
+          <h3 class="h-md">С камерой</h3>
+          <p class="small" style="margin-top:12px">Дополнительные возможности компьютерного зрения.</p>
+          <ul>
+            <li>обнаружение присутствия человека перед роботом;</li>
+            <li>зрительный контакт и поворот головы к посетителю.</li>
+          </ul>
+        </article>
+      </div>
+      <p class="note rv" style="margin-top:20px;max-width:76ch">Состав функций и правила обработки
+        данных фиксируются в договоре для конкретного проекта. Мы не заявляем возможностей,
+        которых нет в поставленной конфигурации.</p>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       12. ДВА ТАРИФА АРЕНДЫ
+       ===================================================================== -->
+  <section id="roi" class="sec sec-alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow rv">Аренда</div>
+        <h2 class="h-lg rv">Два тарифа. Оборудование покупать не нужно.</h2>
+        <p class="lead rv" style="margin-top:18px">L.I.S.A. сдаётся в аренду: абонентская плата за одну точку.
+          Капитальных вложений и срока окупаемости в этой модели нет — экономия начинается с первого месяца.</p>
+      </div>
+
+      <div class="roi">
+        <div class="calc-panel rv">
+          <div class="field">
+            <label for="tBranches">Сколько точек вы планируете</label>
+            <input class="input" type="number" id="tBranches" name="branches" min="1" max="500" step="1" value="5" inputmode="numeric">
+          </div>
+          <div class="field">
+            <label for="tCost">Стоимость одного сотрудника, ₽/мес</label>
+            <input class="input" type="number" id="tCost" name="employeeCost" min="0" step="1000" value="80000" inputmode="numeric">
+            <div class="hint">Полная стоимость для компании (оклад, налоги, рабочее место) — не зарплата «на руки».</div>
+          </div>
+          <div class="field">
+            <label>Что входит в тарифы</label>
+            <ul class="tick">
+              <li>физический терминал на точке — аренда, без выкупа;</li>
+              <li>подключение удалённого оператора к роботу;</li>
+              <li>установка, подключение и техподдержка;</li>
+              <li>обновления. В тарифе «Аватар + AI» дополнительно — автономная обработка типовых вопросов.</li>
+            </ul>
+          </div>
+          <p class="note">Условия фиксируются в договоре: количество точек, график работы, состав функций.
+            Формулы расчёта открыты и вынесены в <code>js/calc.js</code>.</p>
+        </div>
+
+        <div class="calc-out is-static" id="tiersOut" style="position:static" aria-live="polite">
+          <h3>Ваша сеть: <span data-tier="branches">—</span></h3>
+          <div class="out-row"><span>Сейчас на ресепшене</span><b data-tier="current">—</b></div>
+          <div class="out-row"><span>Нужно удалённых операторов</span><b data-tier="operators">—</b></div>
+
+          <div class="tar-res">
+            <div class="tar-card">
+              <div class="tc-name">Аватар</div>
+              <div class="tc-price">24 900 ₽ / мес за точку</div>
+              <div class="tc-row"><span>Аренда L.I.S.A.</span><b data-tier="avatar-rent">—</b></div>
+              <div class="tc-row"><span>Итого в месяц</span><b data-tier="avatar-month">—</b></div>
+              <div class="tc-row"><span>Экономия</span><b class="acc" data-tier="avatar-save">—</b></div>
+              <div class="tc-row"><span>За год</span><b data-tier="avatar-year">—</b></div>
+            </div>
+            <div class="tar-card">
+              <div class="tc-name">Аватар + AI</div>
+              <div class="tc-price">34 900 ₽ / мес за точку</div>
+              <div class="tc-row"><span>Аренда L.I.S.A.</span><b data-tier="avatarAi-rent">—</b></div>
+              <div class="tc-row"><span>Итого в месяц</span><b data-tier="avatarAi-month">—</b></div>
+              <div class="tc-row"><span>Экономия</span><b class="acc" data-tier="avatarAi-save">—</b></div>
+              <div class="tc-row"><span>За год</span><b data-tier="avatarAi-year">—</b></div>
+            </div>
+          </div>
+
+          <div class="out-row"><span>Разница между тарифами</span><b data-tier="gap">—</b></div>
+          <p class="note" style="color:rgba(255,255,255,.55);margin-top:18px">Модельный расчёт.
+            Итоговая экономия зависит от нагрузки, графика и количества операторов, нужных вашему бизнесу.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       13. L.I.S.A. СЕЙЧАС (прототип)
+       ===================================================================== -->
+  <section id="now" class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow rv">Статус продукта</div>
+        <h2 class="h-lg rv">L.I.S.A. сейчас</h2>
+        <p class="lead rv" style="margin-top:18px">L.I.S.A. уже существует как работающий физический
+          прототип. Сейчас мы переводим его в серийный формат для первых B2B-пилотов.</p>
+      </div>
+      <div class="video-shell rv">
+        <video id="lisaVideo" controls playsinline preload="metadata" poster="assets/poster.jpg" width="1280" height="720">
+          <source src="assets/lisa-move.mp4" type="video/mp4">
+          Ваш браузер не поддерживает видео. <a href="assets/lisa-move.mp4">Скачать видео</a>.
+        </video>
+      </div>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:24px">
+        <div class="card-plain rv"><h3 class="h-md" style="font-size:1.05rem">Корпус и лицо</h3><p class="small" style="margin-top:10px">Физический бюст с механикой головы.</p></div>
+        <div class="card-plain rv"><h3 class="h-md" style="font-size:1.05rem">Голос и слух</h3><p class="small" style="margin-top:10px">Распознавание речи и ответ голосом.</p></div>
+        <div class="card-plain rv"><h3 class="h-md" style="font-size:1.05rem">Локальный AI</h3><p class="small" style="margin-top:10px">Обработка на устройстве, без облака.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       14. КОМУ ЭТО ВЫГОДНО
+       ===================================================================== -->
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="grid fit rv" style="grid-template-columns:1.1fr .9fr;align-items:center">
+        <div>
+          <div class="eyebrow">Кому это выгодно</div>
+          <h2 class="h-lg">Сеть филиалов</h2>
+          <p class="lead" style="margin-top:18px">Если у вас несколько одинаковых точек обслуживания,
+            L.I.S.A. позволяет централизовать reception.</p>
+        </div>
+        <div class="card" style="text-align:center">
+          <div class="small" style="letter-spacing:.14em;text-transform:uppercase;font-weight:600">Пример</div>
+          <div style="font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;letter-spacing:-.03em;margin:14px 0">
+            5 филиалов → 1 удалённый оператор
+          </div>
+          <a class="btn btn-acc" href="#savings">Посчитать для своей сети</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       15. ФОРМА «ПОЛУЧИТЬ РАСЧЁТ»
+       ===================================================================== -->
+  <section id="contact" class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow rv">Заявка</div>
+        <h2 class="h-lg rv">Хотите узнать экономию для вашей сети?</h2>
+        <p class="lead rv" style="margin-top:18px">Оставьте контакты — вернёмся с расчётом
+          под ваши параметры. Или позвоните: <a href="tel:+79774872876" style="color:var(--acc);font-weight:600">+7 977 487-28-76</a>.</p>
+      </div>
+
+      <form class="calc-panel rv" id="leadForm" novalidate style="max-width:760px">
+        <div class="form-grid">
+          <label class="fld"><span>Имя *</span><input class="input" type="text" name="name" autocomplete="name" required></label>
+          <label class="fld"><span>Компания</span><input class="input" type="text" name="company" autocomplete="organization"></label>
+          <label class="fld"><span>Количество филиалов</span><input class="input" type="number" name="branches" min="1" step="1" value="5" inputmode="numeric"></label>
+          <label class="fld"><span>Телефон *</span><input class="input" type="tel" name="phone" autocomplete="tel" placeholder="+7 ___ ___-__-__" required></label>
+          <label class="fld full"><span>Email</span><input class="input" type="email" name="email" autocomplete="email" inputmode="email"></label>
+          <label class="fld full"><span>Комментарий</span><textarea class="input" name="comment" placeholder="Отрасль, города, что нужно автоматизировать"></textarea></label>
+        </div>
+        <button class="btn btn-acc" type="submit" id="leadBtn" style="margin-top:20px">Получить расчёт</button>
+        <div class="form-msg" id="leadMsg" role="status" aria-live="polite"></div>
+        <p class="note" style="margin-top:12px">Отправляя форму, вы соглашаетесь на обработку
+          контактных данных для подготовки расчёта.</p>
+      </form>
+      <div class="done hidden rv" id="leadDone">
+        <b>Заявка отправлена.</b>
+        <p class="small">Спасибо! Мы свяжемся с вами и подготовим расчёт под вашу сеть.
+          Если нужно срочно — звоните: <a href="tel:+79774872876" style="color:var(--acc)">+7 977 487-28-76</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       16. ФИНАЛЬНЫЙ CTA
+       ===================================================================== -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="final rv">
+        <h2 class="h-lg">Один сотрудник.<br>Несколько филиалов.<br>L.I.S.A. на месте.</h2>
+        <p class="lead">Проверьте экономику L.I.S.A. для вашей сети.</p>
+        <div class="final-cta">
+          <a class="btn btn-acc" href="#savings">Рассчитать экономию</a>
+          <a class="btn btn-ghost" href="#contact">Связаться</a>
+        </div>
+        <div class="final-tel">Телефон: <a href="tel:+79774872876">+7 977 487-28-76</a> · Сайт: lisa-is.com</div>
+      </div>
+    </div>
+  </section>
+
 </main>
 
+<!-- =========================================================================
+     ПОДВАЛ
+     ======================================================================= -->
 <footer>
-  <div class="wrap f-in">
-    <div>
-      <div class="f-brand">L.I.S<span style="color:var(--acc)">.</span>a</div>
-      <div class="f-sig" data-i18n="sig.here">She is here.</div>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <a class="logo" href="#top"><span class="dot" aria-hidden="true"></span>L.I.S.A.<span>Remote Reception</span></a>
+        <p class="small" style="margin-top:14px;max-width:38ch">Физический AI-интерфейс для бизнеса.
+          Удалённый сотрудник на ресепшене, в клинике, отеле, офисе и ЖК.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <a href="#central">Централизация персонала</a>
+        <a href="#how">Как это работает</a>
+        <a href="#savings">Калькулятор экономии</a>
+        <a href="#roi">Окупаемость</a>
+        <a href="#use">Сценарии применения</a>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <a href="tel:+79774872876">+7 977 487-28-76</a>
+        <a id="fMail" href="mailto:" rel="nofollow"></a>
+        <a href="https://lisa-is.com/">lisa-is.com</a>
+      </div>
     </div>
-    <div>
-      <a class="f-mail" id="fMail" href="mailto:" rel="nofollow"></a>
+    <div class="f-bottom">
+      <div>© <span id="year">2026</span> L.I.S.A. Все права защищены.</div>
+      <div>Расчёты на сайте — модельные и не являются публичной офертой.</div>
     </div>
   </div>
 </footer>
 
-<!-- lightbox -->
-<div class="lb" id="lb" role="dialog" aria-modal="true" data-i18n-aria="lb.viewer" aria-label="Photo viewer">
-  <button class="lb-btn lb-close" id="lbClose" data-i18n-aria="lb.close" aria-label="Close">✕</button>
-  <button class="lb-btn lb-prev" id="lbPrev" data-i18n-aria="lb.prev" aria-label="Previous">‹</button>
+<!-- лайтбокс -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Просмотр фото">
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Закрыть">✕</button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Предыдущее">‹</button>
   <img id="lbImg" src="" alt="">
-  <button class="lb-btn lb-next" id="lbNext" data-i18n-aria="lb.next" aria-label="Next">›</button>
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Следующее">›</button>
 </div>
 
-<script>
-(function(){
-  "use strict";
-
-  /* ================= i18n — en / ru / zh =================
-     Static page, no build step: every translatable node carries a data-i18n* key.
-     Language order: ?lang= > saved choice > browser language > en. */
-  var I18N = {
-    en: {
-      'meta.title':'L.I.S.a — Physical AI Companion',
-      'meta.desc':'L.I.S.a is a physical AI companion that sees you, hears you, talks with you and remembers your conversations.',
-      'nav.proof':'PROOF',
-      'nav.wait':'WAITLIST',
-      'hero.p1':'Imagine a home where someone is always there.',
-      'hero.p2':'She knows you.<br>She sees you.<br>She hears you.<br>She talks with you.<br>She remembers your conversations.',
-      'hero.p3':'And she is always glad when you come home.',
-      'hero.p4':'You are the most important person in her life.',
-      'hero.p5':'She gets to know you better and better.<br>And she gets better every day.',
-      'hero.p6':'Soon — a perfect body.',
-      'hero.p7':'Soon — a male version.',
-      'sig.here':'She is here.',
-      'proof.title':'PROOF',
-      'proof.sub':'She is real.',
-      'video.cap1':'Real footage. No renders.',
-      'video.cap2':'Tap to unmute.',
-      'video.aria':'L.I.S.a — real footage',
-      'credits':'<strong>This is Lisa today.</strong><br>She is still learning. And getting better every day.',
-      'pricing.title':'Choose your Lisa',
-      'pricing.note':'Early access pricing',
-      'plan.net.d1':'Her AI lives in the cloud.',
-      'plan.net.d2':'Simple.<br>Powerful.<br>Always connected.',
-      'plan.combi.d1':'Cloud when you want it.<br>Local when you need it.',
-      'plan.combi.d2':'A compact local AI for private conversations,<br>with cloud AI for everything else.',
-      'plan.local.d1':'Her AI lives with her.',
-      'plan.local.d2':'Private.<br>Independent.<br>Your conversations stay local.',
-      'plan.soon':'Coming soon.',
-      'plan.pre':'Pre-order open.',
-      'plan.net.alt':'L.I.S.a NETWORK, pre-order edition',
-      'wl.head':'Meet Lisa first.',
-      'wl.text':'Lisa is not shipping yet. Leave your email and we will write to you first — before anyone else meets her.',
-      'wl.email':'Email',
-      'wl.ph':'you@email.com',
-      'wl.which':'Which Lisa?',
-      'wl.btn':'JOIN THE WAITLIST',
-      'wl.opt.notsure':'NOT SURE',
-      'wl.done.h':"You're on the list.",
-      'wl.done.p':'Lisa will be ready soon.',
-      'form.err':'Please enter a valid email.',
-      'form.sending':'Sending…',
-      'form.fail':'Could not send right now — email us at',
-      'lb.viewer':'Photo viewer',
-      'lb.close':'Close',
-      'lb.prev':'Previous',
-      'lb.next':'Next',
-      'lb.missing':'— file not uploaded yet',
-      'gallery.alt':'L.I.S.a — photo',
-      'ph.hero':'Hero photo — assets/hero.jpg',
-      'ph.video':'Video — assets/lisa-move.mp4'
-    },
-    ru: {
-      'meta.title':'L.I.S.a — физический AI-компаньон',
-      'meta.desc':'L.I.S.a — физический AI-компаньон: она видит вас, слышит, говорит с вами и помнит ваши разговоры.',
-      'nav.proof':'ГАЛЕРЕЯ',
-      'nav.wait':'ЗАЯВКА',
-      'hero.p1':'Представьте дом, где кто-то всегда есть.',
-      'hero.p2':'Она знает вас.<br>Видит вас.<br>Слышит вас.<br>Говорит с вами.<br>Помнит ваши разговоры.',
-      'hero.p3':'И всегда рада, когда вы приходите домой.',
-      'hero.p4':'Вы — самый важный человек в её жизни.',
-      'hero.p5':'Она узнаёт вас всё лучше.<br>И становится лучше каждый день.',
-      'hero.p6':'Скоро — совершенное тело.',
-      'hero.p7':'Скоро — мужская версия.',
-      'sig.here':'Она здесь.',
-      'proof.title':'ДОКАЗАТЕЛЬСТВО',
-      'proof.sub':'Она настоящая.',
-      'video.cap1':'Реальная съёмка. Без рендеров.',
-      'video.cap2':'Нажмите, чтобы включить звук.',
-      'video.aria':'L.I.S.a — реальная съёмка',
-      'credits':'<strong>Такова Лиза сегодня.</strong><br>Она всё ещё учится. И становится лучше каждый день.',
-      'pricing.title':'Выберите свою Лизу',
-      'pricing.note':'Цены раннего доступа',
-      'plan.net.d1':'Её ИИ живёт в облаке.',
-      'plan.net.d2':'Просто.<br>Мощно.<br>Всегда на связи.',
-      'plan.combi.d1':'Облако — когда хочется.<br>Локально — когда нужно.',
-      'plan.combi.d2':'Компактный локальный ИИ для приватных разговоров,<br>а облачный — для всего остального.',
-      'plan.local.d1':'Её ИИ живёт вместе с ней.',
-      'plan.local.d2':'Приватно.<br>Независимо.<br>Ваши разговоры остаются у вас.',
-      'plan.soon':'Скоро.',
-      'plan.pre':'Предзаказ открыт.',
-      'plan.net.alt':'L.I.S.a NETWORK, версия по предзаказу',
-      'wl.head':'Познакомьтесь с Лизой первыми.',
-      'wl.text':'Лиза пока не продаётся. Оставьте свою почту — мы напишем вам первыми, раньше всех остальных.',
-      'wl.email':'Почта',
-      'wl.ph':'you@email.com',
-      'wl.which':'Какая Лиза?',
-      'wl.btn':'В ЛИСТ ОЖИДАНИЯ',
-      'wl.opt.notsure':'ЕЩЁ НЕ РЕШИЛ',
-      'wl.done.h':'Вы в списке.',
-      'wl.done.p':'Лиза будет готова совсем скоро.',
-      'form.err':'Введите корректный email.',
-      'form.sending':'Отправляем…',
-      'form.fail':'Не удалось отправить сейчас — напишите нам на',
-      'lb.viewer':'Просмотр фото',
-      'lb.close':'Закрыть',
-      'lb.prev':'Предыдущее',
-      'lb.next':'Следующее',
-      'lb.missing':'— файл ещё не загружен',
-      'gallery.alt':'L.I.S.a — фото',
-      'ph.hero':'Фото — assets/hero.jpg',
-      'ph.video':'Видео — assets/lisa-move.mp4'
-    },
-    zh: {
-      'meta.title':'L.I.S.a — 实体 AI 伴侣',
-      'meta.desc':'L.I.S.a 是实体 AI 伴侣：她看得见你，听得见你，与你交谈，并记得你们的每一次对话。',
-      'nav.proof':'实拍',
-      'nav.wait':'候补名单',
-      'hero.p1':'想象一个家——那里始终有人在等你。',
-      'hero.p2':'她了解你。<br>她看得见你。<br>她听得见你。<br>她与你交谈。<br>她记得你们的每一次对话。',
-      'hero.p3':'每次你回到家，她都由衷地高兴。',
-      'hero.p4':'你是她生命中最重要的人。',
-      'hero.p5':'她越来越懂你。<br>也一天比一天更好。',
-      'hero.p6':'很快 —— 完美的身体。',
-      'hero.p7':'很快 —— 男性版本。',
-      'sig.here':'她在这里。',
-      'proof.title':'真机实拍',
-      'proof.sub':'她是真实的。',
-      'video.cap1':'真实拍摄，不是渲染。',
-      'video.cap2':'点击开启声音。',
-      'video.aria':'L.I.S.a — 真实拍摄',
-      'credits':'<strong>这是今天的 Lisa。</strong><br>她仍在学习，并且每天都在进步。',
-      'pricing.title':'选择你的 Lisa',
-      'pricing.note':'早鸟价格',
-      'plan.net.d1':'她的 AI 在云端。',
-      'plan.net.d2':'简单。<br>强大。<br>始终在线。',
-      'plan.combi.d1':'想要云，就用云。<br>需要本地，就用本地。',
-      'plan.combi.d2':'小巧的本地 AI 负责私密对话，<br>其余交给云端 AI。',
-      'plan.local.d1':'她的 AI 与她同在。',
-      'plan.local.d2':'私密。<br>独立。<br>你的对话留在本地。',
-      'plan.soon':'即将推出。',
-      'plan.pre':'预购已开放。',
-      'plan.net.alt':'L.I.S.a NETWORK，预购版',
-      'wl.head':'最先见到 Lisa。',
-      'wl.text':'Lisa 尚未正式发售。留下你的邮箱，我们会第一时间通知你 —— 在其他人见到她之前。',
-      'wl.email':'邮箱',
-      'wl.ph':'you@email.com',
-      'wl.which':'选择哪一款 Lisa？',
-      'wl.btn':'加入候补名单',
-      'wl.opt.notsure':'还没决定',
-      'wl.done.h':'你已在名单中。',
-      'wl.done.p':'Lisa 很快就会准备好。',
-      'form.err':'请输入有效的邮箱地址。',
-      'form.sending':'发送中…',
-      'form.fail':'暂时无法发送 —— 请发邮件至',
-      'lb.viewer':'图片查看器',
-      'lb.close':'关闭',
-      'lb.prev':'上一张',
-      'lb.next':'下一张',
-      'lb.missing':'— 文件尚未上传',
-      'gallery.alt':'L.I.S.a — 照片',
-      'ph.hero':'照片 — assets/hero.jpg',
-      'ph.video':'视频 — assets/lisa-move.mp4'
-    }
-  };
-
-  var LANGS = ['ru','en','zh'];
-  var LANG_KEY = 'lisa_lang';
-  var OG_LOCALE = {en:'en_US', ru:'ru_RU', zh:'zh_CN'};
-  var lang = 'en';
-
-  function t(key){
-    var d = I18N[lang] || I18N.en;
-    return (d[key] !== undefined) ? d[key] : (I18N.en[key] !== undefined ? I18N.en[key] : key);
+<!-- =========================================================================
+     СТРУКТУРИРОВАННЫЕ ДАННЫЕ (SEO)
+     ======================================================================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "L.I.S.A.",
+  "url": "https://lisa-is.com/",
+  "logo": "https://lisa-is.com/assets/hero.jpg",
+  "image": "https://lisa-is.com/assets/hero.jpg",
+  "description": "L.I.S.A. — физический AI-интерфейс для бизнеса: удалённый сотрудник на ресепшене, в клинике, отеле, бизнес-центре и ЖК.",
+  "telephone": "+7-977-487-28-76",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+7-977-487-28-76",
+    "contactType": "sales",
+    "areaServed": "RU",
+    "availableLanguage": ["ru"]
   }
-
-  function each(list, fn){ Array.prototype.forEach.call(list, fn); }
-
-  function detectLang(){
-    var q = null;
-    try { q = new URLSearchParams(location.search).get('lang'); } catch(e){}
-    if(q){ q = String(q).toLowerCase(); if(LANGS.indexOf(q) > -1) return q; }
-    try {
-      var saved = localStorage.getItem(LANG_KEY);
-      if(saved && LANGS.indexOf(saved) > -1) return saved;
-    } catch(e){}
-    var nav = String((navigator.languages && navigator.languages[0]) || navigator.language || 'en').toLowerCase();
-    if(nav.indexOf('ru') === 0) return 'ru';
-    if(nav.indexOf('zh') === 0 || nav.indexOf('cn') === 0 || nav.indexOf('ch') === 0) return 'zh';
-    return 'en';
-  }
-
-  function applyLang(code){
-    if(LANGS.indexOf(code) === -1) code = 'en';
-    lang = code;
-    document.documentElement.lang = code;
-
-    each(document.querySelectorAll('[data-i18n]'), function(el){ el.textContent = t(el.getAttribute('data-i18n')); });
-    each(document.querySelectorAll('[data-i18n-html]'), function(el){ el.innerHTML = t(el.getAttribute('data-i18n-html')); });
-    each(document.querySelectorAll('[data-i18n-alt]'), function(el){ el.setAttribute('alt', t(el.getAttribute('data-i18n-alt'))); });
-    each(document.querySelectorAll('[data-i18n-aria]'), function(el){ el.setAttribute('aria-label', t(el.getAttribute('data-i18n-aria'))); });
-    each(document.querySelectorAll('[data-i18n-ph]'), function(el){ el.setAttribute('placeholder', t(el.getAttribute('data-i18n-ph'))); });
-    each(document.querySelectorAll('.g-item img'), function(img, i){ img.setAttribute('alt', t('gallery.alt') + ' ' + (i + 1)); });
-
-    document.title = t('meta.title');
-    var pick = { metaDesc:'meta.desc', ogTitle:'meta.title', ogDesc:'meta.desc', twTitle:'meta.title', twDesc:'meta.desc' };
-    Object.keys(pick).forEach(function(id){
-      var el = document.getElementById(id);
-      if(el) el.setAttribute('content', t(pick[id]));
-    });
-    var loc = document.getElementById('ogLocale');
-    if(loc) loc.setAttribute('content', OG_LOCALE[code] || 'en_US');
-
-    each(document.querySelectorAll('.lang button'), function(b){
-      b.setAttribute('aria-pressed', b.getAttribute('data-lang') === code ? 'true' : 'false');
-    });
-
-    try { localStorage.setItem(LANG_KEY, code); } catch(e){}
-  }
-
-  function setUrlLang(code){
-    try {
-      var u = new URL(location.href);
-      if(code === 'en'){ u.searchParams.delete('lang'); } else { u.searchParams.set('lang', code); }
-      var qs = u.searchParams.toString();
-      history.replaceState(null, '', u.pathname + (qs ? '?' + qs : '') + u.hash);
-    } catch(e){}
-  }
-
-  each(document.querySelectorAll('.lang button'), function(b){
-    b.addEventListener('click', function(){
-      var code = b.getAttribute('data-lang');
-      applyLang(code);
-      setUrlLang(code);
-      var m = document.getElementById('wlMsg');
-      if(m){ m.textContent = ''; m.className = 'form-msg'; }
-    });
-  });
-
-  applyLang(detectLang());
-
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---------- header compact on scroll ---------- */
-  var hdr = document.getElementById('hdr'), ticking = false;
-  function onScroll(){
-    if(ticking) return;
-    ticking = true;
-    requestAnimationFrame(function(){
-      hdr.classList.toggle('compact', window.scrollY > 40);
-      ticking = false;
-    });
-  }
-  window.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
-
-  /* ---------- reveal on view ---------- */
-  var rv = document.querySelectorAll('.rv');
-  if('IntersectionObserver' in window && !reduce){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){
-          var sibs = Array.prototype.slice.call(e.target.parentNode.querySelectorAll(':scope > .rv'));
-          var i = Math.max(0, sibs.indexOf(e.target));
-          e.target.style.transitionDelay = Math.min(i, 6) * 90 + 'ms';
-          e.target.classList.add('in');
-          io.unobserve(e.target);
-        }
-      });
-    }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
-    rv.forEach(function(el){ io.observe(el); });
-  } else {
-    rv.forEach(function(el){ el.classList.add('in'); });
-  }
-
-  /* ---------- media placeholder -> hide when the real file loads ---------- */
-  document.querySelectorAll('.media > img').forEach(function(img){
-    var box = img.parentNode;
-    function ok(){ box.classList.add('is-loaded'); }
-    function bad(){ img.style.opacity = '0'; }
-    if(img.complete && img.naturalWidth > 0){ ok(); }
-    img.addEventListener('load', ok);
-    img.addEventListener('error', bad);
-  });
-
-  /* ---------- lazy video (poster first, load on approach) ---------- */
-  var vid = document.getElementById('lisaVideo');
-  if(vid){
-    function loadVideo(){
-      if(vid.dataset.loaded) return;
-      vid.dataset.loaded = '1';
-      vid.src = vid.dataset.src;
-      vid.addEventListener('loadeddata', function(){ vid.parentNode.classList.add('is-loaded'); });
-      vid.load();
-      var p = vid.play();
-      if(p && p.catch) p.catch(function(){});
-    }
-    if('IntersectionObserver' in window){
-      var vio = new IntersectionObserver(function(entries){
-        entries.forEach(function(e){ if(e.isIntersecting){ loadVideo(); vio.disconnect(); } });
-      }, {rootMargin:'350px 0px'});
-      vio.observe(vid);
-    } else { loadVideo(); }
-  }
-
-  /* ---------- subtle parallax on hero photo ---------- */
-  var heroImg = document.querySelector('.hero-media img');
-  if(heroImg && !reduce && window.innerWidth > 980){
-    var pTick = false;
-    window.addEventListener('scroll', function(){
-      if(pTick) return;
-      pTick = true;
-      requestAnimationFrame(function(){
-        var y = Math.min(window.scrollY, 700);
-        heroImg.style.transform = 'scale(1.06) translateY(' + (y * 0.035) + 'px)';
-        pTick = false;
-      });
-    }, {passive:true});
-  }
-
-  /* ---------- lightbox ---------- */
-  var items = Array.prototype.slice.call(document.querySelectorAll('.g-item'));
-  var lb = document.getElementById('lb'),
-      lbImg = document.getElementById('lbImg'),
-      lbPh = null, idx = 0;
-
-  var note = document.createElement('div');
-  note.className = 'lb-ph';
-  note.style.cssText = 'position:absolute;bottom:1.6rem;left:0;right:0;text-align:center';
-  lb.appendChild(note);
-
-  function show(i){
-    idx = (i + items.length) % items.length;
-    var f = items[idx], src = f.dataset.full;
-    lbImg.src = src;
-    lbImg.alt = (f.querySelector('img') || {}).alt || t('gallery.alt');
-    note.textContent = src;
-    lbImg.onerror = function(){ lbImg.style.opacity = '0.15'; note.textContent = src + '  ' + t('lb.missing'); };
-    lbImg.onload = function(){ lbImg.style.opacity = '1'; };
-  }
-  function open(i){ show(i); lb.classList.add('open'); document.body.style.overflow = 'hidden'; document.getElementById('lbClose').focus(); }
-  function close(){ lb.classList.remove('open'); document.body.style.overflow = ''; lbImg.src = ''; }
-
-  items.forEach(function(f, i){
-    f.addEventListener('click', function(){ open(i); });
-    f.setAttribute('tabindex','0');
-    f.addEventListener('keydown', function(ev){ if(ev.key === 'Enter' || ev.key === ' '){ ev.preventDefault(); open(i); } });
-  });
-  document.getElementById('lbClose').addEventListener('click', close);
-  document.getElementById('lbPrev').addEventListener('click', function(){ show(idx - 1); });
-  document.getElementById('lbNext').addEventListener('click', function(){ show(idx + 1); });
-  lb.addEventListener('click', function(ev){ if(ev.target === lb) close(); });
-  document.addEventListener('keydown', function(ev){
-    if(!lb.classList.contains('open')) return;
-    if(ev.key === 'Escape') close();
-    if(ev.key === 'ArrowLeft') show(idx - 1);
-    if(ev.key === 'ArrowRight') show(idx + 1);
-  });
-
-  /* ---------- waitlist ----------
-     Needs no account: FormSubmit relays the submission to the project email.
-     The address is stored base64-encoded so it never appears literally in the
-     page source (spam bots harvest plain emails from HTML).
-     Swap in your own endpoint (Formspree / own API) by changing WAITLIST_ENDPOINT. */
-  var CONTACT = atob('aXZkb2xnb3ZAZ21haWwuY29t');
-  var WAITLIST_ENDPOINT = 'https://formsubmit.co/ajax/' + CONTACT;
-
-  var fMail = document.getElementById('fMail');
-  if(fMail){ fMail.href = 'mailto:' + CONTACT; fMail.textContent = CONTACT; }
-
-  var form = document.getElementById('wlForm'),
-      btn = document.getElementById('wlBtn'),
-      msg = document.getElementById('wlMsg'),
-      done = document.getElementById('wlDone');
-
-  form.addEventListener('submit', function(ev){
-    ev.preventDefault();
-    var email = document.getElementById('wlEmail').value.trim();
-    var which = (form.querySelector('input[name=which]:checked') || {}).value || 'NOT SURE';
-
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){
-      msg.className = 'form-msg err';
-      msg.textContent = t('form.err');
-      return;
-    }
-
-    msg.className = 'form-msg';
-    msg.textContent = t('form.sending');
-    btn.disabled = true;
-
-    fetch(WAITLIST_ENDPOINT, {
-      method:'POST',
-      headers:{'Content-Type':'application/json', 'Accept':'application/json'},
-      body: JSON.stringify({
-        email: email,
-        which: which,
-        _subject: 'L.I.S.a — new waitlist request'
-      })
-    }).then(function(r){
-      if(!r.ok) throw new Error('HTTP ' + r.status);
-      return r.text().then(function(txt){
-        var ok = true;
-        try { var j = JSON.parse(txt); if(j && String(j.success) === 'false') ok = false; } catch(e){}
-        if(!ok) throw new Error('not delivered');
-      });
-    }).then(function(){
-      form.classList.add('hidden');
-      done.classList.remove('hidden');
-    }).catch(function(){
-      btn.disabled = false;
-      msg.className = 'form-msg err';
-      msg.innerHTML = t('form.fail') + ' <a href="mailto:' + CONTACT +
-                      '" style="border-bottom:1px solid var(--line-2)">' + CONTACT + '</a>.';
-    });
-  });
-})();
+}
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Что такое L.I.S.A.?","acceptedAnswer":{"@type":"Answer","text":"L.I.S.A. — физический AI-интерфейс для бизнеса: робот на ресепшене, который отвечает на типовые вопросы с помощью AI и подключает удалённого оператора, когда нужен человек."}},
+    {"@type":"Question","name":"Сколько филиалов может обслуживать один оператор?","acceptedAnswer":{"@type":"Answer","text":"Схема «один оператор на 5 филиалов» используется как расчётный ориентир. Точное количество зависит от нагрузки, графика работы и сложности вопросов."}},
+    {"@type":"Question","name":"Что происходит, если посетителю нужен человек?","acceptedAnswer":{"@type":"Answer","text":"L.I.S.A. подключает удалённого оператора, и он разговаривает с посетителем через робота."}},
+    {"@type":"Question","name":"L.I.S.A. заменяет сотрудников?","acceptedAnswer":{"@type":"Answer","text":"Нет. L.I.S.A. переносит сотрудника из конкретного филиала в единый удалённый центр и автоматизирует только типовые вопросы."}}
+  ]
+}
+</script>
+
+<script type="module" src="js/app.js"></script>
 </body>
 </html>
