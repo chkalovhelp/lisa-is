@@ -33,6 +33,7 @@ function initCalculator() {
 
   const out = {
     current: $('#cCurrent'),
+    tax: $('#cTax'),
     operators: $('#cOperators'),
     rent: $('#cRent'),
     ops: $('#cOps'),
@@ -45,7 +46,7 @@ function initCalculator() {
 
   const read = () => computeSavings({
     branches: +branches.value,
-    employeeCost: +cost.value,
+    salaryNet: +cost.value,
     branchesPerOperator: +perOp.value,
     tariff: currentTariff(),
   });
@@ -53,6 +54,7 @@ function initCalculator() {
   function render() {
     const s = read();
     out.current.textContent = money(s.currentCost) + ' / мес';
+    if (out.tax) out.tax.textContent = money(s.staff * s.payrollTaxPerEmployee) + ' / мес';
     out.operators.textContent = String(s.operators);
     if (out.rent) out.rent.textContent = money(s.rent) + ' / мес';
     if (out.ops) out.ops.textContent = money(s.operatorsCost) + ' / мес';
@@ -100,7 +102,7 @@ function initCalculator() {
   // исходные значения
   branches.value = 5;
   range.value = 5;
-  cost.value = CONFIG.employeeCostDefault;
+  cost.value = CONFIG.salaryNetDefault;
   perOp.value = CONFIG.branchesPerOperatorDefault;
   perRange.value = CONFIG.branchesPerOperatorDefault;
   const def = $(`input[name="cTariff"][value="${CONFIG.defaultTariff}"]`);
@@ -131,6 +133,14 @@ function syncTierCards(s) {
   if (note) {
     note.textContent = `Аренда L.I.S.A.: ${s.branches} × ${money(s.tariffPrice)} = ${money(s.rent)} / мес`;
   }
+  const taxNote = $('#cTaxNote');
+  if (taxNote) {
+    const ndflPct = Math.round(s.ndflRate * 100);
+    const taxPct = Math.round(s.payrollTaxRate * 100);
+    taxNote.textContent = `${money(s.salaryNet)} на руки → оклад ${money(s.gross)} ` +
+      `+ НДФЛ ${ndflPct}% (${money(s.ndflPerEmployee)}) + взносы ${taxPct}% (${money(s.contribPerEmployee)}) ` +
+      `= ${money(s.employeeFull)} / мес на человека`;
+  }
 }
 
 /* ===========================================================================
@@ -143,8 +153,8 @@ function initScenarioCards() {
     const b = +row.dataset.branches;
     const per = +row.dataset.perOperator;
     const tariff = row.dataset.tariff || CONFIG.defaultTariff;
-    const c = CONFIG.employeeCostDefault;
-    const s = computeSavings({ branches: b, employeeCost: c, branchesPerOperator: per, tariff });
+    const c = CONFIG.salaryNetDefault;
+    const s = computeSavings({ branches: b, salaryNet: c, branchesPerOperator: per, tariff });
     const set = (sel, txt) => { const e = $(sel, row); if (e) e.textContent = txt; };
     set('[data-out="branches"]', `${b} филиалов`);
     set('[data-out="staff"]', `${b} сотрудников`);
@@ -175,8 +185,8 @@ function initTiers() {
 
   function render() {
     const b = Math.max(1, +branches.value || 1);
-    const c = +cost.value || CONFIG.employeeCostDefault;
-    const t = computeTiers({ branches: b, employeeCost: c });
+    const c = +cost.value || CONFIG.salaryNetDefault;
+    const t = computeTiers({ branches: b, salaryNet: c });
     const set = (sel, txt) => { const el = $(sel, box); if (el) el.textContent = txt; };
 
     set('[data-tier="branches"]', `${b} ${plural(b, 'филиал', 'филиала', 'филиалов')}`);
@@ -196,7 +206,7 @@ function initTiers() {
   branches.addEventListener('input', render);
   cost.addEventListener('input', render);
   branches.value = 5;
-  cost.value = CONFIG.employeeCostDefault;
+  cost.value = CONFIG.salaryNetDefault;
   render();
 }
 
@@ -223,7 +233,7 @@ function initContactForm() {
     const per = +($('#cPerOp')?.value || CONFIG.branchesPerOperatorDefault);
     const tariff = currentTariff();
     if (b) {
-      const s = computeSavings({ branches: b, employeeCost: c, branchesPerOperator: per, tariff });
+      const s = computeSavings({ branches: b, salaryNet: c, branchesPerOperator: per, tariff });
       data['_Тариф'] = CONFIG.tariffs[tariff]?.name || tariff;
       data['_Расчёт'] = `${b} филиалов, тариф ${data['_Тариф']} (${money(s.tariffPrice)}/мес за точку) → ` +
         `${s.operators} опер. → сейчас ${money(s.currentCost)}, с L.I.S.A. ${money(s.withLisa)} → ` +

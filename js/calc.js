@@ -2,11 +2,19 @@
    L.I.S.A. — модуль расчётов (экономика)
    L.I.S.A. сдаётся в аренду (абонентская плата). Модель:
 
+     оклад               = «на руки» ÷ (1 − НДФЛ)        ← gross, до НДФЛ
+     налоги на сотрудника = НДФЛ + страховые взносы
+     стоимость сотрудника = оклад + взносы
      текущие расходы    = филиалы × стоимость сотрудника
      операторов         = ceil(филиалы / филиалов_на_оператора)
      аренда L.I.S.A.    = филиалы × тариф
      расходы с L.I.S.A. = аренда + операторы × стоимость сотрудника
      экономия           = текущие − расходы с L.I.S.A.
+
+   Вводится зарплата «на руки» — то, что сотрудник реально получает (московская
+   практика). Сверху работодатель платит НДФЛ 13% и страховые взносы ~30%; модель
+   добавляет их автоматически — и для штата филиалов, и для удалённых операторов.
+   80 000 ₽ на руки → оклад 91 954 ₽ → полная стоимость 119 540 ₽/мес.
 
    Чистые функции: на входе числа, на выходе числа. Ничего не рисуют.
    ========================================================================== */
@@ -15,8 +23,15 @@
    1) КОНФИГУРАЦИЯ (правится в одном месте)
    -------------------------------------------------------------------------*/
 export const CONFIG = {
-  // Полная стоимость одного сотрудника для компании, ₽/мес (по умолчанию в форме)
-  employeeCostDefault: 80000,
+  // Зарплата одного сотрудника «на руки», ₽/мес (по умолчанию в форме).
+  // Московский ориентир для администратора ресепшена: 80 000 ₽ на руки.
+  salaryNetDefault: 80000,
+
+  // НДФЛ, удерживаемый из оклада (сотрудник получает «на руки» меньше оклада)
+  ndflRate: 0.13,
+
+  // Страховые взносы работодателя сверх оклада (единый тариф, в пределах базы)
+  payrollTaxRate: 0.30,
 
   // Сколько филиалов обслуживает один удалённый оператор (по умолчанию)
   branchesPerOperatorDefault: 5,
@@ -57,26 +72,41 @@ export const tariffPrice = (key) =>
  */
 export function computeSavings({
   branches,
-  employeeCost,
+  salaryNet,
   branchesPerOperator = CONFIG.branchesPerOperatorDefault,
   tariff = CONFIG.defaultTariff,
 }) {
   const b = num(branches);
-  const c = num(employeeCost);
+  const net = num(salaryNet);                      // «на руки», ₽/мес
   const per = Math.max(1, num(branchesPerOperator));
   const price = tariffPrice(tariff);
+  const ndflRate = CONFIG.ndflRate;                // 0.13
+  const taxRate = CONFIG.payrollTaxRate;           // 0.30
+  const gross = Math.round(net / (1 - ndflRate));  // оклад до НДФЛ, ₽/мес
+  const ndfl = gross - net;                        // НДФЛ на человека, ₽/мес
+  const contrib = Math.round(gross * taxRate);     // страховые взносы на человека
+  const full = gross + contrib;                    // полная стоимость для компании
+  const taxPerEmployee = ndfl + contrib;           // всё, что сверх «на руки»
 
-  const currentCost = b * c;                       // ₽/мес на ресепшен сейчас
+  const currentCost = b * full;                    // ₽/мес на ресепшен сейчас
   const operators = Math.ceil(b / per);            // сколько удалённых операторов нужно
   const rent = b * price;                          // ₽/мес аренда L.I.S.A.
-  const operatorsCost = operators * c;             // ₽/мес на удалённых операторов
+  const operatorsCost = operators * full;          // ₽/мес на удалённых операторов
   const withLisa = rent + operatorsCost;           // ₽/мес с L.I.S.A.
   const monthlyDiff = currentCost - withLisa;      // ₽/мес экономия
   const annualDiff = monthlyDiff * 12;             // ₽/год экономия
 
   return {
     branches: b,
-    employeeCost: c,
+    salaryNet: net,                                // «на руки», как введено
+    gross,                                         // оклад до НДФЛ
+    ndflRate,
+    ndflPerEmployee: ndfl,
+    payrollTaxRate: taxRate,
+    contribPerEmployee: contrib,
+    payrollTaxPerEmployee: taxPerEmployee,         // НДФЛ + взносы на человека
+    payrollTaxMonthly: (b + operators) * taxPerEmployee, // налоги по всей схеме
+    employeeFull: full,                            // полная стоимость человека
     branchesPerOperator: per,
     tariff: tariff,
     tariffPrice: price,
@@ -89,7 +119,7 @@ export function computeSavings({
     monthlyDiff,
     annualDiff,
     savingsShare: currentCost > 0 ? monthlyDiff / currentCost : 0, // доля 0..1
-    perBranchNow: c,                               // ₽/мес за одну точку сейчас
+    perBranchNow: full,                            // ₽/мес за одну точку сейчас (полная)
     perBranchLisa: price,                          // ₽/мес за одну точку с L.I.S.A.
   };
 }
@@ -98,10 +128,10 @@ export function computeSavings({
  * Сравнение двух тарифов на одной и той же сети.
  * Возвращает обе конфигурации + разницу между ними.
  */
-export function computeTiers({ branches, employeeCost, branchesPerOperator = CONFIG.branchesPerOperatorDefault }) {
+export function computeTiers({ branches, salaryNet, branchesPerOperator = CONFIG.branchesPerOperatorDefault }) {
   const keys = Object.keys(CONFIG.tariffs);
   const rows = keys.map((k) => {
-    const s = computeSavings({ branches, employeeCost, branchesPerOperator, tariff: k });
+    const s = computeSavings({ branches, salaryNet, branchesPerOperator, tariff: k });
     return { ...s, tariffName: CONFIG.tariffs[k].name, tagline: CONFIG.tariffs[k].tagline };
   });
   const [a, b] = rows;
