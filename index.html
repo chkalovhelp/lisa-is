@@ -278,11 +278,13 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .dlg-item{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px}
 .bubble{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}
 .bubble:last-child{margin-bottom:0}
+/* колонка подписи рассчитана на самое длинное слово («Посетитель» ≈ 87px);
+   фиксированные 46px обрезали текст и он налезал на реплику */
 .bubble .who{
-  flex:0 0 auto;width:46px;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-  color:var(--muted);padding-top:4px;
+  flex:0 0 92px;width:auto;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);padding-top:4px;white-space:nowrap;
 }
-.bubble .txt{font-size:.98rem}
+.bubble .txt{font-size:.98rem;flex:1 1 auto;min-width:0}
 .bubble.me .txt{color:var(--muted)}
 .bubble.ai .txt{color:var(--ink)}
 .bubble.ai .who{color:var(--acc)}
@@ -872,7 +874,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 56px;margin-top:0;backgro
         <article class="uc rv"><div class="ico">04</div><h3>Бизнес-центр</h3><p>Приём гостей и связь с сотрудниками.</p></article>
         <article class="uc rv"><div class="ico">05</div><h3>ЖК</h3><p>Информация для жителей и связь с управляющей компанией.</p></article>
         <article class="uc rv"><div class="ico">06</div><h3>Проходная</h3><p>Инструкции, навигация, связь с охраной или сотрудником.</p></article>
-        <article class="uc rv"><div class="ico">07</div><h3>Промо</h3><p>Физический AI-промоутер для акций, торговых точек и мероприятий.</p></article>
+        <article class="uc rv"><div class="ico">07</div><h3>Промо</h3><p>Промоакции: один сотрудник и один промо-робот. Привлечение внимания, промо-речь, ответы по скрипту или из базы знаний.</p></article>
         <article class="uc rv"><div class="ico">08</div><h3>Выставки</h3><p>Дополнительный физический сотрудник на стенде: привлекает внимание, рассказывает о компании и отвечает на типовые вопросы.</p></article>
       </div>
       <p class="note rv" style="margin-top:22px">Это сценарии применения. Готовые отраслевые
@@ -899,12 +901,13 @@ footer{border-top:1px solid var(--line);padding:44px 0 56px;margin-top:0;backgro
           <ul class="plist">
             <li>привлекать внимание;</li>
             <li>приветствовать посетителей;</li>
+            <li>произносить промо-речь по утверждённому сценарию;</li>
             <li>рассказывать о продукте;</li>
-            <li>отвечать на вопросы;</li>
-            <li>работать по утверждённому сценарию;</li>
+            <li>отвечать на вопросы — по скрипту или из базы знаний;</li>
             <li>подключать удалённого оператора;</li>
             <li>собирать данные о взаимодействиях.</li>
           </ul>
+          <p class="small" style="margin-top:14px">Пример конфигурации промоакции: один сотрудник и один промо-робот.</p>
         </div>
         <div class="card-plain rv">
           <h3 class="h-md" style="font-size:1.05rem">Три режима работы</h3>
@@ -950,6 +953,9 @@ footer{border-top:1px solid var(--line);padding:44px 0 56px;margin-top:0;backgro
             L.I.S.A. — выставочный робот (exhibition robot) и информационная стойка
             (AI information point): привлекает внимание, приветствует, рассказывает, отвечает
             на типовые вопросы и направляет заинтересованного посетителя к сотруднику.</p>
+          <p class="small">Отдельная экономия — командировки: сотрудники могут работать на выставке
+            удалённо, подключаясь к аватару из офиса, когда это необходимо, а остальное время
+            заниматься своей работой.</p>
         </div>
       </div>
       <p class="note rv" style="margin-top:20px">L.I.S.A. не заменяет сотрудников: она увеличивает
