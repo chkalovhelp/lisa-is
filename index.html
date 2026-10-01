@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>L.I.S.A. — удалённый сотрудник в каждом филиале | робот для ресепшена</title>
-<meta name="description" content="L.I.S.A. — физический AI-интерфейс для бизнеса: робот на ресепшене, в клинике, отеле, офисе или ЖК. Отвечает на типовые вопросы с помощью AI и подключает удалённого оператора, когда нужен человек. Один оператор — несколько филиалов.">
-<meta name="keywords" content="робот для ресепшена, робот-рецепционист, робот на ресепшен, удалённый сотрудник, удалённый администратор, автоматизация ресепшена, робот для гостиницы, робот для клиники, робот для бизнес-центра, робот-консьерж, робот для ЖК">
+<meta name="description" content="L.I.S.A. — физический AI-аватар удалённого сотрудника (physical AI avatar): робот-рецепционист на ресепшене, в клинике, отеле, офисе и ЖК, а также AI-промоутер и выставочный робот. AI отвечает на типовые вопросы, удалённый оператор подключается, когда нужен человек. Один оператор — несколько филиалов.">
+<meta name="keywords" content="робот для ресепшена, робот-рецепционист, робот на ресепшен, AI receptionist, robot receptionist, remote receptionist, удалённый сотрудник, удалённый администратор, remote employee, физический AI-аватар, physical AI avatar, AI-промоутер, AI promoter, robot promoter, выставочный робот, exhibition robot, информационная стойка, AI information point, telepresence, автоматизация ресепшена, робот для гостиницы, робот для клиники, робот для бизнес-центра, робот-консьерж, робот для ЖК">
 <link rel="canonical" href="https://lisa-is.com/">
 <meta property="og:title" content="L.I.S.A. — удалённый сотрудник. В каждом филиале.">
 <meta property="og:description" content="Один оператор может обслуживать несколько роботов в разных филиалах. L.I.S.A. отвечает на типовые вопросы с помощью AI и подключает человека, когда он нужен.">
@@ -403,6 +403,44 @@ footer{border-top:1px solid var(--line);padding:44px 0 56px;margin-top:0;backgro
 }
 @media (max-width:420px){
   .wrap{padding:0 18px}
+}
+/* ---------- промо, выставки, платформа (расширение позиционирования) ---------- */
+.promo-grid{grid-template-columns:1fr 1fr}
+.plist{margin:14px 0 0;padding-left:0;list-style:none;display:grid;gap:9px}
+.plist li{position:relative;padding-left:18px;font-size:.92rem;color:var(--ink-2)}
+.plist li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--acc)}
+.modes{display:grid;gap:10px;margin-top:14px}
+.mode{display:grid;gap:4px;padding:13px 15px;border:1px solid var(--line);border-radius:12px;background:var(--bg-2)}
+.mode b{font-size:.78rem;letter-spacing:.14em;color:var(--acc)}
+.mode span{font-size:.86rem;color:var(--muted);line-height:1.5}
+.mode.is-hl{border-color:#eddfd2;background:var(--acc-soft)}
+.expo{display:grid;grid-template-columns:.82fr 1.18fr;gap:24px;align-items:center}
+.expo-side{display:grid;align-content:center}
+.expo-row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.expo-row span{color:var(--muted);font-size:.92rem}
+.expo-row b{font-weight:700;font-variant-numeric:tabular-nums}
+.expo-row.is-sum b{color:var(--acc);font-size:1.35rem}
+.expo-formula{font-size:clamp(1.1rem,2.1vw,1.55rem);font-weight:700;letter-spacing:-.02em;line-height:1.35;margin-bottom:12px}
+.expo-formula span{color:var(--acc);padding:0 8px}
+.roles{margin-top:34px;padding:28px;border:1px solid var(--line);border-radius:var(--r);background:var(--bg-2);text-align:center}
+.roles-eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);margin-bottom:12px}
+.roles-list{font-size:clamp(1.02rem,1.9vw,1.28rem);font-weight:600;letter-spacing:-.01em}
+.roles-note{margin-top:12px;color:var(--muted);font-size:.95rem}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{padding:9px 16px;border:1px solid var(--line-2);border-radius:999px;background:#fff;font-size:.9rem;font-weight:600}
+.lineage{display:grid;gap:8px;justify-items:start;margin-top:24px;padding:24px;border:1px solid var(--line);border-radius:var(--r);background:var(--bg-2)}
+.lin{padding:10px 16px;border:1px solid var(--line);border-radius:12px;background:#fff;font-weight:600;font-size:.95rem}
+.lin.is-top{border-color:#eddfd2;background:var(--acc-soft);color:#8f5122}
+.lin-arrow{color:var(--line-2);margin-left:22px;line-height:1}
+/* очень узкие экраны: элементы могут сжиматься — без горизонтального скролла */
+@media (max-width:560px){
+  .calc,.roi,.grid,.field,.row-2,.form-grid{min-width:0}
+  .calc>*,.roi>*,.field>*,.grid>*{min-width:0}
+  .input,.select{min-width:0;max-width:100%}
+}
+@media (max-width:820px){
+  .promo-grid,.expo{grid-template-columns:1fr}
+  .expo-formula{font-size:1.12rem}
 }
 </style>
 </head>
@@ -821,8 +859,11 @@ footer{border-top:1px solid var(--line);padding:44px 0 56px;margin-top:0;backgro
       <div class="sec-head">
         <div class="eyebrow rv">Сценарии применения</div>
         <h2 class="h-lg rv">Где работает L.I.S.A.</h2>
-        <p class="lead rv" style="margin-top:18px">Точки, где посетителя встречает человек
-          и где большую часть вопросов можно централизовать.</p>
+        <p class="lead rv" style="margin-top:18px">Везде, где сотрудник в основном встречает людей,
+          отвечает на вопросы или подключается только в сложных случаях.</p>
+        <p class="note rv" style="margin-top:14px">Remote Reception — первый и основной сценарий.
+          Шире L.I.S.A. — это физический AI-аватар удалённого сотрудника (physical AI avatar):
+          он представляет компанию там, где сейчас должен стоять человек.</p>
       </div>
       <div class="uc-grid">
         <article class="uc rv"><div class="ico">01</div><h3>Ресепшен</h3><p>Приём посетителей и навигация.</p></article>
@@ -831,9 +872,88 @@ footer{border-top:1px solid var(--line);padding:44px 0 56px;margin-top:0;backgro
         <article class="uc rv"><div class="ico">04</div><h3>Бизнес-центр</h3><p>Приём гостей и связь с сотрудниками.</p></article>
         <article class="uc rv"><div class="ico">05</div><h3>ЖК</h3><p>Информация для жителей и связь с управляющей компанией.</p></article>
         <article class="uc rv"><div class="ico">06</div><h3>Проходная</h3><p>Инструкции, навигация, связь с охраной или сотрудником.</p></article>
+        <article class="uc rv"><div class="ico">07</div><h3>Промо</h3><p>Физический AI-промоутер для акций, торговых точек и мероприятий.</p></article>
+        <article class="uc rv"><div class="ico">08</div><h3>Выставки</h3><p>Дополнительный физический сотрудник на стенде: привлекает внимание, рассказывает о компании и отвечает на типовые вопросы.</p></article>
       </div>
       <p class="note rv" style="margin-top:22px">Это сценарии применения. Готовые отраслевые
         сертификации и интеграции не заявляются — конфигурация под задачу обсуждается отдельно.</p>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       8Б. REMOTE PROMOTER — УДАЛЁННЫЙ ПРОМОУТЕР
+       ===================================================================== -->
+  <section id="promo" class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow rv">Remote Promoter</div>
+        <h2 class="h-lg rv">Удалённый промоутер</h2>
+        <p class="lead rv" style="margin-top:18px">Промоутера не обязательно физически нанимать
+          в каждой точке. L.I.S.A. — физический AI-промоутер (AI promoter, robot promoter):
+          находится в точке и работает по утверждённому сценарию.</p>
+      </div>
+
+      <div class="grid promo-grid">
+        <div class="card-plain rv">
+          <h3 class="h-md" style="font-size:1.05rem">Что может делать</h3>
+          <ul class="plist">
+            <li>привлекать внимание;</li>
+            <li>приветствовать посетителей;</li>
+            <li>рассказывать о продукте;</li>
+            <li>отвечать на вопросы;</li>
+            <li>работать по утверждённому сценарию;</li>
+            <li>подключать удалённого оператора;</li>
+            <li>собирать данные о взаимодействиях.</li>
+          </ul>
+        </div>
+        <div class="card-plain rv">
+          <h3 class="h-md" style="font-size:1.05rem">Три режима работы</h3>
+          <div class="modes">
+            <div class="mode"><b>AI</b><span>L.I.S.A. самостоятельно отвечает на типовые вопросы из базы знаний.</span></div>
+            <div class="mode"><b>REMOTE</b><span>Оператор управляет коммуникацией с посетителем удалённо.</span></div>
+            <div class="mode is-hl"><b>HYBRID</b><span>AI работает самостоятельно, а оператор подключается только тогда, когда нужен человек.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="note rv" style="margin-top:22px;max-width:82ch">Формулировка возможностей
+        отражает архитектуру, а не готовый продукт: часть функций работает в пилотной
+        конфигурации, часть — в разработке. Что именно входит в вашу поставку, фиксируется
+        в договоре. Отчётность настраивается: количество взаимодействий, длительность,
+        вопросы посетителей, обращения к оператору, соблюдение сценария и итоговый отчёт
+        по акции — LLM может собирать его автоматически.</p>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       8В. ВЫСТАВКИ — БОЛЬШЕ ПРИСУТСТВИЯ, ТА ЖЕ КОМАНДА
+       ===================================================================== -->
+  <section id="expo" class="sec sec-alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow rv">Выставки и мероприятия</div>
+        <h2 class="h-lg rv">Больше присутствия. Та же команда.</h2>
+        <p class="lead rv" style="margin-top:18px">На стенд приехали два сотрудника.
+          L.I.S.A. увеличивает число взаимодействий, которые идут одновременно, — не заменяя
+          людей, а снимая с них поток.</p>
+      </div>
+
+      <div class="expo">
+        <div class="expo-side rv">
+          <div class="expo-row"><span>Сотрудники на стенде</span><b>2</b></div>
+          <div class="expo-row"><span>L.I.S.A. на стенде</span><b>2</b></div>
+          <div class="expo-row is-sum"><span>Точек взаимодействия</span><b>4</b></div>
+        </div>
+        <div class="card-plain rv">
+          <div class="expo-formula">2 сотрудника <span>+</span> 2 L.I.S.A. <span>=</span> 4 точки взаимодействия</div>
+          <p class="small">Люди занимаются переговорами, сложными вопросами и продажами.
+            L.I.S.A. — выставочный робот (exhibition robot) и информационная стойка
+            (AI information point): привлекает внимание, приветствует, рассказывает, отвечает
+            на типовые вопросы и направляет заинтересованного посетителя к сотруднику.</p>
+        </div>
+      </div>
+      <p class="note rv" style="margin-top:20px">L.I.S.A. не заменяет сотрудников: она увеличивает
+        количество одновременных взаимодействий. Человек остаётся в системе.</p>
     </div>
   </section>
 
@@ -859,6 +979,13 @@ footer{border-top:1px solid var(--line);padding:44px 0 56px;margin-top:0;backgro
         <figure class="g-item g6"><img src="assets/lisa-7.jpg" data-full="assets/lisa-7.jpg" alt="Человек взаимодействует с L.I.S.A." loading="lazy" decoding="async"></figure>
       </div>
       <p class="note rv" style="margin-top:16px">Реальные фотографии прототипа. Нажмите на фото, чтобы увеличить.</p>
+
+      <div class="roles rv">
+        <div class="roles-eyebrow">Одна технология — разные роли</div>
+        <p class="roles-list">Ресепшен. Информационная стойка. Промоутер. Представитель компании на выставке.</p>
+        <p class="roles-note">В каждом случае принцип один: AI отвечает на типовые вопросы.
+          Человек подключается, когда он нужен.</p>
+      </div>
     </div>
   </section>
 
@@ -1036,6 +1163,31 @@ footer{border-top:1px solid var(--line);padding:44px 0 56px;margin-top:0;backgro
           </div>
           <a class="btn btn-acc" href="#savings">Посчитать для своей сети</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       14Б. ОДНА ПЛАТФОРМА. РАЗНЫЕ ЗАДАЧИ.
+       ===================================================================== -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow rv">Платформа</div>
+        <h2 class="h-lg rv">Одна платформа. Разные задачи.</h2>
+        <p class="lead rv" style="margin-top:18px">Одна и та же технология может работать
+          как рецепционист, информационная стойка, промоутер или физический представитель
+          компании.</p>
+      </div>
+      <div class="chips rv">
+        <span class="chip">AI</span><span class="chip">RAG</span><span class="chip">Voice</span><span class="chip">Vision</span><span class="chip">Physical body</span><span class="chip">Remote operator</span>
+      </div>
+      <div class="lineage rv">
+        <span class="lin">L.I.S.A. Remote Reception</span>
+        <span class="lin-arrow" aria-hidden="true">↓</span>
+        <span class="lin">Физический AI-интерфейс для бизнеса</span>
+        <span class="lin-arrow" aria-hidden="true">↓</span>
+        <span class="lin is-top">Физический AI-аватар удалённого сотрудника</span>
       </div>
     </div>
   </section>
