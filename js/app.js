@@ -174,41 +174,9 @@ function plural(n, one, few, many) {
   return many;
 }
 
-/* ===========================================================================
-   3. ДВА ТАРИФА АРЕНДЫ (Avatar / Avatar + AI)
-   =========================================================================*/
-function initTiers() {
-  const box = $('#tiersOut');
-  if (!box) return;
-  const branches = $('#tBranches');
-  const cost = $('#tCost');
-
-  function render() {
-    const b = Math.max(1, +branches.value || 1);
-    const c = +cost.value || CONFIG.salaryNetDefault;
-    const t = computeTiers({ branches: b, salaryNet: c });
-    const set = (sel, txt) => { const el = $(sel, box); if (el) el.textContent = txt; };
-
-    set('[data-tier="branches"]', `${b} ${plural(b, 'филиал', 'филиала', 'филиалов')}`);
-    set('[data-tier="current"]', money(t.rows[0].currentCost) + ' / мес');
-    set('[data-tier="operators"]', String(t.rows[0].operators));
-
-    t.rows.forEach((r) => {
-      set(`[data-tier="${r.tariff}-rent"]`, money(r.rent) + ' / мес');
-      set(`[data-tier="${r.tariff}-month"]`, money(r.withLisa) + ' / мес');
-      set(`[data-tier="${r.tariff}-save"]`, money(r.monthlyDiff) + ' / мес');
-      set(`[data-tier="${r.tariff}-year"]`, rubShort(r.annualDiff) + ' / год');
-    });
-
-    set('[data-tier="gap"]', money(t.priceGap) + ' / мес за точку');
-  }
-
-  branches.addEventListener('input', render);
-  cost.addEventListener('input', render);
-  branches.value = 5;
-  cost.value = CONFIG.salaryNetDefault;
-  render();
-}
+/* Блок «Аренда» — статичная витрина тарифов без полей ввода (дублирующий
+   калькулятор убран: посетитель вводил одни и те же числа дважды).
+   Расчёт экономии остался в блоке «Экономика» (initCalculator). */
 
 /* ===========================================================================
    4. ФОРМА «ПОЛУЧИТЬ РАСЧЁТ»
@@ -360,7 +328,6 @@ function boot() {
   initUI();
   initCalculator();
   initScenarioCards();
-  initTiers();
   initContactForm();
   initLightbox();
 }

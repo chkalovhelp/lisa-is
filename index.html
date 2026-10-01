@@ -246,6 +246,10 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .tc-row b{font-variant-numeric:tabular-nums}
 .tc-row b.acc{color:#f0a878}
 @media (max-width:560px){.tar-res{grid-template-columns:1fr}}
+/* витрина тарифов — статичная, без полей ввода */
+.tar-price{font-size:clamp(1.35rem,2.4vw,1.75rem);font-weight:700;letter-spacing:-.03em;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.2;margin:10px 0 2px}
+.tar-price span{font-size:.9rem;font-weight:500;color:var(--muted);letter-spacing:0}
+.tar-price.is-acc{color:var(--acc)}
 .out-bar{height:6px;border-radius:999px;background:rgba(255,255,255,.14);overflow:hidden;margin-top:8px}
 .out-bar i{display:block;height:100%;background:linear-gradient(90deg,#f0a878,#c8763f);transition:width .5s var(--ease)}
 
@@ -1070,58 +1074,30 @@ footer{border-top:1px solid var(--line);padding:44px 0 56px;margin-top:0;backgro
       </div>
 
       <div class="roi">
-        <div class="calc-panel rv">
-          <div class="field">
-            <label for="tBranches">Сколько точек вы планируете</label>
-            <input class="input" type="number" id="tBranches" name="branches" min="1" max="500" step="1" value="5" inputmode="numeric">
-          </div>
-          <div class="field">
-            <label for="tCost">Зарплата сотрудника «на руки», ₽/мес</label>
-            <input class="input" type="number" id="tCost" name="employeeCost" min="0" step="1000" value="80000" inputmode="numeric">
-            <div class="hint">Сумма «на руки». НДФЛ 13% и страховые взносы 30% сверх неё модель добавит сама.</div>
-          </div>
-          <div class="field">
-            <label>Что входит в тарифы</label>
-            <ul class="tick">
-              <li>физический терминал на точке — аренда, без выкупа;</li>
-              <li>подключение удалённого оператора к роботу;</li>
-              <li>установка, подключение и техподдержка;</li>
-              <li>обновления. В тарифе «Аватар + AI» дополнительно — автономная обработка типовых вопросов.</li>
-            </ul>
-          </div>
-          <p class="note">Условия фиксируются в договоре: количество точек, график работы, состав функций.
-            Формулы расчёта открыты и вынесены в <code>js/calc.js</code>.</p>
-        </div>
+        <article class="card-plain rv">
+          <h3 class="h-md" style="font-size:1.15rem">Аватар</h3>
+          <div class="tar-price">24 900 ₽ <span>/ мес за точку</span></div>
+          <ul class="plist">
+            <li>физический терминал на точке — аренда, без выкупа;</li>
+            <li>подключение удалённого оператора к роботу;</li>
+            <li>установка, подключение и техподдержка;</li>
+            <li>обновления.</li>
+          </ul>
+        </article>
 
-        <div class="calc-out is-static" id="tiersOut" style="position:static" aria-live="polite">
-          <h3>Ваша сеть: <span data-tier="branches">—</span></h3>
-          <div class="out-row"><span>Сейчас на ресепшене</span><b data-tier="current">—</b></div>
-          <div class="out-row"><span>Нужно удалённых операторов</span><b data-tier="operators">—</b></div>
-
-          <div class="tar-res">
-            <div class="tar-card">
-              <div class="tc-name">Аватар</div>
-              <div class="tc-price">24 900 ₽ / мес за точку</div>
-              <div class="tc-row"><span>Аренда L.I.S.A.</span><b data-tier="avatar-rent">—</b></div>
-              <div class="tc-row"><span>Итого в месяц</span><b data-tier="avatar-month">—</b></div>
-              <div class="tc-row"><span>Экономия</span><b class="acc" data-tier="avatar-save">—</b></div>
-              <div class="tc-row"><span>За год</span><b data-tier="avatar-year">—</b></div>
-            </div>
-            <div class="tar-card">
-              <div class="tc-name">Аватар + AI</div>
-              <div class="tc-price">34 900 ₽ / мес за точку</div>
-              <div class="tc-row"><span>Аренда L.I.S.A.</span><b data-tier="avatarAi-rent">—</b></div>
-              <div class="tc-row"><span>Итого в месяц</span><b data-tier="avatarAi-month">—</b></div>
-              <div class="tc-row"><span>Экономия</span><b class="acc" data-tier="avatarAi-save">—</b></div>
-              <div class="tc-row"><span>За год</span><b data-tier="avatarAi-year">—</b></div>
-            </div>
-          </div>
-
-          <div class="out-row"><span>Разница между тарифами</span><b data-tier="gap">—</b></div>
-          <p class="note" style="color:rgba(255,255,255,.55);margin-top:18px">Модельный расчёт.
-            Итоговая экономия зависит от нагрузки, графика и количества операторов, нужных вашему бизнесу.</p>
-        </div>
+        <article class="card-plain rv">
+          <h3 class="h-md" style="font-size:1.15rem">Аватар + AI</h3>
+          <div class="tar-price is-acc">34 900 ₽ <span>/ мес за точку</span></div>
+          <ul class="plist">
+            <li>всё, что входит в тариф «Аватар»;</li>
+            <li>автономная обработка типовых вопросов: AI отвечает сам, а удалённый оператор подключается, когда нужен человек.</li>
+          </ul>
+        </article>
       </div>
+
+      <p class="note rv" style="margin-top:22px">Оборудование покупать не нужно — L.I.S.A. сдаётся в аренду.
+        Условия фиксируются в договоре: количество точек, график работы, состав функций.
+        Посчитать экономию для своей сети можно в блоке «Экономика» выше.</p>
     </div>
   </section>
 
